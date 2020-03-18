@@ -47,7 +47,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="sign in" />
+                android:onClick="login"
+                android:text="log in" />
 
             <Button
                 android:id="@+id/button_sign_up"
