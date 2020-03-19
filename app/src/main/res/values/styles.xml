@@ -1,18 +1,22 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="android:Theme.Holo.Light">
-        <item name="android:buttonStyle">@style/MyButtonStyle</item>
-        <item name="colorPrimary">#0F9D58</item>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="buttonStyle">@style/MyButtonStyle</item>
+        <item name="editTextStyle">@style/MyEditTextStyle</item>
+        <item name="colorPrimary">@color/myColor</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
 
     <style name="MyButtonStyle" parent="Widget.AppCompat.Button.Colored">
-        <item name="android:backgroundTint">#2979FF</item>
+        <item name="android:backgroundTint">@color/myColor</item>
     </style>
 
 
+    <style name="MyEditTextStyle" parent="@android:style/Widget.EditText">
+        <item name="android:backgroundTint">@color/myColor</item>
+    </style>
 
 </resources>

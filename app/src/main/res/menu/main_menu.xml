@@ -3,10 +3,10 @@
 
     <item
         android:id="@+id/item1"
-        android:title="Item 1" />
+        android:title="Acerca de nosotros" />
 
     <item
         android:id="@+id/item2"
-        android:title="Item 2" />
+        android:title="Salir" />
 
 </menu>

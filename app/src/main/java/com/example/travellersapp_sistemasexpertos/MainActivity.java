@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 import com.example.travellersapp_sistemasexpertos.activities.Login;
 
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
