@@ -8,7 +8,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -19,11 +20,9 @@ import java.util.Map;
 
 public class DBHelper  {
 
-    public static String REST_API_PHP_URL = "http://192.168.1.12/TravellersApi/api/";
+    public static ArrayList<User> CUSTOMERS;
 
-   public static ArrayList<User> CUSTOMERS;
-
-
+    public static String apiUrl = "https://loaiza4ever.000webhostapp.com/TravellersApi/api/";
 
     public DBHelper(){
 

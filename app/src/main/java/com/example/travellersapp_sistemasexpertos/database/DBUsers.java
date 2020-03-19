@@ -6,7 +6,7 @@ package com.example.travellersapp_sistemasexpertos.database;
 
 public class DBUsers {
 
-    public static String SERVER_URL = DBHelper.REST_API_PHP_URL+"user/";
+    public static String SERVER_URL = DBHelper.apiUrl+"user/";
 
     public static String URLReadSingle(){
         return SERVER_URL+"read_single.php";

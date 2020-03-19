@@ -4,12 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.travellersapp_sistemasexpertos.R;
 import com.example.travellersapp_sistemasexpertos.database.DBHelper;
+
 
 public class Login extends Activity {
 
@@ -20,6 +23,8 @@ public class Login extends Activity {
     private String username;
 
     private String password;
+
+    private Button loginButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,10 +37,19 @@ public class Login extends Activity {
 
         editText_username = findViewById(R.id.editText_username);
 
+        loginButton = findViewById(R.id.login_button);
+
+        loginButton.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                login();
+            }
+        });
+
     }
 
-
-    public void login(View v){
+    public void login(){
 
         username = editText_username.getText().toString();
 
@@ -44,8 +58,6 @@ public class Login extends Activity {
         if(username.equals("username") && password.equals("password")){
 
             DBHelper dbHelper = new DBHelper();
-
-
 
         }else{
 
