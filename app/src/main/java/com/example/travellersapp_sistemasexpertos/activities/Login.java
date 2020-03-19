@@ -17,7 +17,7 @@ import com.example.travellersapp_sistemasexpertos.R;
 import com.example.travellersapp_sistemasexpertos.database.DBHelper;
 
 
-public class Login extends AppCompatActivity {
+public class Login extends BaseActivity {
 
     private EditText editText_username;
 
@@ -50,32 +50,6 @@ public class Login extends AppCompatActivity {
             }
         });
 
-    }
-
-
-
-    //metodo para mostrar y ocultar el menu
-    public boolean onCreateOptionsMenu(Menu menu) {
-
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-
-        return true;
-
-    }
-
-
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        int id = item.getItemId();
-        Intent i = null;
-        if (id == R.id.item1) {
-            Toast.makeText(this, "Item 1", Toast.LENGTH_LONG).show();
-        } else if (id == R.id.item2) {
-            Toast.makeText(this, "Item 2", Toast.LENGTH_LONG).show();
-        }
-
-        //startActivity(i);
-        return super.onOptionsItemSelected(item);
     }
 
 
