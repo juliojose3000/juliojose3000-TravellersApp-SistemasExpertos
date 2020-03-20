@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.widget.LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.SingUp"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="5"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <EditText
+            android:id="@+id/editText_name"
+            android:hint="Nombre"
+            style="@style/editText_Register"/>
+
+        <EditText
+            android:id="@+id/editText_lastname"
+            android:hint="Apellidos"
+            style="@style/editText_Register"/>
+
+        <EditText
+            android:id="@+id/editText_email"
+            android:hint="Correo electrónico"
+            style="@style/editText_Register"/>
+
+
+        <EditText
+            android:id="@+id/editText_telephono"
+            android:hint="Teléfono"
+            style="@style/editText_Register"/>
+
+        <EditText
+            android:id="@+id/editText_username_register"
+            android:hint="Nombre de usuario"
+            style="@style/editText_Register"/>
+
+        <EditText
+            android:id="@+id/editText_password_register"
+            android:hint="Contraseña"
+            style="@style/editText_Register"/>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="25"
+        android:orientation="vertical"
+        android:gravity="bottom">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Cancelar" />
+
+            <Button
+                android:id="@+id/button_register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Registrarse" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</android.widget.LinearLayout>

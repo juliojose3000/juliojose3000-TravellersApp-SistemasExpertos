@@ -33,14 +33,22 @@ public class BaseActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         int id = item.getItemId();
+
         Intent i = null;
+
         if (id == R.id.item1) {
-            Toast.makeText(this, "Item 1", Toast.LENGTH_LONG).show();
+
+            i = new Intent(this, TravellsResults.class);
+
+            Toast.makeText(this, "Prueba", Toast.LENGTH_LONG).show();
+
         } else if (id == R.id.item2) {
+
             Toast.makeText(this, "Item 2", Toast.LENGTH_LONG).show();
+
         }
 
-        //startActivity(i);
+        startActivity(i);
         return super.onOptionsItemSelected(item);
     }
 
