@@ -3,8 +3,11 @@ package com.example.travellersapp_sistemasexpertos.activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ClipData;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.travellersapp_sistemasexpertos.R;
@@ -30,7 +33,21 @@ public class TravellsResults extends BaseActivity {
 
         listViewItems.setAdapter(listViewAdapter);
 
+        listViewItems.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                ListViewItem item = (ListViewItem) listViewAdapter.getItem(position);
+
+
+
+            }
+
+        });
+
+
     }
+
 
 
     private ArrayList<ListViewItem> getArrayItems(){
@@ -42,6 +59,8 @@ public class TravellsResults extends BaseActivity {
         return listItems;
 
     }
+
+
 
 
 }

@@ -3,4 +3,20 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="about_us">
+        Somos una empresa creada en 2020
+        dedicada a viajes touristicos a través
+        de todo Costa Rica, con destino a
+        touristas ticos y extranjeros.\n\n
+
+        Misión: Ofrecer la mejor experiencia
+        de viaje a nuestros preciados turistas.\n\n
+
+        Visión: Ofrecer servicios todo incluído
+        de tal forma que el tourista solo se
+        tenga que preocupar por disfrutar lo
+        máximo.
+    </string>
+
+
 </resources>

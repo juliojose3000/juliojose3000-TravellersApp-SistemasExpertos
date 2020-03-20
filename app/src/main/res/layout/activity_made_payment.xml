@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.widget.LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.MadePayment"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="200"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView"
+            style="@style/MyTextViewStyle_Title"
+            android:text="Gracias por su compra"
+            android:textSize="34dp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="70"
+        android:orientation="vertical"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/textView_customer"
+            style="@style/MyTextViewStyle_Text"
+            android:text="Cliente: Julio Segura Ch." />
+
+        <TextView
+            android:id="@+id/textView_price"
+            style="@style/MyTextViewStyle_Text"
+            android:text="Precio: $ 5.000" />
+
+        <TextView
+            android:id="@+id/textView_people"
+            style="@style/MyTextViewStyle_Text"
+            android:text="Cantidad de personas: 4" />
+
+        <TextView
+            android:id="@+id/textView_hotel"
+            style="@style/MyTextViewStyle_Text"
+            android:text="Hotel incluido: NO" />
+
+        <TextView
+            android:id="@+id/textView_payment_date"
+            style="@style/MyTextViewStyle_Text"
+            android:text="Fecha de pago: 25 de Marzo, 2020" />
+
+        <TextView
+            android:id="@+id/textView_date_start"
+            style="@style/MyTextViewStyle_Text"
+            android:text="Fecha de inicio: 5 de Julio, 2020" />
+
+        <TextView
+            android:id="@+id/textView_date_end"
+            style="@style/MyTextViewStyle_Text"
+            android:text="Fecha de fin: 8 de Julio, 2020" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="200"
+        android:gravity="center"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <Button
+                android:id="@+id/button_send_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Enviar correo" />
+
+            <Button
+                android:id="@+id/button_finish"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Finalizar" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</android.widget.LinearLayout>
