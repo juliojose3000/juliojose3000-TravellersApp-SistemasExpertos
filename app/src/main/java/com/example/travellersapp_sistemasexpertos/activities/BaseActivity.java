@@ -38,19 +38,19 @@ public class BaseActivity extends AppCompatActivity {
 
         if (id == R.id.item1) {
 
-            i = new Intent(this, TravellsResults.class);
-
-            Toast.makeText(this, "Prueba", Toast.LENGTH_LONG).show();
+            i = new Intent(this, AboutUs.class);
 
         } else if (id == R.id.item2) {
 
-            Toast.makeText(this, "Item 2", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Salir", Toast.LENGTH_LONG).show();
 
         }
 
         startActivity(i);
+
         return super.onOptionsItemSelected(item);
     }
+
 
 
 }

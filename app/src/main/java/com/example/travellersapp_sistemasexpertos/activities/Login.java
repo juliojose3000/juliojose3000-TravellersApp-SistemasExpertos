@@ -50,17 +50,9 @@ public class Login extends BaseActivity {
             }
         });
 
-    }
 
-
-    public void login(View v){
-
-        Intent i = new Intent(this, Login.class);
-
-        startActivity(i);
 
     }
-
 
 
 
@@ -74,11 +66,26 @@ public class Login extends BaseActivity {
 
             DBHelper dbHelper = new DBHelper();
 
+            Intent i = new Intent(this, MainInterface.class);
+
+            finish();
+
+            startActivity(i);
+
         }else{
 
             Toast.makeText(this, "Usuario inválido",Toast.LENGTH_LONG).show();
 
         }
+
+    }
+
+
+    public void cancel(View v){
+
+        editText_username.setText("");
+
+        editText_password.setText("");
 
     }
 

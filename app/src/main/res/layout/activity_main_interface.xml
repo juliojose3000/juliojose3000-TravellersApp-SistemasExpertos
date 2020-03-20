@@ -80,16 +80,18 @@
 
             <Button
                 android:id="@+id/button_exit"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:onClick="exit"
                 android:text="Salir" />
 
             <Button
                 android:id="@+id/button_searchTrip"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:onClick="searchTravel"
                 android:text="Buscar viaje" />
         </LinearLayout>
 

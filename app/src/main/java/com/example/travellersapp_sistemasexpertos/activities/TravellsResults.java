@@ -39,7 +39,9 @@ public class TravellsResults extends BaseActivity {
 
                 ListViewItem item = (ListViewItem) listViewAdapter.getItem(position);
 
+                Intent i = new Intent(TravellsResults.this, TravelChosen.class);
 
+                startActivity(i);
 
             }
 
@@ -57,6 +59,12 @@ public class TravellsResults extends BaseActivity {
         listItems.add(new ListViewItem(R.drawable.manuelantonio, "Manuel Antonio", "desde: $ 5.000"));
 
         return listItems;
+
+    }
+
+    public void back(View v){
+
+        finish();
 
     }
 

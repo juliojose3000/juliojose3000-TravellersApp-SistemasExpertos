@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.travellersapp_sistemasexpertos.activities.BaseActivity;
 import com.example.travellersapp_sistemasexpertos.activities.Login;
+import com.example.travellersapp_sistemasexpertos.activities.SingUp;
 
 public class MainActivity extends BaseActivity {
 
@@ -33,6 +34,15 @@ public class MainActivity extends BaseActivity {
     public void login(View v){
 
         Intent i = new Intent(this, Login.class);
+
+        startActivity(i);
+
+    }
+
+
+    public void signUp(View v){
+
+        Intent i = new Intent(this, SingUp.class);
 
         startActivity(i);
 
