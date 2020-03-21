@@ -37,6 +37,8 @@ public class DBHelper  {
             protected Void doInBackground(Void... voids) {
                 try {
                     getAllUsers();
+                    TRAVEL_PACKAGES = new ArrayList<>();
+                    Data.fillList();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

@@ -26,6 +26,7 @@ public class TravelPackage {
                          String duration, String name, String description, Hotel hotel,
                          Airport airport, String imagenURL, String touristType,
                          String typeOfRoute) {
+
         this.idTravelPackage = idTravelPackage;
         this.startDate = startDate;
         this.endDate = endDate;

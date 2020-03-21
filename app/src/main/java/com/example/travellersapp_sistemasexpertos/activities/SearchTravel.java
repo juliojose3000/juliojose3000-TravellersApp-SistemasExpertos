@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.example.travellersapp_sistemasexpertos.R;
@@ -17,6 +18,10 @@ public class SearchTravel extends BaseActivity {
     Spinner spinner_categories;
 
     Spinner spinner_userType;
+
+    EditText editTextSearch;
+
+    EditText editTextMaxprice;
 
     List<String> arrayListCategories;
 
@@ -33,6 +38,10 @@ public class SearchTravel extends BaseActivity {
 
         spinner_userType = findViewById(R.id.spinner_traveller_type);
 
+        editTextSearch = findViewById(R.id.editText_search);
+
+        editTextMaxprice = findViewById(R.id.editText_max_price);
+
         createCategoriesSpinner();
 
         createUserTypesSpinner();
@@ -48,7 +57,23 @@ public class SearchTravel extends BaseActivity {
 
     public void searchTravel(View v){
 
+        String search = editTextSearch.getText().toString();
+
+        float maxPrice = Float.parseFloat(editTextMaxprice.getText().toString().equals("")?"0":editTextMaxprice.getText().toString());
+
+        String categoryTravel = spinner_categories.getSelectedItem().toString();
+
+        String userType = spinner_userType.getSelectedItem().toString();
+
         Intent i = new Intent(this, TravellsResults.class);
+
+        i.putExtra("search", search);
+
+        i.putExtra("maxPrice", maxPrice);
+
+        i.putExtra("category", categoryTravel);
+
+        i.putExtra("userType", userType);
 
         startActivity(i);
 

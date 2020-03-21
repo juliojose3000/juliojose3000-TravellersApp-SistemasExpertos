@@ -1,20 +1,15 @@
 package com.example.travellersapp_sistemasexpertos.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.ClipData;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.travellersapp_sistemasexpertos.R;
 import com.example.travellersapp_sistemasexpertos.adapters.ListViewAdapter;
-import com.example.travellersapp_sistemasexpertos.domain.ListViewItem;
-
-import java.util.ArrayList;
+import com.example.travellersapp_sistemasexpertos.database.Data;
+import com.example.travellersapp_sistemasexpertos.domain.TravelPackage;
 
 public class TravellsResults extends BaseActivity {
 
@@ -29,7 +24,17 @@ public class TravellsResults extends BaseActivity {
 
         listViewItems = findViewById(R.id.listview_travells);
 
-        listViewAdapter = new ListViewAdapter(getArrayItems(), TravellsResults.this);
+        Bundle bundle = getIntent().getExtras();
+
+        String searchText = bundle.getString("search");
+
+        float maxPrice = bundle.getFloat("maxPrice");
+
+        String categoryTravel = bundle.getString("category");
+
+        String userType = bundle.getString("userType");
+
+        listViewAdapter = new ListViewAdapter(Data.getArrayItems(searchText, maxPrice, categoryTravel, userType), TravellsResults.this);
 
         listViewItems.setAdapter(listViewAdapter);
 
@@ -37,7 +42,7 @@ public class TravellsResults extends BaseActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                ListViewItem item = (ListViewItem) listViewAdapter.getItem(position);
+                TravelPackage item = (TravelPackage) listViewAdapter.getItem(position);
 
                 Intent i = new Intent(TravellsResults.this, TravelChosen.class);
 
@@ -50,17 +55,6 @@ public class TravellsResults extends BaseActivity {
 
     }
 
-
-
-    private ArrayList<ListViewItem> getArrayItems(){
-
-        ArrayList<ListViewItem> listItems = new ArrayList<>();
-
-        listItems.add(new ListViewItem(R.drawable.manuelantonio, "Manuel Antonio", "desde: $ 5.000"));
-
-        return listItems;
-
-    }
 
     public void back(View v){
 

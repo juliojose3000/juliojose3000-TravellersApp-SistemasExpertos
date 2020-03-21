@@ -8,18 +8,20 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.travellersapp_sistemasexpertos.R;
-import com.example.travellersapp_sistemasexpertos.domain.ListViewItem;
+import com.example.travellersapp_sistemasexpertos.domain.TravelPackage;
 
 import java.util.ArrayList;
 
 public class ListViewAdapter extends BaseAdapter {
 
-    private ArrayList<ListViewItem> listViewItems;
+    private ArrayList<TravelPackage> listViewItems;
 
     private Context context;
 
-    public ListViewAdapter(ArrayList<ListViewItem> listViewItems, Context context) {
+    public ListViewAdapter(ArrayList<TravelPackage> listViewItems, Context context) {
         this.listViewItems = listViewItems;
         this.context = context;
     }
@@ -42,16 +44,26 @@ public class ListViewAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
 
-        ListViewItem item = (ListViewItem) getItem(i);
+        TravelPackage travelPackage = (TravelPackage) getItem(i);
 
         view = LayoutInflater.from(context).inflate(R.layout.item,null);
-        ImageView imgFoto = view.findViewById(R.id.imageView_item);
+        ImageView imageView = view.findViewById(R.id.imageView_item);
         TextView textViewTitle = view.findViewById(R.id.textview_item_title);
         TextView textViewPrice = view.findViewById(R.id.textview_item_price);
 
-        imgFoto.setImageResource(item.getImgFoto());
-        textViewTitle.setText(item.getTitle());
-        textViewPrice.setText(item.getPrice());
+        //imgFoto.setImageResource(item.getImgFoto());
+
+        RequestOptions requestOptions = new RequestOptions();
+        requestOptions.placeholder(R.drawable.preview);
+
+        Glide.with(context)
+                .load(travelPackage.getImagenURL())
+                .apply(requestOptions)
+                .into(imageView);
+
+
+        textViewTitle.setText(travelPackage.getName());
+        textViewPrice.setText(travelPackage.getCost()+"");
 
         return view;
     }
