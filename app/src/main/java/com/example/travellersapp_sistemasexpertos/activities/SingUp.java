@@ -6,8 +6,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.travellersapp_sistemasexpertos.R;
+import com.example.travellersapp_sistemasexpertos.database.Data;
+import com.example.travellersapp_sistemasexpertos.domain.User;
 
 public class SingUp extends BaseActivity {
 
@@ -38,9 +41,9 @@ public class SingUp extends BaseActivity {
 
         editTextPhone = findViewById(R.id.editText_telephono);
 
-        editTextUsername = findViewById(R.id.editText_username);
+        editTextUsername = findViewById(R.id.editText_username_register);
 
-        editTextPassword = findViewById(R.id.editText_password);
+        editTextPassword = findViewById(R.id.editText_password_register);
 
 
     }
@@ -48,13 +51,25 @@ public class SingUp extends BaseActivity {
 
     public void registrarse(View v){
 
-        /*String name = editTextName.getText().toString();
+        String name = editTextName.getText().toString();
         String lastname = editTextLastname.getText().toString();
         String email = editTextEmail.getText().toString();
         String phone = editTextPhone.getText().toString();
         String username = editTextUsername.getText().toString();
-        String password = editTextPassword.getText().toString();*/
+        String password = editTextPassword.getText().toString();
 
+        if(name.equals("") || lastname.equals(lastname) || email.equals("") ||
+                phone.equals("") || username.equals("") || password.equals("")){
+            Toast.makeText(this,"Complete los campos requeridos",Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if(Data.doesThisUsernameExists(username)){
+            Toast.makeText(this,"El nombre de usuario ya existe, pruebe con otro",Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        //User userToSignUp = new User();
 
         Intent i = new Intent(this, MainInterface.class);
 

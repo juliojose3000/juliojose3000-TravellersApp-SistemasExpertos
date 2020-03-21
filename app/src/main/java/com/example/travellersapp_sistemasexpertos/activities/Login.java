@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.example.travellersapp_sistemasexpertos.R;
 import com.example.travellersapp_sistemasexpertos.database.DBHelper;
+import com.example.travellersapp_sistemasexpertos.database.Data;
 
 
 public class Login extends BaseActivity {
@@ -62,9 +63,12 @@ public class Login extends BaseActivity {
 
         password = editText_password.getText().toString();
 
-        if(username.equals("username") && password.equals("password")){
+        if(username.equals("") || password.equals("")){
+            Toast.makeText(this,"Complete los campos requeridos",Toast.LENGTH_SHORT).show();
+            return;
+        }
 
-            DBHelper dbHelper = new DBHelper();
+        if(Data.areValidCredentials(username, password)){
 
             Intent i = new Intent(this, MainInterface.class);
 
@@ -74,7 +78,7 @@ public class Login extends BaseActivity {
 
         }else{
 
-            Toast.makeText(this, "Usuario inválido",Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Usuario inválido",Toast.LENGTH_SHORT).show();
 
         }
 

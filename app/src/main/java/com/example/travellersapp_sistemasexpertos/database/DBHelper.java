@@ -7,9 +7,6 @@ import com.example.travellersapp_sistemasexpertos.domain.User;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -20,7 +17,7 @@ import java.util.Map;
 
 public class DBHelper  {
 
-    public static ArrayList<User> CUSTOMERS;
+    public static ArrayList<User> USERS;
 
     public static String apiUrl = "https://loaiza4ever.000webhostapp.com/TravellersApi/api/";
 
@@ -44,7 +41,7 @@ public class DBHelper  {
 
     public static void getAllUsers() throws JSONException {
 
-        CUSTOMERS = new ArrayList<>();
+        USERS = new ArrayList<>();
 
         Map<String, String> params = new HashMap<>();
 
@@ -62,7 +59,7 @@ public class DBHelper  {
 
             User user = new User(id, username, password, name);
 
-            CUSTOMERS.add(user);
+            USERS.add(user);
 
         }
     }

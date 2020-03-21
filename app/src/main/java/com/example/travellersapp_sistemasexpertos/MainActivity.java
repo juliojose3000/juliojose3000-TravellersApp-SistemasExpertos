@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.example.travellersapp_sistemasexpertos.activities.BaseActivity;
 import com.example.travellersapp_sistemasexpertos.activities.Login;
 import com.example.travellersapp_sistemasexpertos.activities.SingUp;
+import com.example.travellersapp_sistemasexpertos.database.DBHelper;
 
 public class MainActivity extends BaseActivity {
 
@@ -25,6 +26,8 @@ public class MainActivity extends BaseActivity {
         //del host sirva
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
+
+        new DBHelper();
 
         setContentView(R.layout.activity_main);
     }
