@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.travellersapp_sistemasexpertos.R;
+import com.example.travellersapp_sistemasexpertos.database.DBHelper;
 import com.example.travellersapp_sistemasexpertos.database.Data;
 import com.example.travellersapp_sistemasexpertos.domain.User;
 
@@ -69,7 +70,7 @@ public class SingUp extends BaseActivity {
             return;
         }
 
-        //User userToSignUp = new User();
+        DBHelper.insertUser(name, lastname, email, phone, username, password);
 
         Intent i = new Intent(this, MainInterface.class);
 

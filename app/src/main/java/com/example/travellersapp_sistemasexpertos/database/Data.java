@@ -35,11 +35,9 @@ public class Data {
 
     }
 
-    public static void insertUser(User user){
 
 
 
-    }
 
 
 

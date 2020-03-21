@@ -16,5 +16,11 @@ public class DBUsers {
         return SERVER_URL+"read.php";
     }
 
+    public static String URLCreate(){
+
+        return SERVER_URL+"create.php";
+
+    }
+
 
 }
