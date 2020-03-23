@@ -16,6 +16,11 @@ import android.widget.Toast;
 import com.example.travellersapp_sistemasexpertos.R;
 import com.example.travellersapp_sistemasexpertos.database.DBHelper;
 import com.example.travellersapp_sistemasexpertos.database.Data;
+import com.example.travellersapp_sistemasexpertos.domain.User;
+
+import org.json.JSONException;
+
+import java.util.ArrayList;
 
 
 public class Login extends BaseActivity {
@@ -50,8 +55,6 @@ public class Login extends BaseActivity {
                 login();
             }
         });
-
-
 
     }
 

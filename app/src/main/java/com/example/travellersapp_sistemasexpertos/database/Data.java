@@ -1,5 +1,6 @@
 package com.example.travellersapp_sistemasexpertos.database;
 
+import com.example.travellersapp_sistemasexpertos.MainActivity;
 import com.example.travellersapp_sistemasexpertos.domain.Airport;
 import com.example.travellersapp_sistemasexpertos.domain.Hotel;
 import com.example.travellersapp_sistemasexpertos.domain.Image;
@@ -17,7 +18,7 @@ public class Data {
 
         if(username.equals("admin") && password.equals("admin")){return true;}
 
-        for (User user: DBHelper.USERS) {
+        for (User user: MainActivity.USERS) {
 
             if(user.getPassword().equals(password) && user.getUsername().equals(username)){
                 loggedUser = user;
@@ -48,7 +49,7 @@ public class Data {
 
     public static ArrayList<TravelPackage> getTravells(String search, float maxPrice, String category, String userType){
 
-        ArrayList<TravelPackage> listItems = travelToSearch(search, DBHelper.TRAVEL_PACKAGES);
+        ArrayList<TravelPackage> listItems = travelToSearch(search, MainActivity.TRAVEL_PACKAGES);
 
         if(maxPrice>0.0){
             listItems = searchTravelByMaxPrice(maxPrice, listItems);
@@ -162,7 +163,7 @@ public class Data {
     public static TravelPackage getTravelPackageById(int id){
 
         for (TravelPackage travelPackage:
-             DBHelper.TRAVEL_PACKAGES) {
+             MainActivity.TRAVEL_PACKAGES) {
 
             if(travelPackage.getIdTravelPackage()==id){
                 return travelPackage;
@@ -179,7 +180,7 @@ public class Data {
         ArrayList<Image> listImagePackageTravel = new ArrayList<>();
 
         for (Image image:
-                DBHelper.IMAGES) {
+                MainActivity.IMAGES) {
 
             if(image.getIdTravelPackage()==idTravelPackage){
                 listImagePackageTravel.add(image);

@@ -123,7 +123,7 @@ public class TravelChosen extends BaseActivity {
 
         mediacontroller = new MediaController(this);
         mediacontroller.setAnchorView(videoView);
-        String uriPath = "https://loaiza4ever.000webhostapp.com/videos/manuelAntonio.mp4"; //update package name
+        String uriPath = travelPackage.getVideoURL(); //update package name
         uri = Uri.parse(uriPath);
 
         videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {

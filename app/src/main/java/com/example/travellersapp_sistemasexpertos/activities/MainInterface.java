@@ -8,6 +8,9 @@ import android.view.View;
 
 import com.example.travellersapp_sistemasexpertos.MainActivity;
 import com.example.travellersapp_sistemasexpertos.R;
+import com.example.travellersapp_sistemasexpertos.domain.User;
+
+import java.util.ArrayList;
 
 public class MainInterface extends BaseActivity {
 
@@ -15,6 +18,7 @@ public class MainInterface extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_interface);
+
     }
 
 

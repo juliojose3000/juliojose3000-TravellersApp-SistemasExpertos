@@ -1,7 +1,5 @@
 package com.example.travellersapp_sistemasexpertos.database;
 
-import android.os.AsyncTask;
-
 import com.example.travellersapp_sistemasexpertos.domain.Airport;
 import com.example.travellersapp_sistemasexpertos.domain.Hotel;
 import com.example.travellersapp_sistemasexpertos.domain.Image;
@@ -24,10 +22,10 @@ import java.text.SimpleDateFormat;
 public class DBHelper  {
 
     public static ArrayList<User> USERS;
-    public static ArrayList<Airport> AIRPORTS;
-    public static ArrayList<Hotel> HOTELS;
+    //public static ArrayList<Airport> AIRPORTS;
+    //public static ArrayList<Hotel> HOTELS;
     public static ArrayList<ReservationPackage> RESERVATIONS;
-    public static ArrayList<TouristCompany> TOURIST_COMPANIES;
+    //public static ArrayList<TouristCompany> TOURIST_COMPANIES;
     public static ArrayList<TravelPackage> TRAVEL_PACKAGES;
     public static ArrayList<Image> IMAGES;
 
@@ -35,31 +33,21 @@ public class DBHelper  {
 
     public DBHelper(){
 
-        new AsyncTask<Void, Void, Void>() {
+        try {
+            getAllUsers();
+            getAllImages();
+            getAllTravelPackage();
+            getAllReservations();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
-            @Override
-            protected Void doInBackground(Void... voids) {
-                try {
-
-                    try {
-                        getAllUsers();
-                        getAllImages();
-                        getAllTravelPackage();
-                        getAllReservations();
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                return null;
-            }
-
-        }.execute();
 
     }
 
-    public static void getAllUsers() throws JSONException {
+    public static ArrayList<User> getAllUsers() throws JSONException {
 
         USERS = new ArrayList<>();
 
@@ -85,6 +73,9 @@ public class DBHelper  {
             USERS.add(user);
 
         }
+
+        return USERS;
+
     }
     public static User  getUserByID(int idUser) throws JSONException {
 
@@ -178,7 +169,7 @@ public class DBHelper  {
         }
         return code;
     }
-    public static void getAllTravelPackage() throws JSONException, ParseException {
+    public static ArrayList<TravelPackage> getAllTravelPackage() throws JSONException, ParseException {
 
         TRAVEL_PACKAGES = new ArrayList<>();
 
@@ -216,6 +207,8 @@ public class DBHelper  {
          TRAVEL_PACKAGES.add(travelPackage);
 
         }
+
+        return TRAVEL_PACKAGES;
     }
     public static TravelPackage getTravelPackageById(int idTravelPackage) throws JSONException, ParseException {
 
@@ -262,14 +255,13 @@ public class DBHelper  {
 
     public static Hotel getHotelByID(int idHotel) throws JSONException {
 
-        USERS = new ArrayList<>();
+        //USERS = new ArrayList<>();
 
         Map<String, String> params = new HashMap<>();
 
         String idHotelS= ""+idHotel;
 
         params.put("idHotel",idHotelS);
-
 
         HttpJsonParser httpJsonParser = new HttpJsonParser();
 
@@ -328,9 +320,9 @@ public class DBHelper  {
         return airport;
 
     }
-    public static void getAllReservations() throws JSONException, ParseException {
+    public static ArrayList<ReservationPackage> getAllReservations() throws JSONException, ParseException {
 
-        USERS = new ArrayList<>();
+        RESERVATIONS = new ArrayList<>();
 
         Map<String, String> params = new HashMap<>();
 
@@ -355,6 +347,9 @@ public class DBHelper  {
             RESERVATIONS.add(reservationPackage);
 
         }
+
+        return RESERVATIONS;
+
     }
     public static ReservationPackage  getReservationById(int idReservation) throws JSONException, ParseException {
 
@@ -414,7 +409,7 @@ public class DBHelper  {
         return code;
     }
 
-    public static void getAllImages() throws JSONException {
+    public static ArrayList<Image> getAllImages() throws JSONException {
 
         IMAGES = new ArrayList();
 
@@ -424,7 +419,7 @@ public class DBHelper  {
 
         JSONArray jsonArray =  httpJsonParser.getJson(DBImage.URLRead(), params);
 
-        Image image = new Image();
+        Image image;
 
         for(int i=0; i<jsonArray.length(); i++)
         {
@@ -433,13 +428,13 @@ public class DBHelper  {
             int idTravelPackage = jsonObject.getInt("idTravelPackage");
             String imageURL = jsonObject.getString("imageURL");
 
-            image.setIdImage(idImage);
-            image.setIdTravelPackage(idTravelPackage);
-            image.setUrl(imageURL);
+            image = new Image(idImage, idTravelPackage, imageURL);
 
             IMAGES.add(image);
 
         }
+
+        return IMAGES;
 
     }
 
