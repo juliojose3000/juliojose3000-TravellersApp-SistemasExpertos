@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.AboutUs"></activity>
+        <activity android:name=".activities.AboutUs" />
         <activity android:name=".activities.MadePayment" />
         <activity android:name=".activities.TravelChosen" />
         <activity android:name=".activities.TravellsResults" />

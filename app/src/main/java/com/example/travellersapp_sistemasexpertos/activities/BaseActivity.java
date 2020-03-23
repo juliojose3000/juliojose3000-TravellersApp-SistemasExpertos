@@ -45,7 +45,6 @@ public class BaseActivity extends AppCompatActivity {
             Toast.makeText(this, "Salir", Toast.LENGTH_LONG).show();
 
         }
-
         startActivity(i);
 
         return super.onOptionsItemSelected(item);

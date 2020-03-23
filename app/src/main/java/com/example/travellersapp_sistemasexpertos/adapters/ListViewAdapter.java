@@ -63,7 +63,7 @@ public class ListViewAdapter extends BaseAdapter {
 
 
         textViewTitle.setText(travelPackage.getName());
-        textViewPrice.setText(travelPackage.getCost()+"");
+        textViewPrice.setText("Desde: $"+travelPackage.getCost()+"");
 
         return view;
     }

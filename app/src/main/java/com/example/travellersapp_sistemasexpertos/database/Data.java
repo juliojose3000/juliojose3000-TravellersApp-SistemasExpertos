@@ -10,6 +10,8 @@ import java.util.ArrayList;
 
 public class Data {
 
+    public static User loggedUser = new User();
+
     public static boolean areValidCredentials(String username, String password){
 
         if(username.equals("admin") && password.equals("admin")){return true;}
@@ -17,6 +19,7 @@ public class Data {
         for (User user: DBHelper.USERS) {
 
             if(user.getPassword().equals(password) && user.getUsername().equals(username)){
+                loggedUser = user;
                 return true;
             }
 
@@ -155,6 +158,21 @@ public class Data {
         return false;
     }
 
+    public static TravelPackage getTravelPackageById(int id){
+
+        for (TravelPackage travelPackage:
+             DBHelper.TRAVEL_PACKAGES) {
+
+            if(travelPackage.getIdTravelPackage()==id){
+                return travelPackage;
+            }
+
+        }
+
+        return null;
+
+    }
+
 
     public static void fillList(){
 
@@ -170,9 +188,9 @@ public class Data {
                 "https://www.larepublica.net/storage/images/2019/03/13/20190313144831.manu.jpg",
                 "Loquillo","4x4");
 
-        TravelPackage travelPackage2 = new TravelPackage(1, date, date, 80, "5 dias", "Goku SSJ Blue",
+        TravelPackage travelPackage2 = new TravelPackage(2, date, date, 80, "5 dias", "Goku SSJ Blue",
                 "Viaje turistico para una familia promedio", hotel, airport,
-                "https://i.pinimg.com/originals/d8/9d/79/d89d79aad3ee2dc980ffd261aa8dbb00.jpg",
+                "https://loaiza4ever.000webhostapp.com/images/goku.jpg",
                 "Aventurero","4x4");
 
         DBHelper.TRAVEL_PACKAGES.add(travelPackage);

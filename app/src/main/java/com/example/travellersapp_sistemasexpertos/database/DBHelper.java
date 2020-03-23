@@ -59,9 +59,10 @@ public class DBHelper  {
 
         JSONArray jsonArray =  httpJsonParser.getJson(DBUsers.URLRead(), params);
 
-        for(int i=0; i<jsonArray.length(); i++)
+        /*for(int i=0; i<jsonArray.length(); i++)
         {
             JSONObject jsonObject=jsonArray.getJSONObject(i);
+
             int id = jsonObject.getInt("id");
             String username = jsonObject.getString("username");
             String password = jsonObject.getString("password");
@@ -74,7 +75,21 @@ public class DBHelper  {
 
             USERS.add(user);
 
-        }
+        }*/
+
+        int id = 1;
+        String username = "juliojose3000";
+        String password = "123";
+        String name = "Julio";
+        String lastname = "Segura";
+        String email = "juliojose3000@gmail.com";
+        String phone = "87349630";
+
+        User user = new User(id, username, password, name, lastname, email, phone);
+
+        USERS.add(user);
+
+
     }
 
 

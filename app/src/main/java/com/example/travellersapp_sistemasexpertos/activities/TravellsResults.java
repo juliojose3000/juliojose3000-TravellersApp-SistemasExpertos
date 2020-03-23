@@ -42,9 +42,11 @@ public class TravellsResults extends BaseActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                TravelPackage item = (TravelPackage) listViewAdapter.getItem(position);
+                TravelPackage travelPackage = (TravelPackage) listViewAdapter.getItem(position);
 
                 Intent i = new Intent(TravellsResults.this, TravelChosen.class);
+
+                i.putExtra("travelPackage", travelPackage.getIdTravelPackage());
 
                 startActivity(i);
 
