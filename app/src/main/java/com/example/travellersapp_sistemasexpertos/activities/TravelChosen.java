@@ -95,14 +95,16 @@ public class TravelChosen extends BaseActivity {
 
         View viewImages;
 
-        for(int i=0; i<6; i++){
+        for(int i=0; i<travelPackage.getListImages().size(); i++){
 
             viewImages = inflater.inflate(R.layout.images, gallery, false);
 
             ImageView imageView =  viewImages.findViewById(R.id.imageView_images);
 
+            //todo probar
+
             Glide.with(TravelChosen.this)
-                    .load(travelPackage.getImagenURL())
+                    .load(travelPackage.getListImages().get(i).getUrl())
                     .apply(requestOptions)
                     .into(imageView);
 

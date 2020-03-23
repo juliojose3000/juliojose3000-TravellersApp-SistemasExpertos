@@ -51,13 +51,13 @@ public class ListViewAdapter extends BaseAdapter {
         TextView textViewTitle = view.findViewById(R.id.textview_item_title);
         TextView textViewPrice = view.findViewById(R.id.textview_item_price);
 
-        //imgFoto.setImageResource(item.getImgFoto());
-
         RequestOptions requestOptions = new RequestOptions();
         requestOptions.placeholder(R.drawable.preview);
 
+        //todo probar
+
         Glide.with(context)
-                .load(travelPackage.getImagenURL())
+                .load(travelPackage.getListImages().get(0).getUrl())
                 .apply(requestOptions)
                 .into(imageView);
 

@@ -2,6 +2,7 @@ package com.example.travellersapp_sistemasexpertos.database;
 
 import com.example.travellersapp_sistemasexpertos.domain.Airport;
 import com.example.travellersapp_sistemasexpertos.domain.Hotel;
+import com.example.travellersapp_sistemasexpertos.domain.Image;
 import com.example.travellersapp_sistemasexpertos.domain.TravelPackage;
 import com.example.travellersapp_sistemasexpertos.domain.User;
 
@@ -45,7 +46,7 @@ public class Data {
     }
 
 
-    public static ArrayList<TravelPackage> getArrayItems(String search, float maxPrice, String category, String userType){
+    public static ArrayList<TravelPackage> getTravells(String search, float maxPrice, String category, String userType){
 
         ArrayList<TravelPackage> listItems = travelToSearch(search, DBHelper.TRAVEL_PACKAGES);
 
@@ -173,31 +174,24 @@ public class Data {
 
     }
 
+    public static ArrayList<Image> getAllImagesByIDPackage(int idTravelPackage){
 
-    public static void fillList(){
+        ArrayList<Image> listImagePackageTravel = new ArrayList<>();
 
-        String str="2015-03-31";
-        Date date= Date.valueOf(str);//converting string into sql date
+        for (Image image:
+                DBHelper.IMAGES) {
 
-        Airport airport = new Airport(1, "Juan S", "juan@gmail.com", "Alajuela");
+            if(image.getIdTravelPackage()==idTravelPackage){
+                listImagePackageTravel.add(image);
+            }
 
-        Hotel hotel = new Hotel(1,"Hiltom","hilton@gmail.com","777777","");
+        }
 
-        TravelPackage travelPackage = new TravelPackage(1, date, date, 50, "5 dias", "Manuel Antonio",
-                "Viaje turistico para una familia promedio", hotel, airport,
-                "https://www.larepublica.net/storage/images/2019/03/13/20190313144831.manu.jpg",
-                "Loquillo","4x4");
-
-        TravelPackage travelPackage2 = new TravelPackage(2, date, date, 80, "5 dias", "Goku SSJ Blue",
-                "Viaje turistico para una familia promedio", hotel, airport,
-                "https://loaiza4ever.000webhostapp.com/images/goku.jpg",
-                "Aventurero","4x4");
-
-        DBHelper.TRAVEL_PACKAGES.add(travelPackage);
-
-        DBHelper.TRAVEL_PACKAGES.add(travelPackage2);
+        return listImagePackageTravel;
 
     }
+
+
 
 
 

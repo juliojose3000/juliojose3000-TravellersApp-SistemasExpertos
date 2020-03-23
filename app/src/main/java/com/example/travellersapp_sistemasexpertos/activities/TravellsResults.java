@@ -19,7 +19,9 @@ public class TravellsResults extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_travells_results);
 
         listViewItems = findViewById(R.id.listview_travells);
@@ -34,7 +36,7 @@ public class TravellsResults extends BaseActivity {
 
         String userType = bundle.getString("userType");
 
-        listViewAdapter = new ListViewAdapter(Data.getArrayItems(searchText, maxPrice, categoryTravel, userType), TravellsResults.this);
+        listViewAdapter = new ListViewAdapter(Data.getTravells(searchText, maxPrice, categoryTravel, userType), TravellsResults.this);
 
         listViewItems.setAdapter(listViewAdapter);
 
