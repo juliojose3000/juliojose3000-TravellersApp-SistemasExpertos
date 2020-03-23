@@ -1,6 +1,6 @@
 package com.example.travellersapp_sistemasexpertos.domain;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class ReservationPackage {
     private int idReservationPackage;
