@@ -34,8 +34,6 @@ import java.util.Date;
 
 public class TravelChosen extends BaseActivity {
 
-    //ImageView imageView;
-
     TextView textViewTravelName;
 
     TextView textViewTravelPrice;
@@ -44,32 +42,55 @@ public class TravelChosen extends BaseActivity {
 
     TextView textViewAirport;
 
+    TextView textViewStartDate;
+
+    TextView textViewEndDate;
+
+    TextView textViewDuration;
+
+    TextView textViewDescription;
+
+    TextView textViewTouristType;
+
+    TextView textViewRouteType;
+
     int idPackageTravel;
 
     private HorizontalScrollView horizontalScrollView;
 
-    private Button btnstop, btnplay;
     private VideoView videoView;
     private MediaController mediacontroller;
     private Uri uri;
     private boolean firstTime = true;
     private ProgressBar progressBar;
+    private ImageView imageViewPlay;
     private Dates dates;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_travel_chosen);
 
+        dates=new Dates();
         textViewTravelName = findViewById(R.id.textView_travel_name);
 
-        textViewTravelPrice = findViewById(R.id.textView_price);
+        textViewTravelPrice = findViewById(R.id.textView_price_travel_chosen);
 
-        textViewHotel = findViewById(R.id.textView_hotel);
+        textViewHotel = findViewById(R.id.textView_hotel_travel_chosen);
 
-        textViewAirport = findViewById(R.id.textView_airport);
+        textViewAirport = findViewById(R.id.textView_airport_travel_chosen);
+
+        textViewStartDate = findViewById(R.id.textView_start_date_travel_chosen);
+
+        textViewEndDate = findViewById(R.id.textView_start_date_travel_chosen);
+
+        textViewDuration = findViewById(R.id.textView_duration_travel_chosen);
+
+        textViewDescription = findViewById(R.id.textView_description_travel_chosen);
+
+        textViewTouristType = findViewById(R.id.textView_tourist_type_travel_chosen);
+
+        textViewRouteType = findViewById(R.id.textView_route_type_travel_chosen);
 
         Bundle bundle = getIntent().getExtras();
 
@@ -77,7 +98,7 @@ public class TravelChosen extends BaseActivity {
 
         TravelPackage travelPackage = Data.getTravelPackageById(idPackageTravel);
 
-        textViewTravelPrice.setText("$ "+travelPackage.getCost());
+        textViewTravelPrice.setText("Predio: $ "+travelPackage.getCost());
 
         textViewTravelName.setText(travelPackage.getName());
 
@@ -85,12 +106,21 @@ public class TravelChosen extends BaseActivity {
 
         textViewAirport.setText("Aeropuerto: "+travelPackage.getAirport().getName());
 
+        textViewStartDate.setText("Fecha de inicio: "+travelPackage.getStartDate());
+
+        textViewEndDate.setText("Fecha de fin: "+travelPackage.getEndDate());
+
+        textViewDuration.setText("Duración: "+travelPackage.getDuration());
+
+        textViewDescription.setText("Descripción: "+travelPackage.getDescription());
+
+        textViewTouristType.setText("Tipo de turista: "+travelPackage.getTouristType());
+
+        textViewRouteType.setText("Tipo de ruta: "+travelPackage.getTypeOfRoute());
+
         RequestOptions requestOptions = new RequestOptions();
 
         requestOptions.placeholder(R.drawable.preview);
-
-        dates=new Dates();
-
 
 
         //----------------------------------------------------------------------------------------//
@@ -109,8 +139,6 @@ public class TravelChosen extends BaseActivity {
 
             ImageView imageView =  viewImages.findViewById(R.id.imageView_images);
 
-            //todo probar
-
             Glide.with(TravelChosen.this)
                     .load(travelPackage.getListImages().get(i).getUrl())
                     .apply(requestOptions)
@@ -125,9 +153,8 @@ public class TravelChosen extends BaseActivity {
         viewImages = inflater.inflate(R.layout.video, gallery, false);
 
         progressBar = viewImages.findViewById(R.id.progrss);
-        btnstop = viewImages.findViewById(R.id.btnstop);
-        btnplay = viewImages.findViewById(R.id.btnplay);
         videoView = viewImages.findViewById(R.id.videoView);
+        imageViewPlay = viewImages.findViewById(R.id.imageView_play);
 
         mediacontroller = new MediaController(this);
         mediacontroller.setAnchorView(videoView);
@@ -143,27 +170,18 @@ public class TravelChosen extends BaseActivity {
             }
         });
 
-        btnstop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                videoView.pause();
-            }
-        });
-
-        btnplay.setOnClickListener(new View.OnClickListener() {
+        imageViewPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if(firstTime){
-
-                    firstTime = false;
+                if(firstTime){firstTime = false;
                     progressBar.setVisibility(View.VISIBLE);
                     videoView.setMediaController(mediacontroller);
                     videoView.setVideoURI(uri);
                     videoView.requestFocus();
 
                 }
-
+                imageViewPlay.setVisibility(View.INVISIBLE);
 
                 videoView.start();
             }
@@ -189,7 +207,6 @@ public class TravelChosen extends BaseActivity {
 
 
         //----------------------------------------------------------------------------------------//
-
     }
 
 
