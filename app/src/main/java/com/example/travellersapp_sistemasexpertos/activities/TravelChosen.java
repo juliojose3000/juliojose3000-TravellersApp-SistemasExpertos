@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,9 +23,14 @@ import android.widget.VideoView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.travellersapp_sistemasexpertos.R;
+import com.example.travellersapp_sistemasexpertos.database.DBHelper;
 import com.example.travellersapp_sistemasexpertos.database.Data;
+import com.example.travellersapp_sistemasexpertos.domain.Dates;
 import com.example.travellersapp_sistemasexpertos.domain.TravelPackage;
 import com.squareup.picasso.Picasso;
+
+import java.util.Calendar;
+import java.util.Date;
 
 public class TravelChosen extends BaseActivity {
 
@@ -48,6 +54,7 @@ public class TravelChosen extends BaseActivity {
     private Uri uri;
     private boolean firstTime = true;
     private ProgressBar progressBar;
+    private Dates dates;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +89,7 @@ public class TravelChosen extends BaseActivity {
 
         requestOptions.placeholder(R.drawable.preview);
 
+        dates=new Dates();
 
 
 
@@ -196,6 +204,21 @@ public class TravelChosen extends BaseActivity {
         Intent i = new Intent(this, MadePayment.class);
 
         i.putExtra("idTravelPackage",idPackageTravel);
+
+       final String fecha= dates.getDateOfToday();
+
+
+        new AsyncTask<Void, Void, Void>() {
+
+            @Override
+            protected Void doInBackground(Void... voids) {
+
+                DBHelper.insertReservationPackage(Data.loggedUser,idPackageTravel,fecha);
+
+                return null;
+            }
+
+        }.execute();
 
         startActivity(i);
 

@@ -120,36 +120,6 @@ public class DBHelper  {
         }
         return user;
     }
-    public static boolean logInUser(String userName,String passwordU) throws JSONException {
-
-        boolean flag=false;
-        Map<String, String> params = new HashMap<>();
-
-        HttpJsonParser httpJsonParser = new HttpJsonParser();
-
-        JSONArray jsonArray =  httpJsonParser.getJson(DBUsers.URLRead(), params);
-
-        for(int i=0; i<jsonArray.length(); i++)
-        {
-            JSONObject jsonObject=jsonArray.getJSONObject(i);
-            int id = jsonObject.getInt("idUser");
-            String username = jsonObject.getString("username");
-            String password = jsonObject.getString("password");
-            String name = jsonObject.getString("name");
-            String lastname = jsonObject.getString("lastname");
-            String email = jsonObject.getString("email");
-            String phone = jsonObject.getString("phone");
-
-            User user = new User(id, username, password, name, lastname, email, phone);
-
-            if(user.getUsername().equals(userName)&&user.getPassword().equals(passwordU)){
-                flag=true;
-            }
-
-
-        }
-        return flag;
-    }
     public static int insertUser(String name, String lastname, String email, String phone, String username, String password){
 
         int code = 0;
@@ -215,48 +185,6 @@ public class DBHelper  {
 
         return TRAVEL_PACKAGES;
     }
-    public static TravelPackage getTravelPackageById(int idTravelPackage) throws JSONException, ParseException {
-
-        TRAVEL_PACKAGES = new ArrayList<>();
-
-        Map<String, String> params = new HashMap<>();
-
-        String idTravelPackageS= ""+idTravelPackage;
-
-        params.put("idTravelPackage",idTravelPackageS);
-        HttpJsonParser httpJsonParser = new HttpJsonParser();
-
-        JSONArray jsonArray =  httpJsonParser.getJson(DBTravelPackage.URLReadSingle(), params);
-        TravelPackage travelPackage=null;
-        for(int i=0; i<jsonArray.length(); i++)
-        {
-            JSONObject jsonObject=jsonArray.getJSONObject(i);
-            int id = jsonObject.getInt("idTravelPackage");
-            String startDate = jsonObject.getString("startDate");
-            String endDate = jsonObject.getString("endDate");
-            float cost = jsonObject.getLong("cost");
-            String duration = jsonObject.getString("duration");
-            String name = jsonObject.getString("name");
-            String description = jsonObject.getString("description");
-            int idHotel = jsonObject.getInt("idHotel");
-            int idAirport = jsonObject.getInt("idAirport");
-            String touristType= jsonObject.getString("touristType");
-            String typeOfRoute= jsonObject.getString("typeOfRoute");
-            Hotel hotel=  getHotelByID(idHotel);
-            Airport airport=getAirportById(idAirport);
-            /*Date startDateS=new SimpleDateFormat("dd/MM/yyyy").parse(startDate);
-            Date endDateS=new SimpleDateFormat("dd/MM/yyyy").parse(endDate);*/
-            ArrayList<Image> listImages = Data.getAllImagesByIDPackage(id);
-            String videoURL = jsonObject.getString("videoURL");
-
-
-            travelPackage=new TravelPackage(id, startDate, endDate, cost, duration, name,
-                    description, hotel, airport, touristType, typeOfRoute, listImages, videoURL);
-
-
-        }
-        return travelPackage;
-    }
 
     public static Hotel getHotelByID(int idHotel) throws JSONException {
            for(Hotel hotel: MainActivity.HOTELS){
@@ -305,47 +233,22 @@ public class DBHelper  {
         return RESERVATIONS;
 
     }
-    public static ReservationPackage  getReservationById(int idReservation) throws JSONException, ParseException {
-
-
-
-        Map<String, String> params = new HashMap<>();
-
-        String idReservationS= ""+idReservation;
-
-        params.put("idReservacionPaquete",idReservationS);
-
-
-        HttpJsonParser httpJsonParser = new HttpJsonParser();
-
-        JSONArray jsonArray =  httpJsonParser.getJson(DBTravelPackageReservation.URLReadSingle(), params);
-
-
-        ReservationPackage reservationPackage=null;
-        for(int i=0; i<jsonArray.length(); i++)
-        {
-            JSONObject jsonObject=jsonArray.getJSONObject(i);
-            int idReservacionPaquete = jsonObject.getInt("idReservacionPaquete");
-            int idUser = jsonObject.getInt("idUser");
-            int idTrip = jsonObject.getInt("idTrip");
-            String reservationDate = jsonObject.getString("reservationDate");
-            Date reservationDateS=new SimpleDateFormat("dd/MM/yyyy").parse(reservationDate);
-            User user= getUserByID(idUser);
-            TravelPackage travelPackage= getTravelPackageById(idTrip);
-
-             reservationPackage = new ReservationPackage(idReservacionPaquete,
-                    user,travelPackage,reservationDateS);
+    public static TravelPackage  getTravelPackageById(int idReservation)  {
+        for(TravelPackage travelPackage: MainActivity.TRAVEL_PACKAGES){
+            if(travelPackage.getIdTravelPackage()==idReservation){
+                return travelPackage;
+            }
         }
-        return reservationPackage;
+        return null;
     }
-    public static int insertReservationPackage(User user, TravelPackage travelPackage,String reservationDate){
+    public static int insertReservationPackage(User user, int travelPackageID,String reservationDate){
 
         int code = 0;
 
         Map<String, String> params = new HashMap<>();
 
         String idUser=""+user.getId();
-        String idTravelPackage=""+travelPackage.getIdTravelPackage();
+        String idTravelPackage=""+getTravelPackageById(travelPackageID).getIdTravelPackage();
         params.put("idUser",idUser);
         params.put("idTravelPackage",idTravelPackage);
         params.put("reservationDate",reservationDate);
