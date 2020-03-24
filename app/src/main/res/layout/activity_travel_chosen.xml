@@ -55,21 +55,67 @@
         android:gravity="center_vertical"
         android:orientation="vertical">
 
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/textView_price"
-            style="@style/MyTextViewStyle_Text"
-            android:text="Precio: $ 5.000" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textView_airport"
-            style="@style/MyTextViewStyle_Text"
-            android:text="Cantidad de personas: 4" />
+                <TextView
+                    android:id="@+id/textView_price_travel_chosen"
+                    style="@style/MyTextViewStyle_Text"
+                    android:text="Precio: $ 5.000" />
 
-        <TextView
-            android:id="@+id/textView_hotel"
-            style="@style/MyTextViewStyle_Text"
-            android:text="Hotel incluido: NO" />
+                <TextView
+                    android:id="@+id/textView_airport_travel_chosen"
+                    style="@style/MyTextViewStyle_Text"
+                    android:text="Cantidad de personas: 4" />
+
+                <TextView
+                    android:id="@+id/textView_hotel_travel_chosen"
+                    style="@style/MyTextViewStyle_Text"
+                    android:text="Hotel incluido: NO" />
+
+                <TextView
+                    android:id="@+id/textView_start_date_travel_chosen"
+                    style="@style/MyTextViewStyle_Text"
+                    android:text="Fecha de inicio: 20/7/2020" />
+
+                <TextView
+                    android:id="@+id/textView_end_date_travel_chosen"
+                    style="@style/MyTextViewStyle_Text"
+                    android:text="Fecha de fin: 4/9/2020" />
+
+                <TextView
+                    android:id="@+id/textView_duration_travel_chosen"
+                    style="@style/MyTextViewStyle_Text"
+                    android:text="Duracion: 5 dias" />
+
+                <TextView
+                    android:id="@+id/textView_description_travel_chosen"
+                    style="@style/MyTextViewStyle_Text"
+                    android:text="Descripcion: En este viaje su buscara aprender de aves de costa rica" />
+
+                <TextView
+                    android:id="@+id/textView_tourist_type_travel_chosen"
+                    style="@style/MyTextViewStyle_Text"
+                    android:text="Tipos de turistas: amantes de las aves" />
+
+                <TextView
+                    android:id="@+id/textView_route_type_travel_chosen"
+                    style="@style/MyTextViewStyle_Text"
+                    android:text="Ruta: para cualquier tipo de persona o vehiculo" />
+
+
+
+
+            </LinearLayout>
+
+        </ScrollView>
+
 
     </LinearLayout>
 

@@ -36,6 +36,18 @@ public class TravelChosen extends BaseActivity {
 
     TextView textViewAirport;
 
+    TextView textViewStartDate;
+
+    TextView textViewEndDate;
+
+    TextView textViewDuration;
+
+    TextView textViewDescription;
+
+    TextView textViewTouristType;
+
+    TextView textViewRouteType;
+
     int idPackageTravel;
 
     private HorizontalScrollView horizontalScrollView;
@@ -56,11 +68,23 @@ public class TravelChosen extends BaseActivity {
 
         textViewTravelName = findViewById(R.id.textView_travel_name);
 
-        textViewTravelPrice = findViewById(R.id.textView_price);
+        textViewTravelPrice = findViewById(R.id.textView_price_travel_chosen);
 
-        textViewHotel = findViewById(R.id.textView_hotel);
+        textViewHotel = findViewById(R.id.textView_hotel_travel_chosen);
 
-        textViewAirport = findViewById(R.id.textView_airport);
+        textViewAirport = findViewById(R.id.textView_airport_travel_chosen);
+
+        textViewStartDate = findViewById(R.id.textView_start_date_travel_chosen);
+
+        textViewEndDate = findViewById(R.id.textView_start_date_travel_chosen);
+
+        textViewDuration = findViewById(R.id.textView_duration_travel_chosen);
+
+        textViewDescription = findViewById(R.id.textView_description_travel_chosen);
+
+        textViewTouristType = findViewById(R.id.textView_tourist_type_travel_chosen);
+
+        textViewRouteType = findViewById(R.id.textView_route_type_travel_chosen);
 
         Bundle bundle = getIntent().getExtras();
 
@@ -68,7 +92,7 @@ public class TravelChosen extends BaseActivity {
 
         TravelPackage travelPackage = Data.getTravelPackageById(idPackageTravel);
 
-        textViewTravelPrice.setText("$ "+travelPackage.getCost());
+        textViewTravelPrice.setText("Predio: $ "+travelPackage.getCost());
 
         textViewTravelName.setText(travelPackage.getName());
 
@@ -76,11 +100,21 @@ public class TravelChosen extends BaseActivity {
 
         textViewAirport.setText("Aeropuerto: "+travelPackage.getAirport().getName());
 
+        textViewStartDate.setText("Fecha de inicio: "+travelPackage.getStartDate());
+
+        textViewEndDate.setText("Fecha de fin: "+travelPackage.getEndDate());
+
+        textViewDuration.setText("Duración: "+travelPackage.getDuration());
+
+        textViewDescription.setText("Descripción: "+travelPackage.getDescription());
+
+        textViewTouristType.setText("Tipo de turista: "+travelPackage.getTouristType());
+
+        textViewRouteType.setText("Tipo de ruta: "+travelPackage.getTypeOfRoute());
+
         RequestOptions requestOptions = new RequestOptions();
 
         requestOptions.placeholder(R.drawable.preview);
-
-
 
 
         //----------------------------------------------------------------------------------------//
