@@ -5,9 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.travellersapp_sistemasexpertos.MainActivity;
 import com.example.travellersapp_sistemasexpertos.R;
+import com.example.travellersapp_sistemasexpertos.database.Data;
 import com.example.travellersapp_sistemasexpertos.domain.User;
 
 import java.util.ArrayList;
@@ -18,6 +20,8 @@ public class MainInterface extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_interface);
+        Toast.makeText(getApplicationContext(), "Bienvenido "+ Data.loggedUser.getName()+" "+
+                Data.loggedUser.getLastName(), Toast.LENGTH_SHORT).show();
 
     }
 

@@ -85,6 +85,7 @@ public class HttpJsonParser {
 
     }
 
+
     //Method: POST, UPDATE, DELETE
     public int sendJson(String urlAdress, Map<String, String> params) throws IOException, JSONException {
 

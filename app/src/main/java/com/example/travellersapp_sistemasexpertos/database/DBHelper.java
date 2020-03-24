@@ -1,5 +1,6 @@
 package com.example.travellersapp_sistemasexpertos.database;
 
+import com.example.travellersapp_sistemasexpertos.MainActivity;
 import com.example.travellersapp_sistemasexpertos.domain.Airport;
 import com.example.travellersapp_sistemasexpertos.domain.Hotel;
 import com.example.travellersapp_sistemasexpertos.domain.Image;
@@ -28,6 +29,8 @@ public class DBHelper  {
     //public static ArrayList<TouristCompany> TOURIST_COMPANIES;
     public static ArrayList<TravelPackage> TRAVEL_PACKAGES;
     public static ArrayList<Image> IMAGES;
+    public static ArrayList<Hotel> HOTELS;
+    public static ArrayList<Airport> AIRPORTS;
 
     public static String apiUrl = "https://loaiza4ever.000webhostapp.com/TravellersApi/api/";
 
@@ -36,6 +39,8 @@ public class DBHelper  {
         try {
             getAllUsers();
             getAllImages();
+            getAllAirports();
+            getAllHotels();
             getAllTravelPackage();
             getAllReservations();
         } catch (JSONException e) {
@@ -254,71 +259,20 @@ public class DBHelper  {
     }
 
     public static Hotel getHotelByID(int idHotel) throws JSONException {
-
-        //USERS = new ArrayList<>();
-
-        Map<String, String> params = new HashMap<>();
-
-        String idHotelS= ""+idHotel;
-
-        params.put("idHotel",idHotelS);
-
-        HttpJsonParser httpJsonParser = new HttpJsonParser();
-
-        JSONArray jsonArray =  httpJsonParser.getJson(DBHotel.URLReadSingle(), params);
-
-        Hotel hotel=new Hotel();
-
-        for(int i=0; i<jsonArray.length(); i++)
-        {
-            JSONObject jsonObject=jsonArray.getJSONObject(i);
-            int id = jsonObject.getInt("idHotel");
-            String name = jsonObject.getString("name");
-            String email = jsonObject.getString("email");
-            String phone = jsonObject.getString("phone");
-            String offers = jsonObject.getString("offers");
-
-             hotel.setIdHotel(id);
-             hotel.setName(name);
-             hotel.setEmail(email);
-             hotel.setPhone(phone);
-             hotel.setOffers(offers);
-
-        }
-        return hotel;
+           for(Hotel hotel: MainActivity.HOTELS){
+               if(hotel.getIdHotel()==idHotel){
+                   return hotel;
+               }
+           }
+      return null;
     }
     public static Airport getAirportById(int idAriport) throws JSONException {
-
-        USERS = new ArrayList<>();
-
-        Map<String, String> params = new HashMap<>();
-
-        String idAirportS= ""+idAriport;
-
-        params.put("idAirport",idAirportS);
-
-
-        HttpJsonParser httpJsonParser = new HttpJsonParser();
-
-        JSONArray jsonArray =  httpJsonParser.getJson(DBAirport.URLReadSingle(), params);
-
-        Airport airport=new Airport();
-        for(int i=0; i<jsonArray.length(); i++)
-        {
-            JSONObject jsonObject=jsonArray.getJSONObject(i);
-            int id = jsonObject.getInt("idAirport");
-            String name = jsonObject.getString("name");
-            String email = jsonObject.getString("email");
-            String address = jsonObject.getString("address");
-
-            airport.setIdAirport(id);
-            airport.setName(name);
-            airport.setEmail(email);
-            airport.setAddress(address);
-
+        for(Airport airport: MainActivity.AIRPORTS){
+            if(airport.getIdAirport()==idAriport){
+                return airport;
+            }
         }
-        return airport;
-
+        return null;
     }
     public static ArrayList<ReservationPackage> getAllReservations() throws JSONException, ParseException {
 
@@ -407,6 +361,63 @@ public class DBHelper  {
             e.printStackTrace();
         }
         return code;
+    }
+
+    public static ArrayList<Hotel> getAllHotels() throws JSONException {
+
+        HOTELS = new ArrayList<>();
+
+        Map<String, String> params = new HashMap<>();
+
+        HttpJsonParser httpJsonParser = new HttpJsonParser();
+
+        JSONArray jsonArray =  httpJsonParser.getJson(DBHotel.URLRead(), params);
+
+        for(int i=0; i<jsonArray.length(); i++)
+        {
+            JSONObject jsonObject=jsonArray.getJSONObject(i);
+            int id = jsonObject.getInt("idHotel");
+            String email = jsonObject.getString("email");
+            String phone = jsonObject.getString("phone");
+            String name = jsonObject.getString("name");
+            String offers = jsonObject.getString("offers");
+
+
+            Hotel hotel=new Hotel(id,name,email,phone,offers);
+
+            HOTELS.add(hotel);
+
+        }
+
+        return HOTELS;
+
+    }
+    public static ArrayList<Airport> getAllAirports() throws JSONException {
+
+        AIRPORTS = new ArrayList<>();
+
+        Map<String, String> params = new HashMap<>();
+
+        HttpJsonParser httpJsonParser = new HttpJsonParser();
+
+        JSONArray jsonArray =  httpJsonParser.getJson(DBAirport.URLRead(), params);
+
+        for(int i=0; i<jsonArray.length(); i++)
+        {
+            JSONObject jsonObject=jsonArray.getJSONObject(i);
+            int id = jsonObject.getInt("idAirport");
+            String name = jsonObject.getString("name");
+            String email = jsonObject.getString("email");
+            String address = jsonObject.getString("address");
+
+            Airport airport=new Airport(id,name,email,address);
+
+            AIRPORTS.add(airport);
+
+        }
+
+        return AIRPORTS;
+
     }
 
     public static ArrayList<Image> getAllImages() throws JSONException {
