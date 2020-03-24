@@ -36,6 +36,9 @@ public class MainActivity extends BaseActivity {
     public static ArrayList<ReservationPackage> RESERVATIONS;
     public static ArrayList<TravelPackage> TRAVEL_PACKAGES;
     public static ArrayList<Image> IMAGES;
+    public static ArrayList<Hotel> HOTELS;
+    public static ArrayList<Airport> AIRPORTS;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,12 +49,15 @@ public class MainActivity extends BaseActivity {
 
         thread = new Thread(){
             public void run(){
-
-                try {
+                    try {
                     USERS = DBHelper.getAllUsers();
+                    HOTELS= DBHelper.getAllHotels();
+                    AIRPORTS=DBHelper.getAllAirports();
                     IMAGES = DBHelper.getAllImages();
                     TRAVEL_PACKAGES = DBHelper.getAllTravelPackage();
                     RESERVATIONS = DBHelper.getAllReservations();
+
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 } catch (ParseException e) {

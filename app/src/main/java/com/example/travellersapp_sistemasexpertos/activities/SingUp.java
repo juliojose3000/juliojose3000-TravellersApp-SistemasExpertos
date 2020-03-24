@@ -3,6 +3,7 @@ package com.example.travellersapp_sistemasexpertos.activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -52,14 +53,14 @@ public class SingUp extends BaseActivity {
 
     public void registrarse(View v){
 
-        String name = editTextName.getText().toString();
-        String lastname = editTextLastname.getText().toString();
-        String email = editTextEmail.getText().toString();
-        String phone = editTextPhone.getText().toString();
-        String username = editTextUsername.getText().toString();
-        String password = editTextPassword.getText().toString();
+        final String name = editTextName.getText().toString();
+        final String lastname = editTextLastname.getText().toString();
+        final String email = editTextEmail.getText().toString();
+        final String phone = editTextPhone.getText().toString();
+        final String username = editTextUsername.getText().toString();
+        final String password = editTextPassword.getText().toString();
 
-        if(name.equals("") || lastname.equals(lastname) || email.equals("") ||
+        if(name.equals("") || lastname.equals("") || email.equals("") ||
                 phone.equals("") || username.equals("") || password.equals("")){
             Toast.makeText(this,"Complete los campos requeridos",Toast.LENGTH_SHORT).show();
             return;
@@ -70,8 +71,18 @@ public class SingUp extends BaseActivity {
             return;
         }
 
-        DBHelper.insertUser(name, lastname, email, phone, username, password);
 
+        new AsyncTask<Void, Void, Void>() {
+
+            @Override
+            protected Void doInBackground(Void... voids) {
+
+                    DBHelper.insertUser(name, lastname, email, phone, username, password);
+
+                return null;
+            }
+
+        }.execute();
         Intent i = new Intent(this, MainInterface.class);
 
         startActivity(i);
