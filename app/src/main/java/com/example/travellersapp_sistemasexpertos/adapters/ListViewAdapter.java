@@ -54,8 +54,6 @@ public class ListViewAdapter extends BaseAdapter {
         RequestOptions requestOptions = new RequestOptions();
         requestOptions.placeholder(R.drawable.preview);
 
-        //todo probar
-
         Glide.with(context)
                 .load(travelPackage.getListImages().get(0).getUrl())
                 .apply(requestOptions)

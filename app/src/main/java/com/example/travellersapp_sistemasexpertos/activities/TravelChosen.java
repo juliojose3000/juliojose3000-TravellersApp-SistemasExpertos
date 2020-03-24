@@ -28,8 +28,6 @@ import com.squareup.picasso.Picasso;
 
 public class TravelChosen extends BaseActivity {
 
-    //ImageView imageView;
-
     TextView textViewTravelName;
 
     TextView textViewTravelPrice;
@@ -42,12 +40,12 @@ public class TravelChosen extends BaseActivity {
 
     private HorizontalScrollView horizontalScrollView;
 
-    private Button btnstop, btnplay;
     private VideoView videoView;
     private MediaController mediacontroller;
     private Uri uri;
     private boolean firstTime = true;
     private ProgressBar progressBar;
+    private ImageView imageViewPlay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,8 +99,6 @@ public class TravelChosen extends BaseActivity {
 
             ImageView imageView =  viewImages.findViewById(R.id.imageView_images);
 
-            //todo probar
-
             Glide.with(TravelChosen.this)
                     .load(travelPackage.getListImages().get(i).getUrl())
                     .apply(requestOptions)
@@ -117,9 +113,8 @@ public class TravelChosen extends BaseActivity {
         viewImages = inflater.inflate(R.layout.video, gallery, false);
 
         progressBar = viewImages.findViewById(R.id.progrss);
-        btnstop = viewImages.findViewById(R.id.btnstop);
-        btnplay = viewImages.findViewById(R.id.btnplay);
         videoView = viewImages.findViewById(R.id.videoView);
+        imageViewPlay = viewImages.findViewById(R.id.imageView_play);
 
         mediacontroller = new MediaController(this);
         mediacontroller.setAnchorView(videoView);
@@ -135,14 +130,7 @@ public class TravelChosen extends BaseActivity {
             }
         });
 
-        btnstop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                videoView.pause();
-            }
-        });
-
-        btnplay.setOnClickListener(new View.OnClickListener() {
+        imageViewPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -155,7 +143,7 @@ public class TravelChosen extends BaseActivity {
                     videoView.requestFocus();
 
                 }
-
+                imageViewPlay.setVisibility(View.INVISIBLE);
 
                 videoView.start();
             }
