@@ -83,6 +83,11 @@ public class SingUp extends BaseActivity {
             }
 
         }.execute();
+
+        User user = new User(Data.getLastIDUser(), username, password, name, lastname, phone, email);
+
+        Data.loggedUser = user;
+
         Intent i = new Intent(this, MainInterface.class);
 
         startActivity(i);

@@ -197,15 +197,17 @@ public class Data {
 
         ArrayList<TravelPackage> list = new ArrayList<>();
 
-        for (TravelPackage travelPackage: MainActivity.TRAVEL_PACKAGES) {
+        int i = 2;
 
-            int i = getRandomNumberInRange(0, 10);
+        for (TravelPackage travelPackage: MainActivity.TRAVEL_PACKAGES) {
 
             if(i%2==0){
 
                 list.add(travelPackage);
 
             }
+
+            i = getRandomNumberInRange(0, 10);
 
         }
 
@@ -222,6 +224,13 @@ public class Data {
 
         Random r = new Random();
         return r.nextInt((max - min) + 1) + min;
+    }
+
+
+    public static int getLastIDUser(){
+
+        return MainActivity.USERS.get(MainActivity.USERS.size()-1).getId()+1;
+
     }
 
 

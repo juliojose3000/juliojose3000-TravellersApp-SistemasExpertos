@@ -28,8 +28,6 @@ public class MainInterface extends BaseActivity {
 
     private HorizontalScrollView horizontalScrollView;
 
-    private TravelPackage travelPackage;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -38,7 +36,7 @@ public class MainInterface extends BaseActivity {
         setContentView(R.layout.activity_main_interface);
 
         Toast.makeText(getApplicationContext(), "Bienvenido "+ Data.loggedUser.getName()+" "+
-                Data.loggedUser.getLastName(), Toast.LENGTH_SHORT).show();
+                Data.loggedUser.getLastName(), Toast.LENGTH_LONG).show();
 
 
         LinearLayout gallery = findViewById(R.id.linear_layout_offers_galery);
@@ -59,13 +57,28 @@ public class MainInterface extends BaseActivity {
 
         TextView textViewPrice;
 
+        ImageView imageView;
+
         for(int i=0; i<offersList.size(); i++){
 
             viewImages = inflater.inflate(R.layout.offer, gallery, false);
 
-            ImageView imageView =  viewImages.findViewById(R.id.imageView_offers);
+            imageView =  viewImages.findViewById(R.id.imageView_offers);
 
-            this.travelPackage = offersList.get(i);
+            final TravelPackage travelPackage = offersList.get(i);
+
+            textViewTitle = viewImages.findViewById(R.id.textView_travel_offer);
+
+            textViewPrice = viewImages.findViewById(R.id.textView_price_offer);
+
+            Glide.with(MainInterface.this)
+                    .load(travelPackage.getListImages().get(0).getUrl())
+                    .apply(requestOptions)
+                    .into(imageView);
+
+            textViewTitle.setText(travelPackage.getName());
+
+            textViewPrice.setText("Desde: $"+travelPackage.getCost());
 
             imageView.setOnClickListener(new View.OnClickListener(){
                 @Override
@@ -82,19 +95,6 @@ public class MainInterface extends BaseActivity {
                 }
             });
 
-            textViewTitle = viewImages.findViewById(R.id.textView_travel_offer);
-
-            textViewPrice = viewImages.findViewById(R.id.textView_price_offer);
-
-            Glide.with(MainInterface.this)
-                    .load(travelPackage.getListImages().get(i).getUrl())
-                    .apply(requestOptions)
-                    .into(imageView);
-
-            textViewTitle.setText(travelPackage.getName());
-
-            textViewPrice.setText("Desde: $"+travelPackage.getCost());
-
             gallery.addView(viewImages);
 
         }
@@ -106,6 +106,12 @@ public class MainInterface extends BaseActivity {
                 horizontalScrollView.fullScroll(HorizontalScrollView.FOCUS_LEFT);
             }
         }, 10);
+
+
+
+    }
+
+    private void x(View v){
 
 
 
