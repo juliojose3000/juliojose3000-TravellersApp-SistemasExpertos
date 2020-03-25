@@ -9,6 +9,7 @@ import com.example.travellersapp_sistemasexpertos.domain.User;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Data {
 
@@ -192,6 +193,36 @@ public class Data {
 
     }
 
+    public static ArrayList<TravelPackage> generateOffers(){
+
+        ArrayList<TravelPackage> list = new ArrayList<>();
+
+        for (TravelPackage travelPackage: MainActivity.TRAVEL_PACKAGES) {
+
+            int i = getRandomNumberInRange(0, 10);
+
+            if(i%2==0){
+
+                list.add(travelPackage);
+
+            }
+
+        }
+
+        return list;
+
+    }
+
+
+    private static int getRandomNumberInRange(int min, int max) {
+
+        if (min >= max) {
+            throw new IllegalArgumentException("max must be greater than min");
+        }
+
+        Random r = new Random();
+        return r.nextInt((max - min) + 1) + min;
+    }
 
 
 

@@ -194,6 +194,7 @@ public class TravelChosen extends BaseActivity {
             }
         });
 
+        //----------------------------------------------------------------------------------------//
 
         gallery.addView(viewImages);
 
@@ -254,8 +255,8 @@ public class TravelChosen extends BaseActivity {
 
         AlertDialog myQuittingDialogBox =new AlertDialog.Builder(this)
                 //set message, title, and icon
-                .setTitle("Confirme la compra")
-                .setMessage("¿Está seguro que desea realizar la compra de este paquete turístico?")
+                .setTitle("Confirme la reservación")
+                .setMessage("¿Está seguro que desea reservar este paquete turístico?")
 
 
                 .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {

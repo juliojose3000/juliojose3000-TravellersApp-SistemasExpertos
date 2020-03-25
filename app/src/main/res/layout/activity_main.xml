@@ -8,27 +8,48 @@
     android:orientation="vertical"
     android:gravity="bottom">
 
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center">
+        android:layout_height="match_parent"
+        android:layout_weight="120"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/logo">
+
+        </ImageView>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="100"
+        android:gravity="center"
+        android:orientation="vertical">
 
 
         <pl.droidsonroids.gif.GifImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/gif5"
             android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"/>
+            android:layout_marginRight="10dp"
+            android:src="@drawable/gif5" />
 
     </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="bottom">
+        android:layout_weight="150"
+        android:gravity="bottom"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -37,19 +58,19 @@
 
             <Button
                 android:id="@+id/button_sign_in"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="login"
-                android:text="log in" />
+                android:text="Iniciar sesión" />
 
             <Button
                 android:id="@+id/button_sign_up"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="signUp"
-                android:text="sign up" />
+                android:text="Registrarse" />
 
         </LinearLayout>
 
