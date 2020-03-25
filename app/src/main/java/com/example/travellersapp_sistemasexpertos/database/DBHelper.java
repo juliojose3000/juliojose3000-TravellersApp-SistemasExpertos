@@ -120,29 +120,40 @@ public class DBHelper  {
         }
         return user;
     }
-    public static int insertUser(String name, String lastname, String email, String phone, String username, String password){
+    public static int insertUser(String name, String lastName, String email, String phone, String userName, String password){
 
         int code = 0;
 
         Map<String, String> params = new HashMap<>();
 
         params.put("name",name);
-        params.put("lastname",lastname);
+        params.put("lastName",lastName);
         params.put("email",email);
         params.put("phone",phone);
-        params.put("username",username);
+        params.put("userName",userName);
         params.put("password",password);
 
         HttpJsonParser httpJsonParser = new HttpJsonParser();
 
         try {
             code = httpJsonParser.sendJson(DBUsers.URLCreate(), params);
+          //  Data.loggedUser=getActualUser( name,  lastName,  email,  phone,  userName,  password);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (JSONException e) {
             e.printStackTrace();
         }
         return code;
+    }
+
+    public static User getActualUser(String name, String lastName, String email, String phone, String userName, String password){
+        for(User user: MainActivity.USERS){
+            if(user.getName().equals(name)&&user.getLastName().equals(lastName)&&user.getMail().equals(email)&&
+            user.getPassword().equals(password)&&user.getUsername().equals(userName)){
+                return user;
+            }
+        }
+        return  null;
     }
     public static ArrayList<TravelPackage> getAllTravelPackage() throws JSONException, ParseException {
 
@@ -250,7 +261,7 @@ public class DBHelper  {
         String idUser=""+user.getId();
         String idTravelPackage=""+getTravelPackageById(travelPackageID).getIdTravelPackage();
         params.put("idUser",idUser);
-        params.put("idTravelPackage",idTravelPackage);
+        params.put("idTrip",idTravelPackage);
         params.put("reservationDate",reservationDate);
 
 
