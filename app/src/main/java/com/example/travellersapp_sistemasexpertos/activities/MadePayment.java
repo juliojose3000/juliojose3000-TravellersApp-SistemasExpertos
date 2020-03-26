@@ -3,14 +3,19 @@ package com.example.travellersapp_sistemasexpertos.activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.travellersapp_sistemasexpertos.R;
 import com.example.travellersapp_sistemasexpertos.database.Data;
+import com.example.travellersapp_sistemasexpertos.domain.Dates;
 import com.example.travellersapp_sistemasexpertos.domain.TravelPackage;
+import com.example.travellersapp_sistemasexpertos.domain.User;
+import com.example.travellersapp_sistemasexpertos.utilities.SentMail;
 
 public class MadePayment extends BaseActivity {
 
@@ -21,6 +26,7 @@ public class MadePayment extends BaseActivity {
     TextView textViewPaymentDate;
     TextView textViewDateStart;
     TextView textViewDateEnd;
+    boolean flag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +36,8 @@ public class MadePayment extends BaseActivity {
         setContentView(R.layout.activity_made_payment);
 
         Bundle bundle = getIntent().getExtras();
+
+        flag = false;
 
         int idPackage = bundle.getInt("idTravelPackage");
 
@@ -53,7 +61,9 @@ public class MadePayment extends BaseActivity {
 
         textViewPaymentDate = findViewById(R.id.textView_payment_date);
 
-        textViewPaymentDate.setText("Fecha de pago: ");
+        Dates dates = new Dates();
+
+        textViewPaymentDate.setText("Fecha de pago: "+dates.getDateOfToday());
 
         textViewDateStart = findViewById(R.id.textView_date_start);
 
@@ -83,9 +93,40 @@ public class MadePayment extends BaseActivity {
     }
 
 
-    public void sendEmail(View v){
+    public void sendEmail(View v) {
+        final User loggedUser = Data.loggedUser;
 
-        Toast.makeText(this,"Enviando correo...",Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Enviando correo...", Toast.LENGTH_LONG).show();
+
+        AsyncTask.execute(new Runnable() {
+            @Override
+            public void run() {
+                String email = "juliojose3000@gmail.com";
+                String pass = "123456789julio";
+
+                SentMail mail = new SentMail(email, pass);
+
+                String[] toArr = {loggedUser.getMail()};
+                mail.set_to(toArr);
+                mail.set_from(email);
+                mail.set_subject("Confirmación de reserva de viaje");
+                mail.setBody("Su reservación se ha completado con éxito, disfrute de su experiencia " +
+                        "con World Travel");
+
+                try {
+                    // mail.addAttachment("/sdcard/filelocation");
+
+                    if (mail.send()) {
+                        flag = true;
+                    }
+                } catch (Exception e) {
+                    //Toast.makeText(MailApp.this, "There was a problem sending the email.", Toast.LENGTH_LONG).show();
+                    Log.e("MailApp", "No se pudo enviar el correo", e);
+                }
+
+            }
+
+        });
 
     }
 

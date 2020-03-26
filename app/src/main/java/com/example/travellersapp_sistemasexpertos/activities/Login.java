@@ -82,8 +82,10 @@ public class Login extends BaseActivity {
 
         if(username.equals("") || password.equals("")){
             Toast.makeText(this,"Complete los campos requeridos",Toast.LENGTH_SHORT).show();
+            changeColorEmptyEditText(username, password);
             return;
         }
+        changeColorEmptyEditText(username, password);
 
         if(Data.areValidCredentials(username, password)){
 
@@ -107,6 +109,16 @@ public class Login extends BaseActivity {
         editText_username.setText("");
 
         editText_password.setText("");
+
+    }
+
+    private void changeColorEmptyEditText(String name, String password){
+
+        if(name.equals("")){changeBadColorEditText(editText_username);}
+        else{changeGoodColorEditText(editText_username);}
+
+        if(password.equals("")){changeBadColorEditText(editText_password);}
+        else{changeGoodColorEditText(editText_password);}
 
     }
 

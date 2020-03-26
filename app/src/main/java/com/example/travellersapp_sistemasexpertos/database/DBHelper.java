@@ -73,7 +73,7 @@ public class DBHelper  {
             String email = jsonObject.getString("email");
             String phone = jsonObject.getString("phone");
 
-            User user = new User(id, username, password, name, lastname, email, phone);
+            User user = new User(id, username, password, name, lastname, phone, email);
 
             USERS.add(user);
 

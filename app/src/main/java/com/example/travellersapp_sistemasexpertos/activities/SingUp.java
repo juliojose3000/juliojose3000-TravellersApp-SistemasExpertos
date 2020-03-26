@@ -139,20 +139,6 @@ public class SingUp extends BaseActivity {
 
     }
 
-    private void changeBadColorEditText(EditText editText){
-
-        ColorStateList colorStateList = ColorStateList.valueOf(Color.RED);
-        editText.setBackgroundTintList (colorStateList);
-
-    }
-
-    private void changeGoodColorEditText(EditText editText){
-
-        ColorStateList colorStateList = ColorStateList.valueOf(Color.argb(255, 41, 121, 255));
-        editText.setBackgroundTintList (colorStateList);
-
-    }
-
     private void changeColorEmptyEditText(String name, String lastname, String email,
                                           String phone, String username, String password){
 
