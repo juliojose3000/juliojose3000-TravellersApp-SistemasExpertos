@@ -84,6 +84,11 @@ public class MainInterface extends BaseActivity {
                 @Override
                 public void onClick(View view) {
 
+                    if(!isThereInternetAccess()){
+                        Toast.makeText(MainInterface.this,"Compruebe su conexión a internet e intente de nuevo",Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+
                     int idTravelPackage = travelPackage.getIdTravelPackage();
 
                     Intent i = new Intent(MainInterface.this, TravelChosen.class);
@@ -110,13 +115,6 @@ public class MainInterface extends BaseActivity {
 
 
     }
-
-    private void x(View v){
-
-
-
-    }
-
 
     public void exit(View v){
 

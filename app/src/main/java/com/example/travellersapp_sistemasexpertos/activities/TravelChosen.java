@@ -18,6 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.MediaController;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.VideoView;
 
 import com.bumptech.glide.Glide;
@@ -243,6 +244,11 @@ public class TravelChosen extends BaseActivity {
     }
 
     public void makePayment(View v){
+
+        if(!isThereInternetAccess()){
+            Toast.makeText(this,"Compruebe su conexión a internet e intente de nuevo",Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         AlertDialog diaBox = askOption();
         diaBox.show();

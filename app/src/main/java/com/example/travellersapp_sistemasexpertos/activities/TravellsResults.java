@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.travellersapp_sistemasexpertos.R;
 import com.example.travellersapp_sistemasexpertos.adapters.ListViewAdapter;
@@ -43,6 +44,11 @@ public class TravellsResults extends BaseActivity {
         listViewItems.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                if(!isThereInternetAccess()){
+                    Toast.makeText(TravellsResults.this,"Compruebe su conexión a internet e intente de nuevo",Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
                 TravelPackage travelPackage = (TravelPackage) listViewAdapter.getItem(position);
 
