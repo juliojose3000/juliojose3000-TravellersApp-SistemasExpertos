@@ -28,12 +28,14 @@
         <EditText
             android:id="@+id/editText_email"
             android:hint="Correo electrónico"
+            android:inputType="textEmailAddress"
             style="@style/editText_Register"/>
 
 
         <EditText
             android:id="@+id/editText_telephono"
             android:hint="Teléfono"
+            android:inputType="phone"
             style="@style/editText_Register"/>
 
         <EditText
@@ -43,8 +45,16 @@
 
         <EditText
             android:id="@+id/editText_password_register"
+            android:inputType="textPassword"
             android:hint="Contraseña"
             style="@style/editText_Register"/>
+
+        <EditText
+            android:id="@+id/editText_password2_register"
+            android:inputType="textPassword"
+            android:hint="Repita la contraseña"
+            style="@style/editText_Register"/>
+
 
 
 
@@ -53,9 +63,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="25"
-        android:orientation="vertical"
-        android:gravity="bottom">
+        android:layout_weight="40"
+        android:gravity="bottom"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"

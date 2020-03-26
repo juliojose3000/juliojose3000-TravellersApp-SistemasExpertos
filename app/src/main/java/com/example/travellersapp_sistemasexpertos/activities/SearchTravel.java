@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.travellersapp_sistemasexpertos.R;
 
@@ -56,6 +57,11 @@ public class SearchTravel extends BaseActivity {
 
 
     public void searchTravel(View v){
+
+        if(!isThereInternetAccess()){
+            Toast.makeText(this,"Compruebe su conexión a internet e intente de nuevo",Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         String search = editTextSearch.getText().toString();
 

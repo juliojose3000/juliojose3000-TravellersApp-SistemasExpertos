@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.travellersapp_sistemasexpertos.MainActivity;
 import com.example.travellersapp_sistemasexpertos.R;
 import com.example.travellersapp_sistemasexpertos.database.DBHelper;
 import com.example.travellersapp_sistemasexpertos.database.Data;
@@ -65,6 +66,19 @@ public class Login extends BaseActivity {
         username = editText_username.getText().toString();
 
         password = editText_password.getText().toString();
+
+        if(!isThereInternetAccess()){
+            Toast.makeText(this,"Compruebe su conexión a internet e intente de nuevo",Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if(MainActivity.USERS.size()==0){
+
+            Toast.makeText(Login.this,"Espere un momento...",Toast.LENGTH_SHORT).show();
+
+            MainActivity.loadDataFromDB(getApplicationContext());
+
+        }
 
         if(username.equals("") || password.equals("")){
             Toast.makeText(this,"Complete los campos requeridos",Toast.LENGTH_SHORT).show();

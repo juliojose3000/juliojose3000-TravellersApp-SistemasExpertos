@@ -29,7 +29,7 @@ public class HttpJsonParser {
     //original name: makeHttpRequest
     public JSONArray getJson(String url, Map<String, String> params) {
 
-        jsonArray = null;
+        jsonArray = new JSONArray();
 
         try {
             Uri.Builder builder = new Uri.Builder();

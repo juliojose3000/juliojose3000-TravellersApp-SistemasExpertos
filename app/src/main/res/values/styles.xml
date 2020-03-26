@@ -28,7 +28,7 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_marginLeft">30dp</item>
         <item name="android:layout_marginRight">30dp</item>
-        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_marginTop">15dp</item>
         <item name="android:maxLines">1</item>
         <item name="android:lines">1</item>
         <item name="android:singleLine">true</item>
@@ -69,6 +69,13 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_marginLeft">25dp</item>
         <item name="android:layout_marginRight">25dp</item>
+    </style>
+
+    <style name="BadInput" parent="@android:style/Widget.EditText">
+        <item name="android:backgroundTint">@color/BadColor</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:lines">1</item>
+        <item name="android:singleLine">true</item>
     </style>
 
 </resources>
