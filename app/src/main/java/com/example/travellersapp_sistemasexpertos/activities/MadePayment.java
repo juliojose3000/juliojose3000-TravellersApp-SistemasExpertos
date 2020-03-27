@@ -70,7 +70,7 @@ public class MadePayment extends BaseActivity {
 
         textViewDateStart = findViewById(R.id.textView_date_start);
 
-        textViewDateStart.setText("Desde el: "+travelPackage.getStartDate());
+        textViewDateStart.setText("Desde el: "+travelPackage.getStartDate().toString());
 
         textViewDateEnd = findViewById(R.id.textView_date_end);
 

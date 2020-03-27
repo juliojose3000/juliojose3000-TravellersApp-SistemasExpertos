@@ -34,5 +34,11 @@ dependencies {
     //also for load image from url
     implementation 'com.github.bumptech.glide:glide:4.8.0'
     annotationProcessor 'com.github.bumptech.glide:glide:4.8.0'
+<<<<<<< HEAD
     implementation files('libs/activation.jar')
+=======
+    implementation files('src/main/java/com/example/travellersapp_sistemasexpertos/activation.jar')
+    implementation files('src/main/java/com/example/travellersapp_sistemasexpertos/additionnal.jar')
+    implementation files('src/main/java/com/example/travellersapp_sistemasexpertos/mail.jar')
+>>>>>>> origin/master
 }
