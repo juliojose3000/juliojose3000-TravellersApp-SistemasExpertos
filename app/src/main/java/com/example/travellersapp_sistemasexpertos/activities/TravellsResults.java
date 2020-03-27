@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 import com.example.travellersapp_sistemasexpertos.R;
 import com.example.travellersapp_sistemasexpertos.adapters.ListViewAdapter;
-import com.example.travellersapp_sistemasexpertos.database.Data;
+import com.example.travellersapp_sistemasexpertos.utilities.Data;
 import com.example.travellersapp_sistemasexpertos.domain.TravelPackage;
 
 public class TravellsResults extends BaseActivity {

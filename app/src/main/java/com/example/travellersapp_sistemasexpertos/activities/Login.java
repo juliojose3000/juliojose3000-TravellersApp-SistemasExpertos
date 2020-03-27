@@ -1,13 +1,7 @@
 package com.example.travellersapp_sistemasexpertos.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,13 +9,7 @@ import android.widget.Toast;
 
 import com.example.travellersapp_sistemasexpertos.MainActivity;
 import com.example.travellersapp_sistemasexpertos.R;
-import com.example.travellersapp_sistemasexpertos.database.DBHelper;
-import com.example.travellersapp_sistemasexpertos.database.Data;
-import com.example.travellersapp_sistemasexpertos.domain.User;
-
-import org.json.JSONException;
-
-import java.util.ArrayList;
+import com.example.travellersapp_sistemasexpertos.utilities.Data;
 
 
 public class Login extends BaseActivity {

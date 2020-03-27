@@ -1,11 +1,6 @@
 package com.example.travellersapp_sistemasexpertos.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.content.res.ColorStateList;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -17,7 +12,7 @@ import android.widget.Toast;
 import com.example.travellersapp_sistemasexpertos.MainActivity;
 import com.example.travellersapp_sistemasexpertos.R;
 import com.example.travellersapp_sistemasexpertos.database.DBHelper;
-import com.example.travellersapp_sistemasexpertos.database.Data;
+import com.example.travellersapp_sistemasexpertos.utilities.Data;
 import com.example.travellersapp_sistemasexpertos.domain.User;
 
 public class SingUp extends BaseActivity {

@@ -1,7 +1,5 @@
 package com.example.travellersapp_sistemasexpertos.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,9 +14,8 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.travellersapp_sistemasexpertos.MainActivity;
 import com.example.travellersapp_sistemasexpertos.R;
-import com.example.travellersapp_sistemasexpertos.database.Data;
+import com.example.travellersapp_sistemasexpertos.utilities.Data;
 import com.example.travellersapp_sistemasexpertos.domain.TravelPackage;
-import com.example.travellersapp_sistemasexpertos.domain.User;
 
 import java.util.ArrayList;
 

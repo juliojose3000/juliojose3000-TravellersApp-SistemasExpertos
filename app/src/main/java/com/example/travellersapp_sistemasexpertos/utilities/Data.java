@@ -1,13 +1,14 @@
-package com.example.travellersapp_sistemasexpertos.database;
+package com.example.travellersapp_sistemasexpertos.utilities;
 
 import com.example.travellersapp_sistemasexpertos.MainActivity;
+import com.example.travellersapp_sistemasexpertos.database.DBHelper;
 import com.example.travellersapp_sistemasexpertos.domain.Airport;
 import com.example.travellersapp_sistemasexpertos.domain.Hotel;
 import com.example.travellersapp_sistemasexpertos.domain.Image;
 import com.example.travellersapp_sistemasexpertos.domain.TravelPackage;
 import com.example.travellersapp_sistemasexpertos.domain.User;
 
-import java.sql.Date;
+import org.json.JSONException;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -32,7 +33,6 @@ public class Data {
 
     }
 
-
     public static boolean doesThisUsernameExists(String username){
 
         for (User user: DBHelper.USERS) {
@@ -46,7 +46,6 @@ public class Data {
         return false;
 
     }
-
 
     public static ArrayList<TravelPackage> getTravells(String search, float maxPrice, String category, String userType){
 
@@ -68,7 +67,6 @@ public class Data {
         return listItems;
 
     }
-
 
     private static ArrayList<TravelPackage> travelToSearch(String travelToSearch, ArrayList<TravelPackage> travelPackages){
 
@@ -121,7 +119,6 @@ public class Data {
 
     }
 
-
     private static ArrayList<TravelPackage> searchTravelByUsertype(String usertype, ArrayList<TravelPackage> travelPackages){
 
         ArrayList<TravelPackage> travels = new ArrayList<>();
@@ -138,7 +135,6 @@ public class Data {
         return travels;
 
     }
-
 
     public static boolean containsIgnoreCase(String src, String what) {
         final int length = what.length();
@@ -215,7 +211,6 @@ public class Data {
 
     }
 
-
     private static int getRandomNumberInRange(int min, int max) {
 
         if (min >= max) {
@@ -226,12 +221,43 @@ public class Data {
         return r.nextInt((max - min) + 1) + min;
     }
 
-
     public static int getLastIDUser(){
 
         return MainActivity.USERS.get(MainActivity.USERS.size()-1).getId()+1;
 
     }
+
+    public static Hotel getHotelByID(int idHotel) throws JSONException {
+        for(Hotel hotel: MainActivity.HOTELS){
+            if(hotel.getIdHotel()==idHotel){
+                return hotel;
+            }
+        }
+        return null;
+    }
+
+    public static Airport getAirportById(int idAriport) throws JSONException {
+        for(Airport airport: MainActivity.AIRPORTS){
+            if(airport.getIdAirport()==idAriport){
+                return airport;
+            }
+        }
+        return null;
+    }
+
+    public static User getUserByID(int id){
+
+        for (User user: MainActivity.USERS) {
+
+            if(user.getId()==id){
+                return user;
+            }
+
+        }
+
+        return null;
+    }
+
 
 
 

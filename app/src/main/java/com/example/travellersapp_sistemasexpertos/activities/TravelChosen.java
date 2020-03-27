@@ -1,7 +1,5 @@
 package com.example.travellersapp_sistemasexpertos.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -11,7 +9,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -25,13 +22,9 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.travellersapp_sistemasexpertos.R;
 import com.example.travellersapp_sistemasexpertos.database.DBHelper;
-import com.example.travellersapp_sistemasexpertos.database.Data;
+import com.example.travellersapp_sistemasexpertos.utilities.Data;
 import com.example.travellersapp_sistemasexpertos.domain.Dates;
 import com.example.travellersapp_sistemasexpertos.domain.TravelPackage;
-import com.squareup.picasso.Picasso;
-
-import java.util.Calendar;
-import java.util.Date;
 
 public class TravelChosen extends BaseActivity {
 

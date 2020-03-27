@@ -1,17 +1,16 @@
 package com.example.travellersapp_sistemasexpertos.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.travellersapp_sistemasexpertos.R;
-import com.example.travellersapp_sistemasexpertos.database.Data;
+import com.example.travellersapp_sistemasexpertos.utilities.Data;
 import com.example.travellersapp_sistemasexpertos.domain.Dates;
 import com.example.travellersapp_sistemasexpertos.domain.TravelPackage;
 import com.example.travellersapp_sistemasexpertos.domain.User;
@@ -27,6 +26,8 @@ public class MadePayment extends BaseActivity {
     TextView textViewDateStart;
     TextView textViewDateEnd;
     boolean flag;
+    String message;
+    Button buttonSendEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,8 @@ public class MadePayment extends BaseActivity {
         Bundle bundle = getIntent().getExtras();
 
         flag = false;
+
+        buttonSendEmail = findViewById(R.id.button_send_email);
 
         int idPackage = bundle.getInt("idTravelPackage");
 
@@ -67,11 +70,19 @@ public class MadePayment extends BaseActivity {
 
         textViewDateStart = findViewById(R.id.textView_date_start);
 
-        textViewDateStart.setText("Desde el: "+travelPackage.getStartDate().toString());
+        textViewDateStart.setText("Desde el: "+travelPackage.getStartDate());
 
         textViewDateEnd = findViewById(R.id.textView_date_end);
 
-        textViewDateEnd.setText("Hasta el: "+travelPackage.getEndDate().toString());
+        textViewDateEnd.setText("Hasta el: "+travelPackage.getEndDate());
+
+        message = textViewUser.getText().toString()+"\n"+
+                textViewPrice.getText().toString()+"\n"+
+                textViewAirport.getText().toString()+"\n"+
+                textViewHotel.getText().toString()+"\n"+
+                textViewPaymentDate.getText().toString()+"\n"+
+                textViewDateStart.getText().toString()+"\n"+
+                textViewDateEnd.getText().toString();
 
     }
 
@@ -94,6 +105,7 @@ public class MadePayment extends BaseActivity {
 
 
     public void sendEmail(View v) {
+
         final User loggedUser = Data.loggedUser;
 
         Toast.makeText(this, "Enviando correo...", Toast.LENGTH_LONG).show();
@@ -101,8 +113,8 @@ public class MadePayment extends BaseActivity {
         AsyncTask.execute(new Runnable() {
             @Override
             public void run() {
-                String email = "juliojose3000@gmail.com";
-                String pass = "123456789julio";
+                String email = "World.travelersB6@gmail.com";
+                String pass = "allanjulio";
 
                 SentMail mail = new SentMail(email, pass);
 
@@ -111,7 +123,9 @@ public class MadePayment extends BaseActivity {
                 mail.set_from(email);
                 mail.set_subject("Confirmación de reserva de viaje");
                 mail.setBody("Su reservación se ha completado con éxito, disfrute de su experiencia " +
-                        "con World Travel");
+                        "con World Travel"+"\n\n"+
+                        "DETALLES DEL PAQUETE: "+"\n"+
+                        message);
 
                 try {
                     // mail.addAttachment("/sdcard/filelocation");

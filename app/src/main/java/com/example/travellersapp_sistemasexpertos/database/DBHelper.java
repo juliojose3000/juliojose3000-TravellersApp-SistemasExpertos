@@ -5,9 +5,9 @@ import com.example.travellersapp_sistemasexpertos.domain.Airport;
 import com.example.travellersapp_sistemasexpertos.domain.Hotel;
 import com.example.travellersapp_sistemasexpertos.domain.Image;
 import com.example.travellersapp_sistemasexpertos.domain.ReservationPackage;
-import com.example.travellersapp_sistemasexpertos.domain.TouristCompany;
 import com.example.travellersapp_sistemasexpertos.domain.TravelPackage;
 import com.example.travellersapp_sistemasexpertos.domain.User;
+import com.example.travellersapp_sistemasexpertos.utilities.Data;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -23,10 +23,7 @@ import java.text.SimpleDateFormat;
 public class DBHelper  {
 
     public static ArrayList<User> USERS;
-    //public static ArrayList<Airport> AIRPORTS;
-    //public static ArrayList<Hotel> HOTELS;
     public static ArrayList<ReservationPackage> RESERVATIONS;
-    //public static ArrayList<TouristCompany> TOURIST_COMPANIES;
     public static ArrayList<TravelPackage> TRAVEL_PACKAGES;
     public static ArrayList<Image> IMAGES;
     public static ArrayList<Hotel> HOTELS;
@@ -82,44 +79,7 @@ public class DBHelper  {
         return USERS;
 
     }
-    public static User  getUserByID(int idUser) throws JSONException {
 
-
-
-        Map<String, String> params = new HashMap<>();
-
-        String idUserS= ""+idUser;
-
-        params.put("idUser",idUserS);
-
-
-        HttpJsonParser httpJsonParser = new HttpJsonParser();
-
-        JSONArray jsonArray =  httpJsonParser.getJson(DBUsers.URLReadSingle(), params);
-
-        User user=new User();
-
-        for(int i=0; i<jsonArray.length(); i++)
-        {
-            JSONObject jsonObject=jsonArray.getJSONObject(i);
-            int id = jsonObject.getInt("idUser");
-            String username = jsonObject.getString("username");
-            String password = jsonObject.getString("password");
-            String name = jsonObject.getString("name");
-            String lastname = jsonObject.getString("lastname");
-            String email = jsonObject.getString("email");
-            String phone = jsonObject.getString("phone");
-
-            user.setId(id);
-            user.setName(name);
-            user.setLastName(lastname);
-            user.setMail(email);
-            user.setPhone(phone);
-            user.setUsername(username);
-            user.setPassword(password);
-        }
-        return user;
-    }
     public static int insertUser(String name, String lastName, String email, String phone, String userName, String password){
 
         int code = 0;
@@ -146,15 +106,6 @@ public class DBHelper  {
         return code;
     }
 
-    public static User getActualUser(String name, String lastName, String email, String phone, String userName, String password){
-        for(User user: MainActivity.USERS){
-            if(user.getName().equals(name)&&user.getLastName().equals(lastName)&&user.getMail().equals(email)&&
-            user.getPassword().equals(password)&&user.getUsername().equals(userName)){
-                return user;
-            }
-        }
-        return  null;
-    }
     public static ArrayList<TravelPackage> getAllTravelPackage() throws JSONException, ParseException {
 
         TRAVEL_PACKAGES = new ArrayList<>();
@@ -180,10 +131,8 @@ public class DBHelper  {
             int idAirport = jsonObject.getInt("idAirport");
             String touristType= jsonObject.getString("touristType");
             String typeOfRoute= jsonObject.getString("typeOfRoute");
-            Hotel hotel=  getHotelByID(idHotel);
-            Airport airport=getAirportById(idAirport);
-            /*Date startDateS=new SimpleDateFormat("dd/MM/yyyy").parse(startDate);
-            Date endDateS=new SimpleDateFormat("dd/MM/yyyy").parse(endDate);*/
+            Hotel hotel=  Data.getHotelByID(idHotel);
+            Airport airport= Data.getAirportById(idAirport);
             ArrayList<Image> listImages = Data.getAllImagesByIDPackage(id);
 
 
@@ -197,22 +146,6 @@ public class DBHelper  {
         return TRAVEL_PACKAGES;
     }
 
-    public static Hotel getHotelByID(int idHotel) throws JSONException {
-           for(Hotel hotel: MainActivity.HOTELS){
-               if(hotel.getIdHotel()==idHotel){
-                   return hotel;
-               }
-           }
-      return null;
-    }
-    public static Airport getAirportById(int idAriport) throws JSONException {
-        for(Airport airport: MainActivity.AIRPORTS){
-            if(airport.getIdAirport()==idAriport){
-                return airport;
-            }
-        }
-        return null;
-    }
     public static ArrayList<ReservationPackage> getAllReservations() throws JSONException, ParseException {
 
         RESERVATIONS = new ArrayList<>();
@@ -231,7 +164,7 @@ public class DBHelper  {
             int idTrip = jsonObject.getInt("idTrip");
             String reservationDate = jsonObject.getString("reservationDate");
             Date reservationDateS=new SimpleDateFormat("dd/MM/yyyy").parse(reservationDate);
-            User user= getUserByID(idUser);
+            User user= Data.getUserByID(idUser);
             TravelPackage travelPackage= getTravelPackageById(idTrip);
 
             ReservationPackage reservationPackage = new ReservationPackage(idReservacionPaquete,
@@ -244,6 +177,7 @@ public class DBHelper  {
         return RESERVATIONS;
 
     }
+
     public static TravelPackage  getTravelPackageById(int idReservation)  {
         for(TravelPackage travelPackage: MainActivity.TRAVEL_PACKAGES){
             if(travelPackage.getIdTravelPackage()==idReservation){
@@ -252,6 +186,7 @@ public class DBHelper  {
         }
         return null;
     }
+
     public static int insertReservationPackage(User user, int travelPackageID,String reservationDate){
 
         int code = 0;
@@ -306,6 +241,7 @@ public class DBHelper  {
         return HOTELS;
 
     }
+
     public static ArrayList<Airport> getAllAirports() throws JSONException {
 
         AIRPORTS = new ArrayList<>();
