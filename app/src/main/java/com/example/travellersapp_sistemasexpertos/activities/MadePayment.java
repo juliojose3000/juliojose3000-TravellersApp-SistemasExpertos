@@ -76,13 +76,14 @@ public class MadePayment extends BaseActivity {
 
         textViewDateEnd.setText("Hasta el: "+travelPackage.getEndDate());
 
-        message = textViewUser.getText().toString()+"\n"+
-                textViewPrice.getText().toString()+"\n"+
-                textViewAirport.getText().toString()+"\n"+
-                textViewHotel.getText().toString()+"\n"+
-                textViewPaymentDate.getText().toString()+"\n"+
-                textViewDateStart.getText().toString()+"\n"+
-                textViewDateEnd.getText().toString();
+        message =
+                " - "+textViewUser.getText().toString()+"\n"+
+                " - "+textViewPrice.getText().toString()+"\n"+
+                " - "+textViewAirport.getText().toString()+"\n"+
+                " - "+textViewHotel.getText().toString()+"\n"+
+                " - "+textViewPaymentDate.getText().toString()+"\n"+
+                " - "+textViewDateStart.getText().toString()+"\n"+
+                " - "+textViewDateEnd.getText().toString();
 
     }
 
@@ -128,7 +129,6 @@ public class MadePayment extends BaseActivity {
                         message);
 
                 try {
-                    // mail.addAttachment("/sdcard/filelocation");
 
                     if (mail.send()) {
                         flag = true;
