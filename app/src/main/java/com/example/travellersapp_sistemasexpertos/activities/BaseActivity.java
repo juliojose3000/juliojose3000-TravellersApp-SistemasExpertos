@@ -2,12 +2,15 @@ package com.example.travellersapp_sistemasexpertos.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -40,18 +43,19 @@ public class BaseActivity extends AppCompatActivity {
 
         int id = item.getItemId();
 
-        Intent i = null;
-
         if (id == R.id.item1) {
 
-            i = new Intent(this, AboutUs.class);
+            Intent i = new Intent(this, AboutUs.class);
+
+            startActivity(i);
 
         } else if (id == R.id.item2) {
 
-            Toast.makeText(this, "Salir", Toast.LENGTH_LONG).show();
+            AlertDialog diaBox = confirmMessage();
+            diaBox.show();
 
         }
-        startActivity(i);
+
 
         return super.onOptionsItemSelected(item);
     }
@@ -83,6 +87,46 @@ public class BaseActivity extends AppCompatActivity {
 
         ColorStateList colorStateList = ColorStateList.valueOf(Color.argb(255, 41, 121, 255));
         editText.setBackgroundTintList (colorStateList);
+
+    }
+
+    public AlertDialog confirmMessage()
+    {
+
+        AlertDialog myQuittingDialogBox =new AlertDialog.Builder(this)
+                //set message, title, and icon
+                .setTitle("Salir de la aplicación")
+                .setMessage("¿Está seguro que desea salir de la aplicación?")
+
+
+                .setPositiveButton("Si", new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int whichButton) {
+
+                        dialog.dismiss();
+
+                        Intent startMain = new Intent(Intent.ACTION_MAIN);
+                        startMain.addCategory(Intent.CATEGORY_HOME);
+                        startMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startMain.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(startMain);
+                        System.exit(0);
+
+                    }
+
+                })
+
+
+
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        //do nothing
+                        dialog.dismiss();
+
+                    }
+                })
+                .create();
+        return myQuittingDialogBox;
 
     }
 
