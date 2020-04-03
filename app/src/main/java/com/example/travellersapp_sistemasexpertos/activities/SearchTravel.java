@@ -39,7 +39,7 @@ public class SearchTravel extends BaseActivity {
 
         spinner_userType = findViewById(R.id.spinner_traveller_type);
 
-        editTextSearch = findViewById(R.id.editText_search);
+        //editTextSearch = findViewById(R.id.editText_search);
 
         editTextMaxprice = findViewById(R.id.editText_max_price);
 
