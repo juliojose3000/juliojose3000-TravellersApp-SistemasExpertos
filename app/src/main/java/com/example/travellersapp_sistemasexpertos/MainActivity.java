@@ -53,6 +53,7 @@ public class MainActivity extends BaseActivity {
 
         setContentView(R.layout.activity_main);
 
+
         if(!isThereInternetAccess()){
             Toast.makeText(MainActivity.this,"Compruebe su conexión a internet e intente de nuevo",Toast.LENGTH_SHORT).show();
         }
