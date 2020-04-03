@@ -31,14 +31,6 @@
 
 
         <EditText
-            android:id="@+id/editText_search"
-            style="@style/editText_Register"
-            android:hint="Buscar..."/>
-
-        <Space
-            style="@style/MySpaceStyle" />
-
-        <EditText
             android:id="@+id/editText_max_price"
             style="@style/editText_Register"
             android:hint="Precio máximo esperado"/>
@@ -47,15 +39,25 @@
             style="@style/MySpaceStyle" />
 
         <Spinner
+            android:id="@+id/spinner_amount_people"
+            style="@style/MySpinnerStyle"
+            android:entries="@array/spinner_amount_people"/>
+
+        <Space
+            style="@style/MySpaceStyle" />
+
+        <Spinner
             android:id="@+id/spinner_category"
-            style="@style/MySpinnerStyle" />
+            style="@style/MySpinnerStyle"
+            android:entries="@array/spinner_tipo_viaje"/>
 
         <Space
             style="@style/MySpaceStyle" />
 
         <Spinner
             android:id="@+id/spinner_traveller_type"
-            style="@style/MySpinnerStyle" />
+            style="@style/MySpinnerStyle"
+            android:entries="@array/spinner_tipo_viajero"/>
 
 
 

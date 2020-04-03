@@ -14,6 +14,10 @@
         <item name="android:backgroundTint">@color/myColor</item>
     </style>
 
+    <style name="SignUp_button" parent="Widget.AppCompat.Button.Colored">
+        <item name="android:backgroundTint">@color/green</item>
+    </style>
+
 
     <style name="MyEditTextStyle" parent="@android:style/Widget.EditText">
         <item name="android:backgroundTint">@color/myColor</item>
