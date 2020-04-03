@@ -3,18 +3,17 @@ package com.example.travellersapp_sistemasexpertos.domain;
 public class Image {
 
     private int idImage;
-    private int idTravelPackage;
+    private int idTouristDestination;
     private String url;
 
     public Image() {
     }
 
-    public Image(int idImage, int idTravelPackage, String url) {
+    public Image(int idImage, int idTouristDestination, String url) {
         this.idImage = idImage;
-        this.idTravelPackage = idTravelPackage;
+        this.idTouristDestination = idTouristDestination;
         this.url = url;
     }
-
 
     public int getIdImage() {
         return idImage;
@@ -24,12 +23,12 @@ public class Image {
         this.idImage = idImage;
     }
 
-    public int getIdTravelPackage() {
-        return idTravelPackage;
+    public int getIdTouristDestination() {
+        return idTouristDestination;
     }
 
-    public void setIdTravelPackage(int idTravelPackage) {
-        this.idTravelPackage = idTravelPackage;
+    public void setIdTouristDestination(int idTouristDestination) {
+        this.idTouristDestination = idTouristDestination;
     }
 
     public String getUrl() {

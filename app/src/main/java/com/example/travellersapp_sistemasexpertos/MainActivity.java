@@ -25,6 +25,7 @@ import com.example.travellersapp_sistemasexpertos.domain.Hotel;
 import com.example.travellersapp_sistemasexpertos.domain.Image;
 import com.example.travellersapp_sistemasexpertos.domain.ReservationPackage;
 import com.example.travellersapp_sistemasexpertos.domain.TouristCompany;
+import com.example.travellersapp_sistemasexpertos.domain.TouristDestination;
 import com.example.travellersapp_sistemasexpertos.domain.TravelPackage;
 import com.example.travellersapp_sistemasexpertos.domain.User;
 
@@ -44,7 +45,8 @@ public class MainActivity extends BaseActivity {
     public static ArrayList<Image> IMAGES;
     public static ArrayList<Hotel> HOTELS;
     public static ArrayList<Airport> AIRPORTS;
-
+    public static ArrayList<TouristCompany> TOURISTCOMPANIES;
+    public static ArrayList<TouristDestination> TOURISTDESTINATIONS;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,9 +67,12 @@ public class MainActivity extends BaseActivity {
                     USERS = DBHelper.getAllUsers();
                     HOTELS= DBHelper.getAllHotels();
                     AIRPORTS=DBHelper.getAllAirports();
+                    TOURISTCOMPANIES=DBHelper.getAllTouristCompany();
+                    TOURISTDESTINATIONS=DBHelper.getAllTouristDestination();
                     IMAGES = DBHelper.getAllImages();
                     TRAVEL_PACKAGES = DBHelper.getAllTravelPackage();
                     RESERVATIONS = DBHelper.getAllReservations();
+
 
 
                 } catch (JSONException e) {

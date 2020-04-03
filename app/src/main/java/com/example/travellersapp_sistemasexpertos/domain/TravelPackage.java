@@ -16,15 +16,22 @@ public class TravelPackage {
     private Airport airport;
     private String touristType;
     private String typeOfRoute;
-    private ArrayList<Image> listImages;
     private String videoURL;
+    private int numberOfPersons;
+    private TouristCompany touristCompany;
+    private ArrayList<TouristDestination> touristDestinations;
 
     public TravelPackage() {
         this.hotel=new Hotel();
         this.airport=new Airport();
+        this.touristDestinations=new ArrayList<TouristDestination>();
     }
 
-    public TravelPackage(int idTravelPackage, String startDate, String endDate, float cost, String duration, String name, String description, Hotel hotel, Airport airport, String touristType, String typeOfRoute, ArrayList<Image> listImages, String videoURL) {
+    public TravelPackage(int idTravelPackage, String startDate, String endDate, float cost,
+                         String duration, String name, String description, Hotel hotel,
+                         Airport airport, String touristType, String typeOfRoute,int numberOfPersons,
+                         String videoURL, ArrayList<TouristDestination> touristDestinations) {
+
         this.idTravelPackage = idTravelPackage;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -36,8 +43,9 @@ public class TravelPackage {
         this.airport = airport;
         this.touristType = touristType;
         this.typeOfRoute = typeOfRoute;
-        this.listImages = listImages;
         this.videoURL = videoURL;
+        this.touristDestinations=touristDestinations;
+        this.numberOfPersons=numberOfPersons;
     }
 
 
@@ -89,7 +97,27 @@ public class TravelPackage {
         return typeOfRoute;
     }
 
-    public ArrayList<Image> getListImages() {
-        return listImages;
+    public int getNumberOfPersons() {
+        return numberOfPersons;
+    }
+
+    public void setNumberOfPersons(int numberOfPersons) {
+        this.numberOfPersons = numberOfPersons;
+    }
+
+    public TouristCompany getTouristCompany() {
+        return touristCompany;
+    }
+
+    public void setTouristCompany(TouristCompany touristCompany) {
+        this.touristCompany = touristCompany;
+    }
+
+    public ArrayList<TouristDestination> getTouristDestinations() {
+        return touristDestinations;
+    }
+
+    public void setTouristDestinations(ArrayList<TouristDestination> touristDestinations) {
+        this.touristDestinations = touristDestinations;
     }
 }
