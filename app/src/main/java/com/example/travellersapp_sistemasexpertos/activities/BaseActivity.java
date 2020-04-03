@@ -69,7 +69,7 @@ public class BaseActivity extends AppCompatActivity {
 
     public boolean isThereInternetAccess(){
 
-   return true;
+        return true;
 
     }
 
