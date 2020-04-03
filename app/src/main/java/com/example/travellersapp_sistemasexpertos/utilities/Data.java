@@ -5,6 +5,7 @@ import com.example.travellersapp_sistemasexpertos.database.DBHelper;
 import com.example.travellersapp_sistemasexpertos.domain.Airport;
 import com.example.travellersapp_sistemasexpertos.domain.Hotel;
 import com.example.travellersapp_sistemasexpertos.domain.Image;
+import com.example.travellersapp_sistemasexpertos.domain.TouristDestination;
 import com.example.travellersapp_sistemasexpertos.domain.TravelPackage;
 import com.example.travellersapp_sistemasexpertos.domain.User;
 
@@ -172,20 +173,36 @@ public class Data {
 
     }
 
-    public static ArrayList<Image> getAllImagesByIDPackage(int idTravelPackage){
+    public static ArrayList<Image> getAllImagesByIdTouristDestination(int idTouristDdestination){
 
         ArrayList<Image> listImagePackageTravel = new ArrayList<>();
 
         for (Image image:
                 MainActivity.IMAGES) {
 
-            if(image.getIdTravelPackage()==idTravelPackage){
+            if(image.getIdTouristDestination()==idTouristDdestination){
                 listImagePackageTravel.add(image);
             }
 
         }
 
         return listImagePackageTravel;
+
+    }
+    public static ArrayList<TouristDestination> getAllTouristDestinationsByIdPackage(int idTravelPackage){
+
+        ArrayList<TouristDestination> touristDestinations = new ArrayList<>();
+
+        for (TouristDestination touristDestination:
+                MainActivity.TOURISTDESTINATIONS) {
+
+            if(touristDestination.getIdTravelPackage()==idTravelPackage){
+                touristDestinations.add(touristDestination);
+            }
+
+        }
+
+        return touristDestinations;
 
     }
 
