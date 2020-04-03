@@ -54,6 +54,12 @@ public class BaseActivity extends AppCompatActivity {
             AlertDialog diaBox = confirmMessage();
             diaBox.show();
 
+        }else if (id == R.id.item3) {
+
+            Intent i = new Intent(this, Login.class);
+
+            startActivity(i);
+
         }
 
 

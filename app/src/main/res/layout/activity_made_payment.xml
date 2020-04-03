@@ -17,8 +17,8 @@
         <TextView
             android:id="@+id/textView"
             style="@style/MyTextViewStyle_Title"
-            android:text="Gracias por su compra"
-            android:textSize="34dp" />
+            android:text="Su paquete ha sido reservado"
+            android:textSize="25dp" />
 
 
     </LinearLayout>

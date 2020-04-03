@@ -63,7 +63,7 @@ public class SearchTravel extends BaseActivity {
             return;
         }
 
-        String search = editTextSearch.getText().toString();
+        String search = "";
 
         float maxPrice = Float.parseFloat(editTextMaxprice.getText().toString().equals("")?"0":editTextMaxprice.getText().toString());
 

@@ -6,8 +6,14 @@
         android:title="Acerca de nosotros" />
 
     <item
+        android:id="@+id/item3"
+        android:title="Iniciar sesión" />
+
+    <item
         android:id="@+id/item2"
         android:title="Salir" />
+
+
 
 
 </menu>
