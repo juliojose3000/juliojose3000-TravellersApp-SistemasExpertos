@@ -29,7 +29,7 @@ public class TravellsResults extends BaseActivity {
 
         Bundle bundle = getIntent().getExtras();
 
-        String searchText = bundle.getString("search");
+        String amountOfPeople = bundle.getString("amountOfPeople");
 
         float maxPrice = bundle.getFloat("maxPrice");
 
@@ -37,7 +37,7 @@ public class TravellsResults extends BaseActivity {
 
         String userType = bundle.getString("userType");
 
-        listViewAdapter = new ListViewAdapter(Data.getTravells(searchText, maxPrice, categoryTravel, userType), TravellsResults.this);
+        listViewAdapter = new ListViewAdapter(Data.getPackages(amountOfPeople, maxPrice, categoryTravel, userType), TravellsResults.this);
 
         listViewItems.setAdapter(listViewAdapter);
 
@@ -52,7 +52,7 @@ public class TravellsResults extends BaseActivity {
 
                 TravelPackage travelPackage = (TravelPackage) listViewAdapter.getItem(position);
 
-                Intent i = new Intent(TravellsResults.this, TravelChosen.class);
+                Intent i = new Intent(TravellsResults.this, PackageChosen.class);
 
                 i.putExtra("travelPackage", travelPackage.getIdTravelPackage());
 

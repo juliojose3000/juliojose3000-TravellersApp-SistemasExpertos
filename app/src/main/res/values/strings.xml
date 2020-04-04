@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">World Travellers</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
+    
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="about_us">
         Somos una empresa creada en 2020
@@ -32,9 +31,12 @@
 
 
     <string-array name="spinner_amount_people">
+        <item>Cantidad de personas</item>
+        <item>1 persona</item>
         <item>2 personas</item>
-        <item>Arriesgado</item>
-        <item>Científico</item>
+        <item>3 personas</item>
+        <item>4 personas</item>
+        <item>5 personas</item>
     </string-array>
 
 </resources>

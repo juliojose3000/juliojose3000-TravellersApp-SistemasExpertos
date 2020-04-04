@@ -144,9 +144,11 @@ public class DBHelper  {
             Airport airport= Data.getAirportById(idAirport);
             ArrayList<TouristDestination> touristDestinations = Data.getAllTouristDestinationsByIdPackage(id);
 
-
+            //todo descomentar
+            /*TravelPackage travelPackage=new TravelPackage(id, startDate, endDate, cost, duration, name,
+                    description, hotel, airport, touristType, typeOfRoute,numberOfPersons, videoURL,touristDestinations);*/
             TravelPackage travelPackage=new TravelPackage(id, startDate, endDate, cost, duration, name,
-                    description, hotel, airport, touristType, typeOfRoute,numberOfPersons, videoURL,touristDestinations);
+                    description, hotel, airport, touristType, typeOfRoute,numberOfPersons, touristDestinations);
 
          TRAVEL_PACKAGES.add(travelPackage);
 
@@ -336,6 +338,7 @@ public class DBHelper  {
         return TOURISTDESTINATIONS;
 
     }
+
     public static ArrayList<Image> getAllImages() throws JSONException {
 
         IMAGES = new ArrayList();

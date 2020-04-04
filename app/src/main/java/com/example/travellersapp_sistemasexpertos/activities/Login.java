@@ -77,7 +77,7 @@ public class Login extends BaseActivity {
 
         if(Data.areValidCredentials(username, password)){
 
-            Intent i = new Intent(this, MainInterface.class);
+            Intent i = new Intent(this, SearchTravel.class);
 
             finish();
 

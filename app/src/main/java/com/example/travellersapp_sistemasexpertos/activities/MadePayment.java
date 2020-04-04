@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import com.example.travellersapp_sistemasexpertos.R;
 import com.example.travellersapp_sistemasexpertos.utilities.Data;
-import com.example.travellersapp_sistemasexpertos.domain.Dates;
+import com.example.travellersapp_sistemasexpertos.utilities.Dates;
 import com.example.travellersapp_sistemasexpertos.domain.TravelPackage;
 import com.example.travellersapp_sistemasexpertos.domain.User;
 import com.example.travellersapp_sistemasexpertos.utilities.SentMail;

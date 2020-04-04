@@ -20,7 +20,7 @@ public class SearchTravel extends BaseActivity {
 
     Spinner spinner_userType;
 
-    EditText editTextSearch;
+    Spinner spinner_people;
 
     EditText editTextMaxprice;
 
@@ -39,7 +39,7 @@ public class SearchTravel extends BaseActivity {
 
         spinner_userType = findViewById(R.id.spinner_traveller_type);
 
-        //editTextSearch = findViewById(R.id.editText_search);
+        spinner_people = findViewById(R.id.spinner_amount_people);
 
         editTextMaxprice = findViewById(R.id.editText_max_price);
 
@@ -63,7 +63,7 @@ public class SearchTravel extends BaseActivity {
             return;
         }
 
-        String search = "";
+        String amountOfPeople = spinner_people.getSelectedItem().toString();
 
         float maxPrice = Float.parseFloat(editTextMaxprice.getText().toString().equals("")?"0":editTextMaxprice.getText().toString());
 
@@ -73,7 +73,7 @@ public class SearchTravel extends BaseActivity {
 
         Intent i = new Intent(this, TravellsResults.class);
 
-        i.putExtra("search", search);
+        i.putExtra("amountOfPeople", amountOfPeople);
 
         i.putExtra("maxPrice", maxPrice);
 

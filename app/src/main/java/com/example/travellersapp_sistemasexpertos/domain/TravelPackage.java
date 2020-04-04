@@ -30,7 +30,7 @@ public class TravelPackage {
     public TravelPackage(int idTravelPackage, String startDate, String endDate, float cost,
                          String duration, String name, String description, Hotel hotel,
                          Airport airport, String touristType, String typeOfRoute,int numberOfPersons,
-                         String videoURL, ArrayList<TouristDestination> touristDestinations) {
+                         ArrayList<TouristDestination> touristDestinations) {
 
         this.idTravelPackage = idTravelPackage;
         this.startDate = startDate;

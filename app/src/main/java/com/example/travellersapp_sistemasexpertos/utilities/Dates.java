@@ -1,4 +1,4 @@
-package com.example.travellersapp_sistemasexpertos.domain;
+package com.example.travellersapp_sistemasexpertos.utilities;
 
 
 import java.text.ParseException;
