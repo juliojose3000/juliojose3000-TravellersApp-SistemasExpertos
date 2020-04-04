@@ -110,8 +110,7 @@ public class SingUp extends BaseActivity {
         changeGoodColorEditText(editTextPassword2);
         changeGoodColorEditText(editTextPassword);
 
-        //todo descomentar
-        /*new AsyncTask<Void, Void, Void>() {
+        new AsyncTask<Void, Void, Void>() {
 
             @Override
             protected Void doInBackground(Void... voids) {
@@ -121,7 +120,7 @@ public class SingUp extends BaseActivity {
                 return null;
             }
 
-        }.execute();*/
+        }.execute();
 
         if(MainActivity.USERS.size()==0){
 

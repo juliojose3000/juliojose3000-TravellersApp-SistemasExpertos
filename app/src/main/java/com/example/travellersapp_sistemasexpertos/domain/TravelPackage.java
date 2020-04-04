@@ -16,7 +16,6 @@ public class TravelPackage {
     private Airport airport;
     private String touristType;
     private String typeOfRoute;
-    private String videoURL;
     private int numberOfPersons;
     private TouristCompany touristCompany;
     private ArrayList<TouristDestination> touristDestinations;
@@ -43,15 +42,10 @@ public class TravelPackage {
         this.airport = airport;
         this.touristType = touristType;
         this.typeOfRoute = typeOfRoute;
-        this.videoURL = videoURL;
         this.touristDestinations=touristDestinations;
         this.numberOfPersons=numberOfPersons;
     }
 
-
-    public String getVideoURL() {
-        return videoURL;
-    }
 
     public int getIdTravelPackage() {
         return idTravelPackage;

@@ -63,8 +63,8 @@ public class TravelChosen extends BaseActivity {
         TouristDestination touristDestination = Data.getTouristDestinationById(idTouristDestination);
 
         textViewTravelName.setText(touristDestination.getName());
-        //todo establecer la descricion por medio del get
-        textViewDescription.setText("Descripción: "+"touristDestination.getDescription()");
+
+        textViewDescription.setText("Descripción: "+touristDestination.getDescription());
 
         RequestOptions requestOptions = new RequestOptions();
 
@@ -105,7 +105,7 @@ public class TravelChosen extends BaseActivity {
 
         mediacontroller = new MediaController(this);
         mediacontroller.setAnchorView(videoView);
-        String uriPath = touristDestination.getVideoURL(); //update package name
+        String uriPath = touristDestination.getURLVideo(); //update package name
         uri = Uri.parse(uriPath);
 
         videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {

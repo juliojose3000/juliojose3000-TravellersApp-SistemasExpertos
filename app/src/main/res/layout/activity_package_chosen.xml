@@ -19,6 +19,7 @@
         <TextView
             android:id="@+id/textView_package_name"
             style="@style/MyTextViewStyle_Title"
+            android:textSize="25dp"
             android:text="Gira por sudamerica" />
 
     </LinearLayout>
@@ -64,6 +65,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="15dp"></Space>
 
                 <TextView
                     android:id="@+id/textView_price_package_chosen"

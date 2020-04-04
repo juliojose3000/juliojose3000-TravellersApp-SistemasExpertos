@@ -26,7 +26,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="100"
+        android:layout_weight="110"
         android:orientation="vertical">
 
         <HorizontalScrollView
@@ -64,12 +64,14 @@
             <TextView
                 android:id="@+id/textView_price_travel_chosen"
                 style="@style/MyTextViewStyle_Text"
+                android:layout_marginLeft="15dp"
                 android:text="Precio: $ 5.000" />
 
 
             <TextView
                 android:id="@+id/textView_description_travel_chosen"
-                style="@style/MyTextViewStyle_Text"
+                style="@style/MyTextViewStyle_Explanation"
+                android:layout_margin="15dp"
                 android:text="Descripcion: un lugar muy loquillo" />
 
         </LinearLayout>
@@ -79,15 +81,15 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="170"
+        android:layout_weight="180"
         android:gravity="center"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="horizontal">
 
 
             <Button

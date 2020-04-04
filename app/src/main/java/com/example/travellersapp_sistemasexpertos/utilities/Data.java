@@ -334,7 +334,7 @@ public class Data {
         listImages.add(image5);
 
         TouristDestination touristDestination = new TouristDestination(1, "Alla por Loaiza", "Chirripo",
-                "https://loaiza4ever.000webhostapp.com/videos/Chirripo.mp4", listImages,1 );
+                listImages,1,"https://loaiza4ever.000webhostapp.com/videos/Chirripo.mp4","Un lugar muy alto jaja" );
 
         ArrayList<TouristDestination> listaDestinos = new ArrayList<>();
         listaDestinos.add(touristDestination);
@@ -356,7 +356,7 @@ public class Data {
         listImages.add(image5);
 
         TouristDestination touristDestination2 = new TouristDestination(2, "En el sur", "Manuel Antonio",
-                "https://loaiza4ever.000webhostapp.com/videos/manuelAntonio.mp4", listImages,1 );
+                 listImages,1,"https://loaiza4ever.000webhostapp.com/videos/manuelAntonio.mp4", "playa playaaaa" );
 
         listaDestinos.add(touristDestination2);
 

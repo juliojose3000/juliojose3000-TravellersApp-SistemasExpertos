@@ -62,8 +62,8 @@ public class MainActivity extends BaseActivity {
             Toast.makeText(MainActivity.this,"Compruebe su conexión a internet e intente de nuevo",Toast.LENGTH_SHORT).show();
         }
 
-        //todo descomentar esto
-        /*thread = new Thread(){
+
+        thread = new Thread(){
             public void run(){
                 try {
 
@@ -71,8 +71,8 @@ public class MainActivity extends BaseActivity {
                     HOTELS= DBHelper.getAllHotels();
                     AIRPORTS=DBHelper.getAllAirports();
                     TOURISTCOMPANIES=DBHelper.getAllTouristCompany();
-                    TOURISTDESTINATIONS=DBHelper.getAllTouristDestination();
                     IMAGES = DBHelper.getAllImages();
+                    TOURISTDESTINATIONS=DBHelper.getAllTouristDestination();
                     TRAVEL_PACKAGES = DBHelper.getAllTravelPackage();
                     RESERVATIONS = DBHelper.getAllReservations();
 
@@ -86,10 +86,9 @@ public class MainActivity extends BaseActivity {
 
             }
         };
-        thread.start();*/
+        thread.start();
 
-        //todo borrar esto
-        Data.fillList();
+        //Data.fillList();
 
     }
 
@@ -139,7 +138,6 @@ public class MainActivity extends BaseActivity {
 
     }
 
-    //todo cambiar por iniciar normalmente
     public void continues(View v){
 
         Intent i = new Intent(this, SearchTravel.class);
