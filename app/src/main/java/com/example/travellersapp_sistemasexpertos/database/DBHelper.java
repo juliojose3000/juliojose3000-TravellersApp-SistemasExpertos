@@ -325,11 +325,10 @@ public class DBHelper  {
             int idTouristDestination = jsonObject.getInt("idtouristdestination");
             String address = jsonObject.getString("address");
             String name = jsonObject.getString("name");
-            String videoURL = jsonObject.getString("videoURL");
             int idTravelPackage=jsonObject.getInt("idTravelPackage");
             ArrayList<Image>imagesList= Data.getAllImagesByIdTouristDestination(idTouristDestination);
             TouristDestination touristDestinations=new TouristDestination(idTouristDestination
-                    ,address,name,videoURL,imagesList,idTravelPackage);
+                    ,address,name,imagesList,idTravelPackage);
 
             TOURISTDESTINATIONS.add(touristDestinations);
 
@@ -354,7 +353,7 @@ public class DBHelper  {
         for(int i=0; i<jsonArray.length(); i++)
         {
             JSONObject jsonObject=jsonArray.getJSONObject(i);
-            int idImage = jsonObject.getInt("imagetouristdestination");
+            int idImage = jsonObject.getInt("idImageTouristDestination");
             int idTouristDestination = jsonObject.getInt("idTouristDestination");
             String imageURL = jsonObject.getString("imageURL");
 
