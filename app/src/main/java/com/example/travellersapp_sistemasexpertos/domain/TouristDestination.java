@@ -7,19 +7,17 @@ public class TouristDestination {
     private int idTravelPackage;
     private String address;
     private String name;
-    private String videoURL;
     private ArrayList<Image> listImages;
 
     public TouristDestination() {
         this.listImages=new ArrayList<Image>();
     }
 
-    public TouristDestination(int idTouristDestination, String address, String name, String videoURL,ArrayList<Image> listImages
+    public TouristDestination(int idTouristDestination, String address, String name,ArrayList<Image> listImages
     , int idTravelPackage) {
         this.idTouristDestination = idTouristDestination;
         this.address = address;
         this.name = name;
-        this.videoURL = videoURL;
         this.listImages=listImages;
         this.idTravelPackage=idTravelPackage;
     }
@@ -47,15 +45,7 @@ public class TouristDestination {
     public void setName(String name) {
         this.name = name;
     }
-
-    public String getVideoURL() {
-        return videoURL;
-    }
-
-    public void setVideoURL(String videoURL) {
-        this.videoURL = videoURL;
-    }
-
+    
     public ArrayList<Image> getListImages() {
         return listImages;
     }
