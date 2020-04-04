@@ -18,6 +18,7 @@ import com.example.travellersapp_sistemasexpertos.utilities.SentMail;
 
 public class MadePayment extends BaseActivity {
 
+    TextView textViewPaquete;
     TextView textViewUser;
     TextView textViewPrice;
     TextView textViewAirport;
@@ -45,6 +46,10 @@ public class MadePayment extends BaseActivity {
         int idPackage = bundle.getInt("idTravelPackage");
 
         TravelPackage travelPackage = Data.getTravelPackageById(idPackage);
+
+        textViewPaquete = findViewById(R.id.textView_paquete);
+
+        textViewPaquete.setText(travelPackage.getName());
 
         textViewUser = findViewById(R.id.textView_user);
 
@@ -90,7 +95,7 @@ public class MadePayment extends BaseActivity {
 
     public void finish(View v){
 
-        Intent i = new Intent(this, MainInterface.class);
+        Intent i = new Intent(this, SearchTravel.class);
 
         startActivity(i);
 

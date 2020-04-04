@@ -218,43 +218,24 @@ public class PackageChosen extends BaseActivity {
             return;
         }
 
-        AlertDialog diaBox = askOption();
-        diaBox.show();
+        if(Data.loggedUser==null){
 
-    }
+            AlertDialog diaBox = askOption(
+                    "No ha iniciado sesión","¿Desea iniciar sesión para poder realizar la reservación?",
+                    "Aceptar","Cancelar","inisiarSesion",this);
 
+            diaBox.show();
 
-    public AlertDialog askOption()
-    {
+        }else {
 
-        AlertDialog myQuittingDialogBox =new AlertDialog.Builder(this)
-                //set message, title, and icon
-                .setTitle("Confirme la reservación")
-                .setMessage("¿Está seguro que desea reservar este paquete turístico?")
+            AlertDialog diaBox = askOption(
+                    "Confirme la reservación", "¿Está seguro que desea reservar este paquete turístico?",
+                    "Aceptar", "Cancelar", "makePayment", this);
 
+            diaBox.show();
 
-                .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+        }
 
-                    public void onClick(DialogInterface dialog, int whichButton) {
-
-                        makePayment();
-
-                        dialog.dismiss();
-                    }
-
-                })
-
-
-
-                .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        //do nothing
-                        dialog.dismiss();
-
-                    }
-                })
-                .create();
-        return myQuittingDialogBox;
 
     }
 

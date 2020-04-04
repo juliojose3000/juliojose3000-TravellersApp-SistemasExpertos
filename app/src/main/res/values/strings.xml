@@ -17,6 +17,15 @@
         máximo.
     </string>
 
+    <string name="explanation">
+
+        Escoja los criterios que desea que se tomen en\n
+        cuenta a la hora de realizar la busqueda de los\n
+        paquetes. Sino los especifica simplemente no se\n
+        tomaran en cuenta para la busqueda
+
+    </string>
+
     <string-array name="spinner_tipo_viaje">
         <item>Tipo de viaje</item>
         <item>Automóvil</item>

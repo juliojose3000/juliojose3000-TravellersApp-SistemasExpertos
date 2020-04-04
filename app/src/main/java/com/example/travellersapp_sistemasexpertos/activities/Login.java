@@ -24,6 +24,10 @@ public class Login extends BaseActivity {
 
     private Button loginButton;
 
+    private String whereIGo = "";
+
+    private Button buttonCreateNewAccount;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -31,11 +35,19 @@ public class Login extends BaseActivity {
 
         setContentView(R.layout.activity_login);
 
+        final Bundle bundle = getIntent().getExtras();
+
+        if(bundle!=null){
+            whereIGo = bundle.getString("whereIGo");
+        }
+
         editText_password = findViewById(R.id.editText_password);
 
         editText_username = findViewById(R.id.editText_username);
 
         loginButton = findViewById(R.id.login_button);
+
+        buttonCreateNewAccount = findViewById(R.id.button_create_new_account);
 
         loginButton.setOnClickListener(new View.OnClickListener(){
 
@@ -44,6 +56,27 @@ public class Login extends BaseActivity {
                 login();
             }
         });
+
+        buttonCreateNewAccount.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+
+                Intent i = new Intent(Login.this, SingUp.class);
+
+                if(bundle!=null){
+                    i.putExtra("whereIGo","");
+                }
+
+                startActivity(i);
+
+                finish();
+
+            }
+        });
+
+
+
 
     }
 
@@ -77,11 +110,23 @@ public class Login extends BaseActivity {
 
         if(Data.areValidCredentials(username, password)){
 
-            Intent i = new Intent(this, SearchTravel.class);
+            if(whereIGo.equals("searchTravel")){
 
-            finish();
+                Intent i = new Intent(this, SearchTravel.class);
 
-            startActivity(i);
+                finish();
+
+                startActivity(i);
+
+            }else {
+
+                finish();
+
+                Toast.makeText(this, "Bienvenido "+Data.loggedUser.getName(), Toast.LENGTH_SHORT).show();
+
+            }
+
+
 
         }else{
 

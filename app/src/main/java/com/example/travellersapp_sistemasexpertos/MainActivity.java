@@ -133,6 +133,8 @@ public class MainActivity extends BaseActivity {
 
         Intent i = new Intent(this, Login.class);
 
+        i.putExtra("whereIGo", "searchTravel");
+
         startActivity(i);
 
     }

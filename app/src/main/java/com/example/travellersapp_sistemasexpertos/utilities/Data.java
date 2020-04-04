@@ -17,7 +17,7 @@ import java.util.Random;
 
 public class Data {
 
-    public static User loggedUser = new User();
+    public static User loggedUser;
 
     public static boolean areValidCredentials(String username, String password){
 
@@ -38,7 +38,7 @@ public class Data {
 
     public static boolean doesThisUsernameExists(String username){
 
-        for (User user: DBHelper.USERS) {
+        for (User user: MainActivity.USERS) {
 
             if(user.getUsername().equals(username)){
                 return true;

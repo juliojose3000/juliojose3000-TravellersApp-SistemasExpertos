@@ -48,6 +48,11 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/textView_paquete"
+            style="@style/MyTextViewStyle_Text"
+            android:text="Paquete paquetudo" />
+
+        <TextView
             android:id="@+id/textView_user"
             style="@style/MyTextViewStyle_Text"
             android:text="Cliente: Julio Segura Ch." />
