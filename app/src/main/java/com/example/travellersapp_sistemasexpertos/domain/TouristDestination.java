@@ -45,7 +45,7 @@ public class TouristDestination {
     public void setName(String name) {
         this.name = name;
     }
-    
+
     public ArrayList<Image> getListImages() {
         return listImages;
     }
