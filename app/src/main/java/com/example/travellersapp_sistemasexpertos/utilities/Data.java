@@ -12,7 +12,10 @@ import com.example.travellersapp_sistemasexpertos.domain.TravelPackage;
 import com.example.travellersapp_sistemasexpertos.domain.User;
 
 import org.json.JSONException;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.Random;
 
 public class Data {
@@ -363,9 +366,9 @@ public class Data {
         //----------------------------------------------------------------------------------------//
 
         TravelPackage travelPackage = new TravelPackage(
-                1, "10 de enero 2020", "22 de enero 2020", 50, "3 dias",
+                1, "10 de enero 2020", "22 de enero 2020", 500000, "3 dias",
                 "Tour sudamericano", "Un tour por las montañSA DE costa rica", hotel, airport,
-                "Cientifico", "4x4", 5, listaDestinos);
+                "Aventurero", "4x4", 5, listaDestinos, "Playa");
 
         User user = new User(1, "juliojose3000", "123", "Julio",
                 "Segura", "87349630", "juliojose3000@gmail.com");
@@ -385,6 +388,9 @@ public class Data {
 
 
         MainActivity.TRAVEL_PACKAGES.add(travelPackage);
+        MainActivity.TRAVEL_PACKAGES.add(travelPackage);
+        MainActivity.TRAVEL_PACKAGES.add(travelPackage);
+        MainActivity.TRAVEL_PACKAGES.add(travelPackage);
 
         MainActivity.TOURISTDESTINATIONS = listaDestinos;
 
@@ -397,5 +403,124 @@ public class Data {
         MainActivity.HOTELS.add(hotel);
 
     }
+
+    public static ArrayList<TravelPackage> getResults(double amountOfPeopleUser, double maxPriceUser, double categoryUser, double userTypeUser){
+
+        //Almaceno todos los paquetes en una lista
+        //todo la lista estatica se vacia. Arreglar
+        ArrayList<TravelPackage> packageList = MainActivity.TRAVEL_PACKAGES;
+
+        ArrayList<TravelPackage> packagesListSort = new ArrayList<>();
+
+        //recorro la lista hasta que no queden elementos en la misma
+        int i = 1;
+
+        while(i<=packageList.size()){
+
+            System.out.println("Algoritmo de euclides, tamaño lista: "+packageList.size());
+
+            //sobre esta variable aplico euclides, la inicializo en cualquier valor elevedo para evitar
+            //errores de logica.
+            double distanciaMinima = 10000;
+
+            //paquete euclidiano: una vez que se encuentra el mas parecido, lo remuevo de la lista para
+            //buscar los siguientes mas parecidos
+            TravelPackage paqueteEuclidiano = null;
+
+            //recorro la lista de paquetes en busca de los que son mas parecidos
+            for (TravelPackage travelPackage: packageList) {
+
+                double price = maxPriceValue(travelPackage.getCost());
+                double people = travelPackage.getNumberOfPersons();
+                double categoryValue = getCategoryValue((travelPackage.getTravelType()));
+                double userTypePackage = getUserTypeValue(travelPackage.getTouristType());
+
+                //aplico euclides
+
+                double dist = Math.sqrt(
+                        Math.pow((amountOfPeopleUser-people), 2) +
+                        Math.pow((categoryUser-categoryValue), 2) +
+                        Math.pow((userTypeUser-userTypePackage), 2) +
+                        Math.pow((maxPriceUser-price), 2)
+
+                );
+
+                //pregunto si la distancia es menor que la distancia minima(el mas parecido), si es asi
+                //establezco una nueva distancia minima y guardo el paquete que, por ahora, es el mas
+                //similar a los gustos del usuario
+                if(dist<distanciaMinima){
+
+                    distanciaMinima = dist;
+
+                    paqueteEuclidiano = travelPackage;
+
+                }
+
+
+            }
+            //por lo tanto, el primer elemento de esta lista será el paquete que más concuerde con
+            //los filtros establecidos por el usuario al menos parecido, osea el ultimo elemento de
+            //la lista
+            packagesListSort.add(paqueteEuclidiano);
+
+            //remuevo el paquete que se acaba de agregar a la lista anterior para ir en busca de
+            //los siguientes mas parecidos
+            packageList.remove(paqueteEuclidiano);
+
+        }
+
+
+        return packagesListSort;
+
+
+    }
+
+    public static double maxPriceValue(double maxPrice){
+
+        if(maxPrice==0.0) {
+            return 3;
+        }else if(maxPrice<100){
+            return 1;
+        }else if(maxPrice<200){
+            return 2;
+        }else if(maxPrice<300){
+            return 4;
+        }else{
+            return 5;
+        }
+
+    }
+
+    public static double getCategoryValue(String category){
+
+        Hashtable<String, Integer> categoryValues = new Hashtable<>();
+
+        // Convierto a un valor numerico la categoria del viaje
+        categoryValues.put("Cualquier tipo de viaje", 3);
+        categoryValues.put("Playa", 1);
+        categoryValues.put("Playa y Montana", 2);
+        categoryValues.put("Montana", 3);
+        categoryValues.put("Ciudad", 4);
+        categoryValues.put("Isla", 5);
+
+        return categoryValues.get(category);
+
+
+    }
+
+    public static double getUserTypeValue(String userType){
+
+        Hashtable<String, Integer> userTypeValues = new Hashtable<>();
+
+        // Convierto en un valor numerico el tipo de usuario
+        userTypeValues.put("Cualquier tipo de usuario", 3);
+        userTypeValues.put("Relajado", 1);
+        userTypeValues.put("Aventurero", 2);
+        userTypeValues.put("Deportista", 3);
+
+        return userTypeValues.get(userType);
+
+    }
+
 
 }

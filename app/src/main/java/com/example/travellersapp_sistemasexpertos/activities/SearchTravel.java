@@ -90,9 +90,11 @@ public class SearchTravel extends BaseActivity {
         arrayListCategories = new ArrayList();
 
         arrayListCategories.add("Cualquier tipo de viaje");
-        arrayListCategories.add("Automóvil");
-        arrayListCategories.add("4x4");
-        arrayListCategories.add("lancha");
+        arrayListCategories.add("Playa");
+        arrayListCategories.add("Playa y Montana");
+        arrayListCategories.add("Montana");
+        arrayListCategories.add("Ciudad");
+        arrayListCategories.add("Isla");
 
         ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item,arrayListCategories);
 
@@ -107,9 +109,9 @@ public class SearchTravel extends BaseActivity {
         listUsersTypes = new ArrayList<>();
 
         listUsersTypes.add("Cualquier tipo de usuario");
-        listUsersTypes.add("Tranquilo");
+        listUsersTypes.add("Relajado");
         listUsersTypes.add("Aventurero");
-        listUsersTypes.add("Científico");
+        listUsersTypes.add("Deportista");
 
         ArrayAdapter adapter2 = new ArrayAdapter(this,android.R.layout.simple_spinner_item,listUsersTypes);
 

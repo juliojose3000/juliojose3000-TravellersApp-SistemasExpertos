@@ -41,11 +41,11 @@
 
     <string-array name="spinner_amount_people">
         <item>Cantidad de personas</item>
-        <item>1 persona</item>
-        <item>2 personas</item>
-        <item>3 personas</item>
-        <item>4 personas</item>
-        <item>5 personas</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
     </string-array>
 
 </resources>

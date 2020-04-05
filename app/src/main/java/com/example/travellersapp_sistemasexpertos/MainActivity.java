@@ -62,8 +62,7 @@ public class MainActivity extends BaseActivity {
             Toast.makeText(MainActivity.this,"Compruebe su conexión a internet e intente de nuevo",Toast.LENGTH_SHORT).show();
         }
 
-
-        thread = new Thread(){
+        /*thread = new Thread(){
             public void run(){
                 try {
 
@@ -77,7 +76,6 @@ public class MainActivity extends BaseActivity {
                     RESERVATIONS = DBHelper.getAllReservations();
 
 
-
                 } catch (JSONException e) {
                     e.printStackTrace();
                 } catch (ParseException e) {
@@ -86,10 +84,10 @@ public class MainActivity extends BaseActivity {
 
             }
         };
-        thread.start();
+        thread.start();*/
 
         //Data.fillList();
-
+        //Data.getResults("",50,"", "");
     }
 
     public static void loadDataFromDB(final Context context){

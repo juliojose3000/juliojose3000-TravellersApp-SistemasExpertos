@@ -140,12 +140,13 @@ public class DBHelper  {
             int numberOfPersons = jsonObject.getInt("numberOfPersons");
             String touristType= jsonObject.getString("touristType");
             String typeOfRoute= jsonObject.getString("typeOfRoute");
+            String travelType= jsonObject.getString("travelType");
             Hotel hotel=  Data.getHotelByID(idHotel);
             Airport airport= Data.getAirportById(idAirport);
             ArrayList<TouristDestination> touristDestinations = Data.getAllTouristDestinationsByIdPackage(id);
 
             TravelPackage travelPackage=new TravelPackage(id, startDate, endDate, cost, duration, name,
-                    description, hotel, airport, touristType, typeOfRoute,numberOfPersons, touristDestinations);
+                    description, hotel, airport, touristType, typeOfRoute,numberOfPersons, touristDestinations, travelType);
 
          TRAVEL_PACKAGES.add(travelPackage);
 
@@ -172,7 +173,7 @@ public class DBHelper  {
             int idUser = jsonObject.getInt("idUser");
             int idTrip = jsonObject.getInt("idTrip");
             String reservationDate = jsonObject.getString("reservationDate");
-            Date reservationDateS=new SimpleDateFormat("dd/MM/yyyy").parse(reservationDate);
+            Date reservationDateS=new SimpleDateFormat("yyyy-MM-dd").parse(reservationDate);
             User user= Data.getUserByID(idUser);
             TravelPackage travelPackage= getTravelPackageById(idTrip);
 
