@@ -134,25 +134,26 @@ public class DBHelper  {
             float cost = jsonObject.getLong("cost");
             String duration = jsonObject.getString("duration");
             String description = jsonObject.getString("description");
-            String videoURL = jsonObject.getString("videoURL");
+            //String videoURL = jsonObject.getString("videoURL");
             int idHotel = jsonObject.getInt("idHotel");
             int idAirport = jsonObject.getInt("idAirport");
             int numberOfPersons = jsonObject.getInt("numberOfPersons");
             String touristType= jsonObject.getString("touristType");
             String typeOfRoute= jsonObject.getString("typeOfRoute");
+            String travelType= jsonObject.getString("travelType");
             Hotel hotel=  Data.getHotelByID(idHotel);
             Airport airport= Data.getAirportById(idAirport);
             ArrayList<TouristDestination> touristDestinations = Data.getAllTouristDestinationsByIdPackage(id);
 
-
             TravelPackage travelPackage=new TravelPackage(id, startDate, endDate, cost, duration, name,
-                    description, hotel, airport, touristType, typeOfRoute,numberOfPersons, videoURL,touristDestinations);
+                    description, hotel, airport, touristType, typeOfRoute,numberOfPersons, touristDestinations, travelType);
 
          TRAVEL_PACKAGES.add(travelPackage);
 
         }
 
         return TRAVEL_PACKAGES;
+
     }
 
     public static ArrayList<ReservationPackage> getAllReservations() throws JSONException, ParseException {
@@ -172,7 +173,7 @@ public class DBHelper  {
             int idUser = jsonObject.getInt("idUser");
             int idTrip = jsonObject.getInt("idTrip");
             String reservationDate = jsonObject.getString("reservationDate");
-            Date reservationDateS=new SimpleDateFormat("dd/MM/yyyy").parse(reservationDate);
+            Date reservationDateS=new SimpleDateFormat("yyyy-MM-dd").parse(reservationDate);
             User user= Data.getUserByID(idUser);
             TravelPackage travelPackage= getTravelPackageById(idTrip);
 
@@ -281,7 +282,7 @@ public class DBHelper  {
 
     public static ArrayList<TouristCompany> getAllTouristCompany() throws JSONException {
 
-        AIRPORTS = new ArrayList<>();
+        TOURISTCOMPANIES = new ArrayList<>();
 
         Map<String, String> params = new HashMap<>();
 
@@ -309,24 +310,28 @@ public class DBHelper  {
 
     public static ArrayList<TouristDestination> getAllTouristDestination() throws JSONException {
 
-        AIRPORTS = new ArrayList<>();
+        TOURISTDESTINATIONS = new ArrayList<>();
 
         Map<String, String> params = new HashMap<>();
 
         HttpJsonParser httpJsonParser = new HttpJsonParser();
 
-        JSONArray jsonArray =  httpJsonParser.getJson(DBTouristCompany.URLRead(), params);
+        String read = "https://loaiza4ever.000webhostapp.com/TravellersApi/api/touristDestination/read.php";
+
+        JSONArray jsonArray =  httpJsonParser.getJson(read, params);
 
         for(int i=0; i<jsonArray.length(); i++)
         {
             JSONObject jsonObject=jsonArray.getJSONObject(i);
             int idTouristDestination = jsonObject.getInt("idtouristdestination");
+            String URLVideo = jsonObject.getString("videoURL");
             String address = jsonObject.getString("address");
             String name = jsonObject.getString("name");
+            String description = jsonObject.getString("description");
             int idTravelPackage=jsonObject.getInt("idTravelPackage");
             ArrayList<Image>imagesList= Data.getAllImagesByIdTouristDestination(idTouristDestination);
             TouristDestination touristDestinations=new TouristDestination(idTouristDestination
-                    ,address,name,imagesList,idTravelPackage);
+                    ,address,name,imagesList,idTravelPackage, URLVideo, description);
 
             TOURISTDESTINATIONS.add(touristDestinations);
 
@@ -335,6 +340,7 @@ public class DBHelper  {
         return TOURISTDESTINATIONS;
 
     }
+
     public static ArrayList<Image> getAllImages() throws JSONException {
 
         IMAGES = new ArrayList();

@@ -60,16 +60,16 @@ public class MainInterface extends BaseActivity {
 
             viewImages = inflater.inflate(R.layout.offer, gallery, false);
 
-            imageView =  viewImages.findViewById(R.id.imageView_offers);
+            imageView =  viewImages.findViewById(R.id.imageView_tourist_destiny);
 
             final TravelPackage travelPackage = offersList.get(i);
 
-            textViewTitle = viewImages.findViewById(R.id.textView_travel_offer);
+            textViewTitle = viewImages.findViewById(R.id.textView_tourist_destiny_name);
 
             textViewPrice = viewImages.findViewById(R.id.textView_price_offer);
 
             Glide.with(MainInterface.this)
-                    .load(travelPackage.getListImages().get(0).getUrl())
+                    .load(travelPackage.getTouristDestinations().get(0).getListImages().get(0).getUrl())
                     .apply(requestOptions)
                     .into(imageView);
 

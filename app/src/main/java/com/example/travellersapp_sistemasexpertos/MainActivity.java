@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.example.travellersapp_sistemasexpertos.activities.BaseActivity;
 import com.example.travellersapp_sistemasexpertos.activities.Login;
 import com.example.travellersapp_sistemasexpertos.activities.MainInterface;
+import com.example.travellersapp_sistemasexpertos.activities.SearchTravel;
 import com.example.travellersapp_sistemasexpertos.activities.SingUp;
 import com.example.travellersapp_sistemasexpertos.database.DBHelper;
 import com.example.travellersapp_sistemasexpertos.domain.Airport;
@@ -28,6 +29,7 @@ import com.example.travellersapp_sistemasexpertos.domain.TouristCompany;
 import com.example.travellersapp_sistemasexpertos.domain.TouristDestination;
 import com.example.travellersapp_sistemasexpertos.domain.TravelPackage;
 import com.example.travellersapp_sistemasexpertos.domain.User;
+import com.example.travellersapp_sistemasexpertos.utilities.Data;
 
 import org.json.JSONException;
 
@@ -60,7 +62,7 @@ public class MainActivity extends BaseActivity {
             Toast.makeText(MainActivity.this,"Compruebe su conexión a internet e intente de nuevo",Toast.LENGTH_SHORT).show();
         }
 
-        thread = new Thread(){
+        /*thread = new Thread(){
             public void run(){
                 try {
 
@@ -68,11 +70,10 @@ public class MainActivity extends BaseActivity {
                     HOTELS= DBHelper.getAllHotels();
                     AIRPORTS=DBHelper.getAllAirports();
                     TOURISTCOMPANIES=DBHelper.getAllTouristCompany();
-                    TOURISTDESTINATIONS=DBHelper.getAllTouristDestination();
                     IMAGES = DBHelper.getAllImages();
+                    TOURISTDESTINATIONS=DBHelper.getAllTouristDestination();
                     TRAVEL_PACKAGES = DBHelper.getAllTravelPackage();
                     RESERVATIONS = DBHelper.getAllReservations();
-
 
 
                 } catch (JSONException e) {
@@ -83,8 +84,10 @@ public class MainActivity extends BaseActivity {
 
             }
         };
-        thread.start();
+        thread.start();*/
 
+        //Data.fillList();
+        //Data.getResults("",50,"", "");
     }
 
     public static void loadDataFromDB(final Context context){
@@ -127,14 +130,15 @@ public class MainActivity extends BaseActivity {
 
         Intent i = new Intent(this, Login.class);
 
+        i.putExtra("whereIGo", "searchTravel");
+
         startActivity(i);
 
     }
 
+    public void continues(View v){
 
-    public void signUp(View v){
-
-        Intent i = new Intent(this, SingUp.class);
+        Intent i = new Intent(this, SearchTravel.class);
 
         startActivity(i);
 

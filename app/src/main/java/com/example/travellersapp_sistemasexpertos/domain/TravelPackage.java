@@ -16,8 +16,8 @@ public class TravelPackage {
     private Airport airport;
     private String touristType;
     private String typeOfRoute;
-    private String videoURL;
     private int numberOfPersons;
+    private String travelType;
     private TouristCompany touristCompany;
     private ArrayList<TouristDestination> touristDestinations;
 
@@ -30,7 +30,7 @@ public class TravelPackage {
     public TravelPackage(int idTravelPackage, String startDate, String endDate, float cost,
                          String duration, String name, String description, Hotel hotel,
                          Airport airport, String touristType, String typeOfRoute,int numberOfPersons,
-                         String videoURL, ArrayList<TouristDestination> touristDestinations) {
+                         ArrayList<TouristDestination> touristDestinations, String travelType) {
 
         this.idTravelPackage = idTravelPackage;
         this.startDate = startDate;
@@ -43,15 +43,11 @@ public class TravelPackage {
         this.airport = airport;
         this.touristType = touristType;
         this.typeOfRoute = typeOfRoute;
-        this.videoURL = videoURL;
         this.touristDestinations=touristDestinations;
         this.numberOfPersons=numberOfPersons;
+        this.travelType = travelType;
     }
 
-
-    public String getVideoURL() {
-        return videoURL;
-    }
 
     public int getIdTravelPackage() {
         return idTravelPackage;
@@ -119,5 +115,9 @@ public class TravelPackage {
 
     public void setTouristDestinations(ArrayList<TouristDestination> touristDestinations) {
         this.touristDestinations = touristDestinations;
+    }
+
+    public String getTravelType() {
+        return this.travelType;
     }
 }

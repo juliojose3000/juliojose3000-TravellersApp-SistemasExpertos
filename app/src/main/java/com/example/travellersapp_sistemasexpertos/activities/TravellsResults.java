@@ -12,6 +12,8 @@ import com.example.travellersapp_sistemasexpertos.adapters.ListViewAdapter;
 import com.example.travellersapp_sistemasexpertos.utilities.Data;
 import com.example.travellersapp_sistemasexpertos.domain.TravelPackage;
 
+import java.util.Hashtable;
+
 public class TravellsResults extends BaseActivity {
 
     private ListView listViewItems;
@@ -29,15 +31,23 @@ public class TravellsResults extends BaseActivity {
 
         Bundle bundle = getIntent().getExtras();
 
-        String searchText = bundle.getString("search");
+        String amountOfPeople = bundle.getString("amountOfPeople");
 
-        float maxPrice = bundle.getFloat("maxPrice");
+        double amountOfPeopleValue = Double.parseDouble(amountOfPeople.equals("Cantidad de personas")?"2":amountOfPeople);
+
+        double maxPrice = bundle.getFloat("maxPrice");
+
+        double maxPriceValue = Data.maxPriceValue(maxPrice);
 
         String categoryTravel = bundle.getString("category");
 
+        double categoryTravelValue = Data.getCategoryValue(categoryTravel);
+
         String userType = bundle.getString("userType");
 
-        listViewAdapter = new ListViewAdapter(Data.getTravells(searchText, maxPrice, categoryTravel, userType), TravellsResults.this);
+        double userTypeValue = Data.getUserTypeValue(userType);
+
+        listViewAdapter = new ListViewAdapter(Data.getResults(amountOfPeopleValue, maxPriceValue, categoryTravelValue, userTypeValue), TravellsResults.this);
 
         listViewItems.setAdapter(listViewAdapter);
 
@@ -52,7 +62,7 @@ public class TravellsResults extends BaseActivity {
 
                 TravelPackage travelPackage = (TravelPackage) listViewAdapter.getItem(position);
 
-                Intent i = new Intent(TravellsResults.this, TravelChosen.class);
+                Intent i = new Intent(TravellsResults.this, PackageChosen.class);
 
                 i.putExtra("travelPackage", travelPackage.getIdTravelPackage());
 

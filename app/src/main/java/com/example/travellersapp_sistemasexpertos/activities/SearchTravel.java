@@ -20,7 +20,7 @@ public class SearchTravel extends BaseActivity {
 
     Spinner spinner_userType;
 
-    EditText editTextSearch;
+    Spinner spinner_people;
 
     EditText editTextMaxprice;
 
@@ -39,7 +39,7 @@ public class SearchTravel extends BaseActivity {
 
         spinner_userType = findViewById(R.id.spinner_traveller_type);
 
-        //editTextSearch = findViewById(R.id.editText_search);
+        spinner_people = findViewById(R.id.spinner_amount_people);
 
         editTextMaxprice = findViewById(R.id.editText_max_price);
 
@@ -63,7 +63,7 @@ public class SearchTravel extends BaseActivity {
             return;
         }
 
-        String search = "";
+        String amountOfPeople = spinner_people.getSelectedItem().toString();
 
         float maxPrice = Float.parseFloat(editTextMaxprice.getText().toString().equals("")?"0":editTextMaxprice.getText().toString());
 
@@ -73,7 +73,7 @@ public class SearchTravel extends BaseActivity {
 
         Intent i = new Intent(this, TravellsResults.class);
 
-        i.putExtra("search", search);
+        i.putExtra("amountOfPeople", amountOfPeople);
 
         i.putExtra("maxPrice", maxPrice);
 
@@ -90,9 +90,11 @@ public class SearchTravel extends BaseActivity {
         arrayListCategories = new ArrayList();
 
         arrayListCategories.add("Cualquier tipo de viaje");
-        arrayListCategories.add("Automóvil");
-        arrayListCategories.add("4x4");
-        arrayListCategories.add("lancha");
+        arrayListCategories.add("Playa");
+        arrayListCategories.add("Playa y Montana");
+        arrayListCategories.add("Montana");
+        arrayListCategories.add("Ciudad");
+        arrayListCategories.add("Isla");
 
         ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item,arrayListCategories);
 
@@ -107,9 +109,9 @@ public class SearchTravel extends BaseActivity {
         listUsersTypes = new ArrayList<>();
 
         listUsersTypes.add("Cualquier tipo de usuario");
-        listUsersTypes.add("Tranquilo");
+        listUsersTypes.add("Relajado");
         listUsersTypes.add("Aventurero");
-        listUsersTypes.add("Científico");
+        listUsersTypes.add("Deportista");
 
         ArrayAdapter adapter2 = new ArrayAdapter(this,android.R.layout.simple_spinner_item,listUsersTypes);
 

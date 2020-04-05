@@ -11,54 +11,55 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="180"
-        android:orientation="vertical"
-        android:gravity="center">
+        android:layout_weight="200"
+        android:gravity="center"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/textView4"
             style="@style/MyTextViewStyle_Title"
-            android:text="Realizar busqueda"
-            />
+            android:text="Buscar paquetes" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="100"
-        android:orientation="vertical"
-        android:gravity="center">
+        android:layout_weight="60"
+        android:gravity="center"
+        android:orientation="vertical">
 
+
+        <TextView
+            android:id="@+id/textView_explanation"
+            style="@style/MyTextViewStyle_Explanation"
+            android:layout_width="wrap_content"
+            android:text="@string/explanation" />
 
         <EditText
             android:id="@+id/editText_max_price"
             style="@style/editText_Register"
-            android:hint="Precio máximo esperado"/>
+            android:hint="Precio máximo esperado" />
 
-        <Space
-            style="@style/MySpaceStyle" />
+        <Space style="@style/MySpaceStyle" />
 
         <Spinner
             android:id="@+id/spinner_amount_people"
             style="@style/MySpinnerStyle"
-            android:entries="@array/spinner_amount_people"/>
+            android:entries="@array/spinner_amount_people" />
 
-        <Space
-            style="@style/MySpaceStyle" />
+        <Space style="@style/MySpaceStyle" />
 
         <Spinner
             android:id="@+id/spinner_category"
             style="@style/MySpinnerStyle"
-            android:entries="@array/spinner_tipo_viaje"/>
+            android:entries="@array/spinner_tipo_viaje" />
 
-        <Space
-            style="@style/MySpaceStyle" />
+        <Space style="@style/MySpaceStyle" />
 
         <Spinner
             android:id="@+id/spinner_traveller_type"
             style="@style/MySpinnerStyle"
-            android:entries="@array/spinner_tipo_viajero"/>
-
+            android:entries="@array/spinner_tipo_viajero" />
 
 
     </LinearLayout>
@@ -66,9 +67,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="180"
-        android:orientation="vertical"
-        android:gravity="bottom">
+        android:layout_weight="200"
+        android:gravity="bottom"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"

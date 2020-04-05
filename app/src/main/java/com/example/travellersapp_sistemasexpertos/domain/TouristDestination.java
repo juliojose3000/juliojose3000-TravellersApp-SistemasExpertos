@@ -8,18 +8,30 @@ public class TouristDestination {
     private String address;
     private String name;
     private ArrayList<Image> listImages;
+    private String URLVideo;
+    private String description;
 
     public TouristDestination() {
         this.listImages=new ArrayList<Image>();
     }
 
     public TouristDestination(int idTouristDestination, String address, String name,ArrayList<Image> listImages
-    , int idTravelPackage) {
+    , int idTravelPackage, String URLVideo, String description) {
         this.idTouristDestination = idTouristDestination;
         this.address = address;
         this.name = name;
         this.listImages=listImages;
         this.idTravelPackage=idTravelPackage;
+        this.URLVideo = URLVideo;
+        this.description = description;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getURLVideo() {
+        return URLVideo;
     }
 
     public int getIdTouristDestination() {

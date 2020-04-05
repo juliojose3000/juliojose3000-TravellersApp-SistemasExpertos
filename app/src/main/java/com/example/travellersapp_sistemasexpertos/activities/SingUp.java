@@ -31,12 +31,20 @@ public class SingUp extends BaseActivity {
 
     private EditText editTextPassword2;
 
+    private String whereIGo = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_sing_up);
+
+        Bundle bundle = getIntent().getExtras();
+
+        if(bundle!=null){
+            whereIGo = bundle.getString("whereIGo");
+        }
 
         editTextName = findViewById(R.id.editText_name);
 
@@ -127,9 +135,21 @@ public class SingUp extends BaseActivity {
 
         Data.loggedUser = user;
 
-        Intent i = new Intent(this, MainInterface.class);
+        if(whereIGo.equals("searchTravel")){
 
-        startActivity(i);
+            Intent i = new Intent(this, SearchTravel.class);
+
+            finish();
+
+            startActivity(i);
+
+        }else {
+
+            finish();
+
+            Toast.makeText(this, "Bienvenido "+Data.loggedUser.getName(), Toast.LENGTH_SHORT).show();
+
+        }
 
 
     }
