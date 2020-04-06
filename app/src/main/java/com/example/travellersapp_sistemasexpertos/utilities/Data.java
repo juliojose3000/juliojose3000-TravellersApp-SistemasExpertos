@@ -404,12 +404,11 @@ public class Data {
 
     }
 
-    public static ArrayList<TravelPackage> getResults(double amountOfPeopleUser, double maxPriceUser, double categoryUser, double userTypeUser){
+    public static ArrayList<TravelPackage> getResults(ArrayList<TravelPackage> packageListStatic, double amountOfPeopleUser, double maxPriceUser, double categoryTravel, double userTypeUser){
 
-        //Almaceno todos los paquetes en una lista
-        //todo la lista estatica se vacia. Arreglar
-        ArrayList<TravelPackage> packageList = MainActivity.TRAVEL_PACKAGES;
+        ArrayList<TravelPackage> packageList = packageListStatic;
 
+        //Lista que ira almacenando los paquetes de manera ordenada para mostrarlos
         ArrayList<TravelPackage> packagesListSort = new ArrayList<>();
 
         //recorro la lista hasta que no queden elementos en la misma
@@ -417,7 +416,7 @@ public class Data {
 
         while(i<=packageList.size()){
 
-            System.out.println("Algoritmo de euclides, tamaño lista: "+packageList.size());
+            System.out.println("Algoritmo de euclides, tamaño lista: "+MainActivity.TRAVEL_PACKAGES.size());
 
             //sobre esta variable aplico euclides, la inicializo en cualquier valor elevedo para evitar
             //errores de logica.
@@ -439,7 +438,7 @@ public class Data {
 
                 double dist = Math.sqrt(
                         Math.pow((amountOfPeopleUser-people), 2) +
-                        Math.pow((categoryUser-categoryValue), 2) +
+                        Math.pow((categoryTravel-categoryValue), 2) +
                         Math.pow((userTypeUser-userTypePackage), 2) +
                         Math.pow((maxPriceUser-price), 2)
 
@@ -519,6 +518,21 @@ public class Data {
         userTypeValues.put("Deportista", 3);
 
         return userTypeValues.get(userType);
+
+    }
+
+
+    public static ArrayList<TravelPackage> clonePackageTravelList(){
+
+        ArrayList<TravelPackage> listPackages = new ArrayList<>();
+
+        for(TravelPackage travelPackage: MainActivity.TRAVEL_PACKAGES){
+
+            listPackages.add(travelPackage);
+
+        }
+
+        return listPackages;
 
     }
 

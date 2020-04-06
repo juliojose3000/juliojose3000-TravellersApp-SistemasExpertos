@@ -100,6 +100,8 @@ public class Login extends BaseActivity {
             MainActivity.loadDataFromDB(getApplicationContext());
 
         }
+        //si la informacion aun no se ha cargado, que espere
+        while(!MainActivity.isAllDataLoaded){}
 
         if(username.equals("") || password.equals("")){
             Toast.makeText(this,"Complete los campos requeridos",Toast.LENGTH_SHORT).show();

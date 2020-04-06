@@ -49,6 +49,7 @@ public class MainActivity extends BaseActivity {
     public static ArrayList<Airport> AIRPORTS;
     public static ArrayList<TouristCompany> TOURISTCOMPANIES;
     public static ArrayList<TouristDestination> TOURISTDESTINATIONS;
+    public static boolean isAllDataLoaded = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +75,7 @@ public class MainActivity extends BaseActivity {
                     TOURISTDESTINATIONS=DBHelper.getAllTouristDestination();
                     TRAVEL_PACKAGES = DBHelper.getAllTravelPackage();
                     RESERVATIONS = DBHelper.getAllReservations();
-
+                    isAllDataLoaded = true;
 
                 } catch (JSONException e) {
                     e.printStackTrace();

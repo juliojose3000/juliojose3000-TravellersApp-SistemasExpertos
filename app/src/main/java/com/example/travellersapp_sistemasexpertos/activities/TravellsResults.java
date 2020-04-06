@@ -7,6 +7,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.travellersapp_sistemasexpertos.MainActivity;
 import com.example.travellersapp_sistemasexpertos.R;
 import com.example.travellersapp_sistemasexpertos.adapters.ListViewAdapter;
 import com.example.travellersapp_sistemasexpertos.utilities.Data;
@@ -47,7 +48,7 @@ public class TravellsResults extends BaseActivity {
 
         double userTypeValue = Data.getUserTypeValue(userType);
 
-        listViewAdapter = new ListViewAdapter(Data.getResults(amountOfPeopleValue, maxPriceValue, categoryTravelValue, userTypeValue), TravellsResults.this);
+        listViewAdapter = new ListViewAdapter(Data.getResults(Data.clonePackageTravelList(), amountOfPeopleValue, maxPriceValue, categoryTravelValue, userTypeValue), TravellsResults.this);
 
         listViewItems.setAdapter(listViewAdapter);
 

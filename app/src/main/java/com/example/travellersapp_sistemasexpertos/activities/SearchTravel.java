@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.travellersapp_sistemasexpertos.MainActivity;
 import com.example.travellersapp_sistemasexpertos.R;
 
 import java.util.ArrayList;
@@ -62,6 +63,9 @@ public class SearchTravel extends BaseActivity {
             Toast.makeText(this,"Compruebe su conexión a internet e intente de nuevo",Toast.LENGTH_SHORT).show();
             return;
         }
+
+        //si la informacion aun no se ha cargado, que espere
+        while(!MainActivity.isAllDataLoaded){}
 
         String amountOfPeople = spinner_people.getSelectedItem().toString();
 
