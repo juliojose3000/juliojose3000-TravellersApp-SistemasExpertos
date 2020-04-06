@@ -19,7 +19,8 @@
         <TextView
             android:id="@+id/textView_package_name"
             style="@style/MyTextViewStyle_Title"
-            android:text="Gira por sudamerica"
+            android:text="Visite las principales islas de costa rica"
+            android:textAlignment="center"
             android:textSize="25dp" />
 
     </LinearLayout>
