@@ -495,7 +495,6 @@ public class Data {
         Hashtable<String, Integer> categoryValues = new Hashtable<>();
 
         // Convierto a un valor numerico la categoria del viaje
-        categoryValues.put("Cualquier tipo de viaje", 3);
         categoryValues.put("Playa", 1);
         categoryValues.put("Playa y Montana", 2);
         categoryValues.put("Montana", 3);
@@ -512,7 +511,6 @@ public class Data {
         Hashtable<String, Integer> userTypeValues = new Hashtable<>();
 
         // Convierto en un valor numerico el tipo de usuario
-        userTypeValues.put("Cualquier tipo de usuario", 3);
         userTypeValues.put("Relajado", 1);
         userTypeValues.put("Aventurero", 2);
         userTypeValues.put("Deportista", 3);

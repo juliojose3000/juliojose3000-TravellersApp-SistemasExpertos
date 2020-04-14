@@ -40,21 +40,30 @@
             style="@style/editText_Register"
             android:hint="Precio máximo esperado" />
 
-        <Space style="@style/MySpaceStyle" />
+        <TextView
+            android:id="@+id/textView2"
+            style="@style/MySpinnerTitle"
+            android:text="Cantidad de personas:" />
 
         <Spinner
             android:id="@+id/spinner_amount_people"
             style="@style/MySpinnerStyle"
             android:entries="@array/spinner_amount_people" />
 
-        <Space style="@style/MySpaceStyle" />
+        <TextView
+            android:id="@+id/textView3"
+            style="@style/MySpinnerTitle"
+            android:text="Tipo de ruta:" />
 
         <Spinner
             android:id="@+id/spinner_category"
             style="@style/MySpinnerStyle"
             android:entries="@array/spinner_tipo_viaje" />
 
-        <Space style="@style/MySpaceStyle" />
+        <TextView
+            android:id="@+id/textView6"
+            style="@style/MySpinnerTitle"
+            android:text="Tipo de viajero:" />
 
         <Spinner
             android:id="@+id/spinner_traveller_type"

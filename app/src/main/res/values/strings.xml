@@ -31,20 +31,17 @@
     </string>
 
     <string-array name="spinner_tipo_viaje">
-        <item>Tipo de viaje</item>
         <item>Automóvil</item>
         <item>Lancha</item>
     </string-array>
 
     <string-array name="spinner_tipo_viajero">
-        <item>Tipo de turista</item>
         <item>Arriesgado</item>
         <item>Científico</item>
     </string-array>
 
 
     <string-array name="spinner_amount_people">
-        <item>Cantidad de personas</item>
         <item>1</item>
         <item>2</item>
         <item>3</item>

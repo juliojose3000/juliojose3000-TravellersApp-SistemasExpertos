@@ -93,7 +93,6 @@ public class SearchTravel extends BaseActivity {
 
         arrayListCategories = new ArrayList();
 
-        arrayListCategories.add("Cualquier tipo de viaje");
         arrayListCategories.add("Playa");
         arrayListCategories.add("Playa y Montana");
         arrayListCategories.add("Montana");
@@ -112,7 +111,6 @@ public class SearchTravel extends BaseActivity {
 
         listUsersTypes = new ArrayList<>();
 
-        listUsersTypes.add("Cualquier tipo de usuario");
         listUsersTypes.add("Relajado");
         listUsersTypes.add("Aventurero");
         listUsersTypes.add("Deportista");
