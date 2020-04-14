@@ -70,6 +70,20 @@ public class BaseActivity extends AppCompatActivity {
 
             startActivity(i);
 
+        }else if (id == R.id.item5) {
+
+            Intent i = new Intent(this, MapsActivity.class);//me dirijo a la interfaz de inicio
+
+            double latitud = 9.383820;
+            double longitud =  -84.144437;
+            String title = "Manuel Antonio";
+
+            i.putExtra("latitud", latitud);
+            i.putExtra("longitud", longitud);
+            i.putExtra("title", title);
+
+            startActivity(i);
+
         }
 
 

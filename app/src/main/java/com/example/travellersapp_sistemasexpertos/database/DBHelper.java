@@ -329,9 +329,13 @@ public class DBHelper  {
             String name = jsonObject.getString("name");
             String description = jsonObject.getString("description");
             int idTravelPackage=jsonObject.getInt("idTravelPackage");
+            //todo descomentar y remplazar por los dos ultimos valores
+            /*double latitud = jsonObject.getDouble("latitud");
+            double longitud = jsonObject.getDouble("longitud");*/
+
             ArrayList<Image>imagesList= Data.getAllImagesByIdTouristDestination(idTouristDestination);
             TouristDestination touristDestinations=new TouristDestination(idTouristDestination
-                    ,address,name,imagesList,idTravelPackage, URLVideo, description);
+                    ,address,name,imagesList,idTravelPackage, URLVideo, description, 9.383820, -84.144437);
 
             TOURISTDESTINATIONS.add(touristDestinations);
 

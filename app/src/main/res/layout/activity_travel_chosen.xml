@@ -64,6 +64,13 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/textView_watch_destiny_ubication"
+                style="@style/MyTextViewStyle_Explanation"
+                android:layout_marginLeft="15dp"
+                android:textColor="@color/myColor"
+                android:text="Ver ubicación en google maps" />
+
+            <TextView
                 android:id="@+id/textView_description_travel_chosen"
                 style="@style/MyTextViewStyle_Explanation"
                 android:layout_margin="15dp"

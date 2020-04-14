@@ -1,8 +1,10 @@
 package com.example.travellersapp_sistemasexpertos.activities;
 
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.HorizontalScrollView;
@@ -25,6 +27,8 @@ public class TravelChosen extends BaseActivity {
     TextView textViewTravelName;
 
     TextView textViewDescription;
+
+    TextView textViewDestinyUbication;
 
     int idTouristDestination;
 
@@ -56,15 +60,40 @@ public class TravelChosen extends BaseActivity {
 
         textViewDescription = findViewById(R.id.textView_description_travel_chosen);
 
+        textViewDestinyUbication = findViewById(R.id.textView_watch_destiny_ubication);
+
+        textViewDestinyUbication.setText(Html.fromHtml("<u>Ver ubicación en Google Maps</u>"));
+
         Bundle bundle = getIntent().getExtras();
 
         idTouristDestination = bundle.getInt("tourist_destination");
 
-        TouristDestination touristDestination = Data.getTouristDestinationById(idTouristDestination);
+        final TouristDestination touristDestination = Data.getTouristDestinationById(idTouristDestination);
 
         textViewTravelName.setText(touristDestination.getName());
 
         textViewDescription.setText("Descripción: "+touristDestination.getDescription());
+
+        textViewDestinyUbication.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent i = new Intent(TravelChosen.this, MapsActivity.class);//me dirijo a la interfaz de inicio
+
+                        double latitud = touristDestination.getLatitud();
+                        double longitud =  touristDestination.getLogintud();
+                        String title = touristDestination.getName();
+
+                        i.putExtra("latitud", latitud);
+                        i.putExtra("longitud", longitud);
+                        i.putExtra("title", title);
+
+                        startActivity(i);
+                    }
+                }
+        );
+
+
 
         RequestOptions requestOptions = new RequestOptions();
 
