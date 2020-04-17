@@ -1,6 +1,8 @@
 package com.example.travellersapp_sistemasexpertos.activities;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -15,7 +17,9 @@ import com.example.travellersapp_sistemasexpertos.database.DBHelper;
 import com.example.travellersapp_sistemasexpertos.utilities.Data;
 import com.example.travellersapp_sistemasexpertos.domain.User;
 
-public class SingUp extends BaseActivity {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class SingUp extends AppCompatActivity {
 
     private EditText editTextName;
 
@@ -195,6 +199,27 @@ public class SingUp extends BaseActivity {
         editTextUsername.setText("");
 
         editTextPassword.setText("");
+    }
+
+
+    public void changeBadColorEditText(EditText editText){
+
+        ColorStateList colorStateList = ColorStateList.valueOf(Color.RED);
+        editText.setBackgroundTintList (colorStateList);
+
+    }
+
+    public void changeGoodColorEditText(EditText editText){
+
+        ColorStateList colorStateList = ColorStateList.valueOf(Color.argb(255, 41, 121, 255));
+        editText.setBackgroundTintList (colorStateList);
+
+    }
+
+    public boolean isThereInternetAccess(){
+
+        return true;
+
     }
 
 

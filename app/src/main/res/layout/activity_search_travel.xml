@@ -38,7 +38,7 @@
         <EditText
             android:id="@+id/editText_max_price"
             style="@style/editText_Register"
-            android:hint="Precio máximo esperado" />
+            android:hint="Precio máximo esperado $$$" />
 
         <TextView
             android:id="@+id/textView2"

@@ -70,6 +70,12 @@ public class BaseActivity extends AppCompatActivity {
 
             startActivity(i);
 
+        }else if (id == R.id.item5) {
+
+            Intent i = new Intent(this, AppMapActivity.class);
+
+            startActivity(i);
+
         }
 
         return super.onOptionsItemSelected(item);

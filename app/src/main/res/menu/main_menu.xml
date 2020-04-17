@@ -19,7 +19,7 @@
 
     <item
         android:id="@+id/item5"
-        android:title="Maps" />
+        android:title="Mapa de la aplicación" />
 
 
 

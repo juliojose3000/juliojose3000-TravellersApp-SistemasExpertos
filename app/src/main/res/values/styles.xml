@@ -1,7 +1,16 @@
 <resources>
 
-    <!-- Base application theme. -->
+    <!-- Funciona.
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="buttonStyle">@style/MyButtonStyle</item>
+        <item name="editTextStyle">@style/MyEditTextStyle</item>
+        <item name="colorPrimary">@color/myColor</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style> -->
+
+    <!-- Pruebas. -->
+    <style name="AppTheme" parent="Base.Theme.AppCompat.Light.DarkActionBar">
         <item name="buttonStyle">@style/MyButtonStyle</item>
         <item name="editTextStyle">@style/MyEditTextStyle</item>
         <item name="colorPrimary">@color/myColor</item>
@@ -64,6 +73,15 @@
         <item name="android:layout_marginLeft">5dp</item>
         <item name="android:layout_marginRight">5dp</item>
         <item name="android:layout_marginBottom">4dp</item>
+    </style>
+
+    <style name="MyTextViewStyle_mapa">
+        <item name="android:textSize">17dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">12dp</item>
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:textColor">@color/myColor</item>
     </style>
 
     <style name="MyTextViewStyle_about_us">

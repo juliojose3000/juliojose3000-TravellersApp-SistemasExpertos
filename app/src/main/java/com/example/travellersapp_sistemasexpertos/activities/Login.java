@@ -1,6 +1,8 @@
 package com.example.travellersapp_sistemasexpertos.activities;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,8 +13,10 @@ import com.example.travellersapp_sistemasexpertos.MainActivity;
 import com.example.travellersapp_sistemasexpertos.R;
 import com.example.travellersapp_sistemasexpertos.utilities.Data;
 
+import androidx.appcompat.app.AppCompatActivity;
 
-public class Login extends BaseActivity {
+
+public class Login extends AppCompatActivity {
 
     private EditText editText_username;
 
@@ -154,6 +158,26 @@ public class Login extends BaseActivity {
 
         if(password.equals("")){changeBadColorEditText(editText_password);}
         else{changeGoodColorEditText(editText_password);}
+
+    }
+
+    public void changeBadColorEditText(EditText editText){
+
+        ColorStateList colorStateList = ColorStateList.valueOf(Color.RED);
+        editText.setBackgroundTintList (colorStateList);
+
+    }
+
+    public void changeGoodColorEditText(EditText editText){
+
+        ColorStateList colorStateList = ColorStateList.valueOf(Color.argb(255, 41, 121, 255));
+        editText.setBackgroundTintList (colorStateList);
+
+    }
+
+    public boolean isThereInternetAccess(){
+
+        return true;
 
     }
 

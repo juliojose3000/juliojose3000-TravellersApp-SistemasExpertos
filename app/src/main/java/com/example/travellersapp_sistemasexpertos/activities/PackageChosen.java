@@ -51,6 +51,8 @@ public class PackageChosen extends BaseActivity {
 
     TextView textViewRouteType;
 
+    TextView textViewCantidadPersonas;
+
     int idPackageTravel;
 
     private HorizontalScrollView horizontalScrollView;
@@ -85,6 +87,8 @@ public class PackageChosen extends BaseActivity {
 
         textViewRouteType = findViewById(R.id.textView_route_type_package_chosen);
 
+        textViewCantidadPersonas = findViewById(R.id.textView_cantidad_personas);
+
         Bundle bundle = getIntent().getExtras();
 
         idPackageTravel = bundle.getInt("travelPackage");
@@ -110,6 +114,8 @@ public class PackageChosen extends BaseActivity {
         textViewTouristType.setText("Tipo de turista: "+travelPackage.getTouristType());
 
         textViewRouteType.setText("Tipo de ruta: "+travelPackage.getTypeOfRoute());
+
+        textViewCantidadPersonas.setText("Cantidad de personas: "+travelPackage.getNumberOfPersons());
 
         RequestOptions requestOptions = new RequestOptions();
 

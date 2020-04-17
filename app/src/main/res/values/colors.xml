@@ -6,4 +6,5 @@
     <color name="myColor">#2979FF</color>
     <color name="BadColor">#FC0404</color>
     <color name="green">#11BD03</color>
+    <color name="gray">#666666</color>
 </resources>

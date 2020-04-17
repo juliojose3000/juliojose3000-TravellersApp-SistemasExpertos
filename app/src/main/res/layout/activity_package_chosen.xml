@@ -77,6 +77,11 @@
                     android:text="Precio: $ 5.000" />
 
                 <TextView
+                    android:id="@+id/textView_cantidad_personas"
+                    style="@style/MyTextViewStyle_Text"
+                    android:text="5 personas" />
+
+                <TextView
                     android:id="@+id/textView_airport_package_chosen"
                     style="@style/MyTextViewStyle_Text"
                     android:text="Cantidad de personas: 4" />

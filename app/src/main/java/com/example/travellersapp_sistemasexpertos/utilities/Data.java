@@ -411,10 +411,10 @@ public class Data {
         //Lista que ira almacenando los paquetes de manera ordenada para mostrarlos
         ArrayList<TravelPackage> packagesListSort = new ArrayList<>();
 
-        //recorro la lista hasta que no queden elementos en la misma
-        int i = 1;
 
-        while(i<=packageList.size()){
+
+        //recorro la lista hasta que encuentre 4 paquetes semilares
+        for(int i = 0; i<4; i++){
 
             System.out.println("Algoritmo de euclides, tamaño lista: "+MainActivity.TRAVEL_PACKAGES.size());
 
@@ -477,15 +477,15 @@ public class Data {
     public static double maxPriceValue(double maxPrice){
 
         if(maxPrice==0.0) {
-            return 3;
+            return 10;
         }else if(maxPrice<100){
             return 1;
         }else if(maxPrice<200){
-            return 2;
-        }else if(maxPrice<300){
-            return 4;
-        }else{
             return 5;
+        }else if(maxPrice<300){
+            return 15;
+        }else{
+            return 10;
         }
 
     }
@@ -496,10 +496,10 @@ public class Data {
 
         // Convierto a un valor numerico la categoria del viaje
         categoryValues.put("Playa", 1);
-        categoryValues.put("Playa y Montana", 2);
-        categoryValues.put("Montana", 3);
-        categoryValues.put("Ciudad", 4);
-        categoryValues.put("Isla", 5);
+        categoryValues.put("Isla", 3);
+        categoryValues.put("Playa y Montana", 5);
+        categoryValues.put("Montana", 9);
+        categoryValues.put("Ciudad", 17);
 
         return categoryValues.get(category);
 
@@ -512,8 +512,8 @@ public class Data {
 
         // Convierto en un valor numerico el tipo de usuario
         userTypeValues.put("Relajado", 1);
-        userTypeValues.put("Aventurero", 2);
-        userTypeValues.put("Deportista", 3);
+        userTypeValues.put("Aventurero", 15);
+        userTypeValues.put("Deportista", 10);
 
         return userTypeValues.get(userType);
 

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.widget.LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.AppMapActivity"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="100"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView9"
+            style="@style/MyTextViewStyle_Title"
+            android:text="Mapa de la aplicación"
+            android:textSize="27dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="25"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/textView_pantalla_inicio"
+            style="@style/MyTextViewStyle_mapa"
+            android:text="Pantalla de inicio" />
+
+        <TextView
+            android:id="@+id/textView_about_us"
+            style="@style/MyTextViewStyle_mapa"
+            android:text="Acerca de nosotros" />
+
+        <TextView
+            android:id="@+id/textView_login"
+            style="@style/MyTextViewStyle_mapa"
+            android:text="Login" />
+
+        <TextView
+            android:id="@+id/textView_sign_up"
+            style="@style/MyTextViewStyle_mapa"
+            android:layout_marginLeft="40dp"
+            android:text="Registrarse" />
+
+        <TextView
+            android:id="@+id/textView_buscar_paquetes"
+            style="@style/MyTextViewStyle_mapa"
+            android:text="Buscar paquetes" />
+
+        <TextView
+            android:id="@+id/textView_resultados"
+            style="@style/MyTextViewStyle_mapa"
+            android:layout_marginLeft="40dp"
+            android:textColor="@color/gray"
+            android:text="Resultados" />
+
+        <TextView
+            android:id="@+id/textView_paquete_escogido"
+            style="@style/MyTextViewStyle_mapa"
+            android:layout_marginLeft="80dp"
+            android:textColor="@color/gray"
+            android:text="Paquete escogido" />
+
+        <TextView
+            android:id="@+id/textView_destino_turistico_escogido"
+            style="@style/MyTextViewStyle_mapa"
+            android:layout_marginLeft="120dp"
+            android:textColor="@color/gray"
+            android:text="Ver destino turistico" />
+
+        <TextView
+            android:id="@+id/textView_ubicacion_destino_turistico"
+            style="@style/MyTextViewStyle_mapa"
+            android:layout_marginLeft="160dp"
+            android:textColor="@color/gray"
+            android:text="Ver ubicación del destino" />
+
+        <TextView
+            android:id="@+id/textView_detaller_reservacion"
+            style="@style/MyTextViewStyle_mapa"
+            android:layout_marginLeft="80dp"
+            android:textColor="@color/gray"
+            android:text="Detalles Reservacion" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="100"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/button_back"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="Volver"></Button>
+
+    </LinearLayout>
+
+
+</android.widget.LinearLayout>
