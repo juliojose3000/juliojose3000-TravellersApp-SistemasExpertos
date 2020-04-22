@@ -71,7 +71,7 @@ public class MadePayment extends BaseActivity {
 
         Dates dates = new Dates();
 
-        textViewPaymentDate.setText("Fecha de pago: "+dates.getDateOfToday());
+        textViewPaymentDate.setText("Fecha de reservación: "+dates.getDateOfToday());
 
         textViewDateStart = findViewById(R.id.textView_date_start);
 
