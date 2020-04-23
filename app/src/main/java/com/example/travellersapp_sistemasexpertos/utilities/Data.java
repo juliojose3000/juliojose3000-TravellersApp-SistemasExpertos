@@ -477,16 +477,33 @@ public class Data {
     public static double maxPriceValue(double maxPrice){
 
         if(maxPrice==0.0) {
-            return 10;
-        }else if(maxPrice<100){
+            return 20;
+        }else if(maxPrice<10000){
             return 1;
-        }else if(maxPrice<200){
+        }else if(maxPrice<20000){
+            return 2;
+        }else if(maxPrice<30000){
+            return 3;
+        }else if(maxPrice<50000){
             return 5;
-        }else if(maxPrice<300){
-            return 15;
-        }else{
+        }else if(maxPrice<80000){
+            return 8;
+        }else if(maxPrice<90000){
+            return 9;
+        }else if(maxPrice<100000){
             return 10;
+        }else if(maxPrice<120000){
+            return 12;
+        }else if(maxPrice<200000){
+            return 20;
+        }else if(maxPrice<250000){
+            return 25;
+        }else if(maxPrice<300000){
+            return 30;
+        }else{
+            return 40;
         }
+
 
     }
 
