@@ -21,6 +21,25 @@ public class TravellsResults extends BaseActivity {
 
     private ListViewAdapter listViewAdapter;
 
+    private String CUALQUIERA = "Cualquiera";
+
+    private double amountOfPeopleValue = 0;
+
+    private double priceValue = 0;
+
+    private double categoryTravelValue = 0;
+
+    private double userTypeValue = 0;
+
+    private int A = 0;
+
+    private int B = 0;
+
+    private int C = 0;
+
+    private int D = 0;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -34,21 +53,47 @@ public class TravellsResults extends BaseActivity {
 
         String amountOfPeople = bundle.getString("amountOfPeople");
 
-        double amountOfPeopleValue = Double.parseDouble(amountOfPeople.equals("Cantidad de personas")?"2":amountOfPeople);
+        if(!amountOfPeople.equals(CUALQUIERA)){
 
-        double maxPrice = bundle.getFloat("maxPrice");
+            amountOfPeopleValue = Double.parseDouble(amountOfPeople);
 
-        double maxPriceValue = Data.maxPriceValue(maxPrice);
+            A = 1;
+
+        }
+
+        String price = bundle.getString("price");
+
+        if(!price.equals("")){
+
+            double priceAux = Double.parseDouble(price);
+
+            priceValue = Data.maxPriceValue(priceAux);
+
+            B = 1;
+
+        }
 
         String categoryTravel = bundle.getString("category");
 
-        double categoryTravelValue = Data.getCategoryValue(categoryTravel);
+        if(!categoryTravel.equals(CUALQUIERA)){
+
+            categoryTravelValue = Data.getCategoryValue(categoryTravel);
+
+            C = 1;
+
+        }
 
         String userType = bundle.getString("userType");
 
-        double userTypeValue = Data.getUserTypeValue(userType);
+        if(!userType.equals(CUALQUIERA)){
 
-        listViewAdapter = new ListViewAdapter(Data.getResults(Data.clonePackageTravelList(), amountOfPeopleValue, maxPriceValue, categoryTravelValue, userTypeValue), TravellsResults.this);
+            userTypeValue = Data.getUserTypeValue(userType);
+
+            D = 1;
+
+        }
+
+        listViewAdapter = new ListViewAdapter(Data.getResults(Data.clonePackageTravelList(), amountOfPeopleValue, A, priceValue, B, categoryTravelValue, C,  userTypeValue, D), TravellsResults.this);
 
         listViewItems.setAdapter(listViewAdapter);
 

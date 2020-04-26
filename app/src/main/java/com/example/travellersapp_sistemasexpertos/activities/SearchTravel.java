@@ -69,7 +69,7 @@ public class SearchTravel extends BaseActivity {
 
         String amountOfPeople = spinner_people.getSelectedItem().toString();
 
-        float maxPrice = Float.parseFloat(editTextMaxprice.getText().toString().equals("")?"0":editTextMaxprice.getText().toString());
+        String maxPrice = editTextMaxprice.getText().toString();
 
         String categoryTravel = spinner_categories.getSelectedItem().toString();
 
@@ -79,7 +79,7 @@ public class SearchTravel extends BaseActivity {
 
         i.putExtra("amountOfPeople", amountOfPeople);
 
-        i.putExtra("maxPrice", maxPrice);
+        i.putExtra("price", maxPrice);
 
         i.putExtra("category", categoryTravel);
 
@@ -93,6 +93,7 @@ public class SearchTravel extends BaseActivity {
 
         arrayListCategories = new ArrayList();
 
+        arrayListCategories.add("Cualquiera");
         arrayListCategories.add("Playa");
         arrayListCategories.add("Playa y Montana");
         arrayListCategories.add("Montana");
@@ -111,6 +112,7 @@ public class SearchTravel extends BaseActivity {
 
         listUsersTypes = new ArrayList<>();
 
+        listUsersTypes.add("Cualquiera");
         listUsersTypes.add("Relajado");
         listUsersTypes.add("Aventurero");
         listUsersTypes.add("Deportista");

@@ -404,17 +404,21 @@ public class Data {
 
     }
 
-    public static ArrayList<TravelPackage> getResults(ArrayList<TravelPackage> packageListStatic, double amountOfPeopleUser, double maxPriceUser, double categoryTravel, double userTypeUser){
+    public static ArrayList<TravelPackage> getResults(ArrayList<TravelPackage> packageListStatic, double amountOfPeople,int a, double price, int b, double categoryPackage, int c, double userType, int d){
 
         ArrayList<TravelPackage> packageList = packageListStatic;
 
         //Lista que ira almacenando los paquetes de manera ordenada para mostrarlos
         ArrayList<TravelPackage> packagesListSort = new ArrayList<>();
 
+        int cantidadDePaquetesAMostrar = 4;
 
+        //en este caso, si todos los parametros están en cero, es porque al usuario le es indiferente
+        //las caracteristicas que pueda tener un paquete, por lo que se le mostrarán todos
+        if(a == 0 && b == 0 && c == 0 && d == 0){cantidadDePaquetesAMostrar = packageList.size();}
 
         //recorro la lista hasta que encuentre 4 paquetes semilares
-        for(int i = 0; i<4; i++){
+        for(int i = 0; i<cantidadDePaquetesAMostrar; i++){
 
             System.out.println("Algoritmo de euclides, tamaño lista: "+MainActivity.TRAVEL_PACKAGES.size());
 
@@ -429,19 +433,20 @@ public class Data {
             //recorro la lista de paquetes en busca de los que son mas parecidos
             for (TravelPackage travelPackage: packageList) {
 
-                double price = maxPriceValue(travelPackage.getCost());
+                double packagePrice = maxPriceValue(travelPackage.getCost());
                 double people = travelPackage.getNumberOfPersons();
                 double categoryValue = getCategoryValue((travelPackage.getTravelType()));
                 double userTypePackage = getUserTypeValue(travelPackage.getTouristType());
 
                 //aplico euclides
-
+                //los parametros a,b,c y d se utilizan para darle importancia solo a los parametros
+                //que el usuario escogió. Por ejemplo, si en tipo de paquete puso "cualquiera",
+                //entonces el parametro c pa a estar en cero.
                 double dist = Math.sqrt(
-                        Math.pow((amountOfPeopleUser-people), 2) +
-                        Math.pow((categoryTravel-categoryValue), 2) +
-                        Math.pow((userTypeUser-userTypePackage), 2) +
-                        Math.pow((maxPriceUser-price), 2)
-
+                        Math.pow((amountOfPeople-people), 2) * a +
+                        Math.pow((price-packagePrice), 2) * b +
+                        Math.pow((categoryPackage-categoryValue), 2) * c +
+                        Math.pow((userType-userTypePackage), 2) * d
                 );
 
                 //pregunto si la distancia es menor que la distancia minima(el mas parecido), si es asi
