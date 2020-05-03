@@ -25,9 +25,7 @@
 
         Escoja los criterios que desea que se tomen en\n
         cuenta a la hora de realizar la busqueda de los\n
-        paquetes. Sino los especifica simplemente no se\n
-        tomaran en cuenta para la busqueda
-
+        paquetes.
     </string>
 
     <string-array name="spinner_tipo_viaje">
@@ -49,6 +47,17 @@
         <item>4</item>
         <item>5</item>
     </string-array>
+
+    <string-array name="spinner_price_expected">
+        <item>Cualquiera</item>
+        <item>$ 10.000</item>
+        <item>$ 20.000</item>
+        <item>$ 50.000</item>
+        <item>$ 80.000</item>
+        <item>$ 150.000</item>
+        <item>$ 200.000 o más</item>
+    </string-array>
+
     <string name="title_activity_maps">Map</string>
 
 </resources>

@@ -35,10 +35,15 @@
             android:layout_width="wrap_content"
             android:text="@string/explanation" />
 
-        <EditText
-            android:id="@+id/editText_max_price"
-            style="@style/editText_Register"
-            android:hint="Precio esperado $$$" />
+        <TextView
+            android:id="@+id/textView_price_expected"
+            style="@style/MySpinnerTitle"
+            android:text="Precio esperado:" />
+
+        <Spinner
+            android:id="@+id/spinner_price_expected"
+            style="@style/MySpinnerStyle"
+            android:entries="@array/spinner_price_expected" />
 
         <TextView
             android:id="@+id/textView2"

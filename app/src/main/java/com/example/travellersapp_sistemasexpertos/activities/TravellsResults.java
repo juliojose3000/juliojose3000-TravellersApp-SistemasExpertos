@@ -63,7 +63,9 @@ public class TravellsResults extends BaseActivity {
 
         String price = bundle.getString("price");
 
-        if(!price.equals("")){
+        if(!price.equals(CUALQUIERA)){
+
+            price = Data.removeAllNonNumbersChaterters(price);
 
             double priceAux = Double.parseDouble(price);
 

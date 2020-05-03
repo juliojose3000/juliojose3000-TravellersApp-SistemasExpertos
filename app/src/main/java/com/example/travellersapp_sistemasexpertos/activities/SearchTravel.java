@@ -23,7 +23,7 @@ public class SearchTravel extends BaseActivity {
 
     Spinner spinner_people;
 
-    EditText editTextMaxprice;
+    Spinner editTextMaxprice;
 
     List<String> arrayListCategories;
 
@@ -42,7 +42,7 @@ public class SearchTravel extends BaseActivity {
 
         spinner_people = findViewById(R.id.spinner_amount_people);
 
-        editTextMaxprice = findViewById(R.id.editText_max_price);
+        editTextMaxprice = findViewById(R.id.spinner_price_expected);
 
         createCategoriesSpinner();
 
@@ -69,7 +69,7 @@ public class SearchTravel extends BaseActivity {
 
         String amountOfPeople = spinner_people.getSelectedItem().toString();
 
-        String maxPrice = editTextMaxprice.getText().toString();
+        String maxPrice = editTextMaxprice.getSelectedItem().toString();
 
         String categoryTravel = spinner_categories.getSelectedItem().toString();
 

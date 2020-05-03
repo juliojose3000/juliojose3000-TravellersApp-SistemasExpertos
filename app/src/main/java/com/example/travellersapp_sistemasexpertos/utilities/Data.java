@@ -557,4 +557,25 @@ public class Data {
     }
 
 
+    public static String removeAllNonNumbersChaterters(String string){
+
+        String numbers = "";
+
+        for(int i = 0; i<string.length(); i++){
+
+            char c = string.charAt(i);
+
+            if(Character.isDigit(c)){
+
+                numbers+=c;
+
+            }
+
+        }
+
+        return numbers;
+
+    }
+
+
 }
