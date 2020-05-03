@@ -18,7 +18,11 @@
 
         Para quejas o sugerencias contactanos
         por medio del correo:
-        World.travelersB6@gmail.com
+        World.travelersB6@gmail.com\n\n
+
+        Créditos:\n
+        Julio Segura Chaves B66755\n
+        Allan Solano Salazar B66946
     </string>
 
     <string name="explanation">
@@ -50,12 +54,12 @@
 
     <string-array name="spinner_price_expected">
         <item>Cualquiera</item>
-        <item>$ 10.000</item>
-        <item>$ 20.000</item>
-        <item>$ 50.000</item>
-        <item>$ 80.000</item>
-        <item>$ 150.000</item>
-        <item>$ 200.000 o más</item>
+        <item>₡ 10.000</item>
+        <item>₡ 20.000</item>
+        <item>₡ 50.000</item>
+        <item>₡ 80.000</item>
+        <item>₡ 150.000</item>
+        <item>₡ 200.000 o más</item>
     </string-array>
 
     <string name="title_activity_maps">Map</string>

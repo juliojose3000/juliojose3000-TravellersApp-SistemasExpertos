@@ -95,7 +95,7 @@ public class PackageChosen extends BaseActivity {
 
         TravelPackage travelPackage = Data.getTravelPackageById(idPackageTravel);
 
-        textViewPackagePrice.setText("Predio: $ "+travelPackage.getCost());
+        textViewPackagePrice.setText("Precio: "+travelPackage.getCostWithFormat());
 
         textViewPackageName.setText(travelPackage.getName());
 

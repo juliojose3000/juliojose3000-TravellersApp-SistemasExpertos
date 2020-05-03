@@ -49,7 +49,7 @@ public class MadePayment extends BaseActivity {
 
         textViewPaquete = findViewById(R.id.textView_paquete);
 
-        textViewPaquete.setText(travelPackage.getName());
+        textViewPaquete.setText("Paquete reservado: "+travelPackage.getName());
 
         textViewUser = findViewById(R.id.textView_user);
 
@@ -82,6 +82,7 @@ public class MadePayment extends BaseActivity {
         textViewDateEnd.setText("Hasta el: "+travelPackage.getEndDate());
 
         message =
+                " - "+textViewPaquete.getText().toString()+"\n"+
                 " - "+textViewUser.getText().toString()+"\n"+
                 " - "+textViewPrice.getText().toString()+"\n"+
                 " - "+textViewAirport.getText().toString()+"\n"+

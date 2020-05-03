@@ -1,5 +1,6 @@
 package com.example.travellersapp_sistemasexpertos.domain;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -63,6 +64,11 @@ public class TravelPackage {
 
     public float getCost() {
         return cost;
+    }
+
+    public String getCostWithFormat(){
+        DecimalFormat formatea = new DecimalFormat("###,###.##");
+        return "₡ "+formatea.format(this.cost);
     }
 
     public String getDuration() {
