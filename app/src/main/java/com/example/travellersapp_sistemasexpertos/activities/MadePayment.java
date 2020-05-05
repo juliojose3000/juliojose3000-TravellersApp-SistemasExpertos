@@ -57,7 +57,7 @@ public class MadePayment extends BaseActivity {
 
         textViewPrice = findViewById(R.id.textView_price);
 
-        textViewPrice.setText("Pago: $"+travelPackage.getCost());
+        textViewPrice.setText("Pago: $"+travelPackage.getCostWithFormat());
 
         textViewAirport = findViewById(R.id.textView_airport);
 
