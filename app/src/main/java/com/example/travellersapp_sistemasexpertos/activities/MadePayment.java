@@ -84,7 +84,7 @@ public class MadePayment extends BaseActivity {
         message =
                 " - "+textViewPaquete.getText().toString()+"\n"+
                 " - "+textViewUser.getText().toString()+"\n"+
-                " - "+textViewPrice.getText().toString()+"\n"+
+                " - "+travelPackage.getCostWithFormat()+"\n"+
                 " - "+textViewAirport.getText().toString()+"\n"+
                 " - "+textViewHotel.getText().toString()+"\n"+
                 " - "+textViewPaymentDate.getText().toString()+"\n"+
