@@ -7,13 +7,10 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.travellersapp_sistemasexpertos.MainActivity;
 import com.example.travellersapp_sistemasexpertos.R;
 import com.example.travellersapp_sistemasexpertos.adapters.ListViewAdapter;
 import com.example.travellersapp_sistemasexpertos.utilities.Data;
 import com.example.travellersapp_sistemasexpertos.domain.TravelPackage;
-
-import java.util.Hashtable;
 
 public class TravellsResults extends BaseActivity {
 
@@ -69,7 +66,7 @@ public class TravellsResults extends BaseActivity {
 
             double priceAux = Double.parseDouble(price);
 
-            priceValue = Data.maxPriceValue(priceAux);
+            priceValue = Data.priceValue(priceAux);
 
             B = 1;
 

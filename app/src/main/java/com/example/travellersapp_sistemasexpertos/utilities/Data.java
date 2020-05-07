@@ -1,9 +1,6 @@
 package com.example.travellersapp_sistemasexpertos.utilities;
 
-import android.provider.ContactsContract;
-
 import com.example.travellersapp_sistemasexpertos.MainActivity;
-import com.example.travellersapp_sistemasexpertos.database.DBHelper;
 import com.example.travellersapp_sistemasexpertos.domain.Airport;
 import com.example.travellersapp_sistemasexpertos.domain.Hotel;
 import com.example.travellersapp_sistemasexpertos.domain.Image;
@@ -13,7 +10,6 @@ import com.example.travellersapp_sistemasexpertos.domain.User;
 
 import org.json.JSONException;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Random;
@@ -322,7 +318,7 @@ public class Data {
             //recorro la lista de paquetes en busca de los que son mas parecidos
             for (TravelPackage travelPackage: packageList) {
 
-                double packagePrice = maxPriceValue(travelPackage.getCost());
+                double packagePrice = priceValue(travelPackage.getCost());
                 double people = travelPackage.getNumberOfPersons();
                 double categoryValue = getCategoryValue((travelPackage.getTravelType()));
                 double userTypePackage = getUserTypeValue(travelPackage.getTouristType());
@@ -368,34 +364,28 @@ public class Data {
 
     }
 
-    public static double maxPriceValue(double maxPrice){
+    public static double priceValue(double maxPrice){
 
-        if(maxPrice==0.0) {
-            return 20;
-        }else if(maxPrice<10000){
+        if(maxPrice==10000){
             return 1;
-        }else if(maxPrice<20000){
+        }else if(maxPrice==20000){
             return 2;
-        }else if(maxPrice<30000){
+        }else if(maxPrice==30000){
             return 3;
-        }else if(maxPrice<50000){
+        }else if(maxPrice==50000){
             return 5;
-        }else if(maxPrice<80000){
+        }else if(maxPrice==80000){
             return 8;
-        }else if(maxPrice<90000){
+        }else if(maxPrice==90000){
             return 9;
-        }else if(maxPrice<100000){
+        }else if(maxPrice==100000){
             return 10;
-        }else if(maxPrice<120000){
+        }else if(maxPrice==120000){
             return 12;
-        }else if(maxPrice<200000){
+        }else if(maxPrice==200000){
             return 20;
-        }else if(maxPrice<250000){
-            return 25;
-        }else if(maxPrice<300000){
-            return 30;
         }else{
-            return 40;
+            return 100;
         }
 
 
