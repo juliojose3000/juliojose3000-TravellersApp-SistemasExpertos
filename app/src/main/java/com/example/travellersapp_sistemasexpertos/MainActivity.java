@@ -1,6 +1,8 @@
 package com.example.travellersapp_sistemasexpertos;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import android.app.Activity;
 import android.content.Context;
@@ -29,7 +31,12 @@ import com.example.travellersapp_sistemasexpertos.domain.TouristCompany;
 import com.example.travellersapp_sistemasexpertos.domain.TouristDestination;
 import com.example.travellersapp_sistemasexpertos.domain.TravelPackage;
 import com.example.travellersapp_sistemasexpertos.domain.User;
+import com.example.travellersapp_sistemasexpertos.fragments.AboutUsFragment;
+import com.example.travellersapp_sistemasexpertos.fragments.ApplicationMapFragment;
+import com.example.travellersapp_sistemasexpertos.fragments.SearchTravelFragment;
+import com.example.travellersapp_sistemasexpertos.fragments.WelcomeScreenFragment;
 import com.example.travellersapp_sistemasexpertos.utilities.Data;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONException;
 
@@ -87,8 +94,11 @@ public class MainActivity extends BaseActivity {
         };
         thread.start();
 
-        //Data.fillList();
-        //Data.getResults("",50,"", "");
+        BottomNavigationView bottonNav = findViewById(R.id.bottom_navigation);
+
+        bottonNav.setOnNavigationItemSelectedListener(navListener);
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new WelcomeScreenFragment()).commit();
     }
 
     public static void loadDataFromDB(final Context context){
@@ -127,24 +137,35 @@ public class MainActivity extends BaseActivity {
     }
 
 
-    public void login(View v){
 
-        Intent i = new Intent(this, Login.class);
+    private BottomNavigationView.OnNavigationItemSelectedListener navListener =
+            new BottomNavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    Fragment selectedFragment = null;
 
-        i.putExtra("whereIGo", "searchTravel");
+                    switch (item.getItemId()){
 
-        startActivity(i);
+                        case R.id.home_item:
+                            selectedFragment = new WelcomeScreenFragment();
+                            break;
+                        case R.id.about_us_menu_item:
+                            selectedFragment = new AboutUsFragment();
+                            break;
+                        case R.id.application_map_menu_item:
+                            selectedFragment = new ApplicationMapFragment();
+                            break;
+                        case R.id.search_item:
+                            selectedFragment = new SearchTravelFragment();
+                            break;
+                    }
 
-    }
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
 
-    public void continues(View v){
+                    return true;
+                }
 
-        Intent i = new Intent(this, SearchTravel.class);
-
-        startActivity(i);
-
-    }
-
+            };
 
 
 
