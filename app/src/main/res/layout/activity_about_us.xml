@@ -57,7 +57,7 @@
 
                 <TextView
                     android:id="@+id/textView7"
-                    style="@style/MyTextViewStyle_Text"
+                    style="@style/MyTextViewStyle_about_us."
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="@string/about_us" />

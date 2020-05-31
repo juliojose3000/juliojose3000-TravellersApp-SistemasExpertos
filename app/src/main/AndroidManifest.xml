@@ -40,8 +40,7 @@
         <activity android:name=".activities.TravelChosen" />
         <activity android:name=".activities.TravellsResults" />
         <activity android:name=".activities.SearchTravel" />
-        <activity android:name=".activities.MainInterface" />
-        <activity android:name=".activities.SingUp" />
+        <activity android:name=".activities.SingUp"/>
         <activity android:name=".activities.BaseActivity" />
         <activity android:name=".activities.Login" />
         <activity android:name=".MainActivity">

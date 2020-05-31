@@ -185,6 +185,15 @@ public class BaseActivity extends AppCompatActivity {
                                 i.putExtra("whereIGo","makePayment");
                                 startActivity(i);
                                 break;
+                            case "exit":
+                                dialog.dismiss();
+                                Intent startMain = new Intent(Intent.ACTION_MAIN);
+                                startMain.addCategory(Intent.CATEGORY_HOME);
+                                startMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                startMain.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                startActivity(startMain);
+                                System.exit(0);
+                                break;
                         }
 
                         dialog.dismiss();

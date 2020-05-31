@@ -44,12 +44,6 @@ public class SingUp extends AppCompatActivity {
 
         setContentView(R.layout.activity_sing_up);
 
-        Bundle bundle = getIntent().getExtras();
-
-        if(bundle!=null){
-            whereIGo = bundle.getString("whereIGo");
-        }
-
         editTextName = findViewById(R.id.editText_name);
 
         editTextLastname = findViewById(R.id.editText_lastname);
@@ -222,5 +216,10 @@ public class SingUp extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
 
+        finish();
+
+    }
 }

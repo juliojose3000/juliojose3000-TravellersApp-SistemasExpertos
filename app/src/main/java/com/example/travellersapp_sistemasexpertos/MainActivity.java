@@ -1,27 +1,12 @@
 package com.example.travellersapp_sistemasexpertos;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-
-import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
-import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.StrictMode;
-import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
-
 import com.example.travellersapp_sistemasexpertos.activities.BaseActivity;
-import com.example.travellersapp_sistemasexpertos.activities.Login;
-import com.example.travellersapp_sistemasexpertos.activities.MainInterface;
-import com.example.travellersapp_sistemasexpertos.activities.SearchTravel;
-import com.example.travellersapp_sistemasexpertos.activities.SingUp;
 import com.example.travellersapp_sistemasexpertos.database.DBHelper;
 import com.example.travellersapp_sistemasexpertos.domain.Airport;
 import com.example.travellersapp_sistemasexpertos.domain.Hotel;
@@ -33,16 +18,17 @@ import com.example.travellersapp_sistemasexpertos.domain.TravelPackage;
 import com.example.travellersapp_sistemasexpertos.domain.User;
 import com.example.travellersapp_sistemasexpertos.fragments.AboutUsFragment;
 import com.example.travellersapp_sistemasexpertos.fragments.ApplicationMapFragment;
+import com.example.travellersapp_sistemasexpertos.fragments.PackageDetailsFragment;
 import com.example.travellersapp_sistemasexpertos.fragments.SearchTravelFragment;
+import com.example.travellersapp_sistemasexpertos.fragments.TravellsResultsFragment;
 import com.example.travellersapp_sistemasexpertos.fragments.WelcomeScreenFragment;
-import com.example.travellersapp_sistemasexpertos.utilities.Data;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
 import org.json.JSONException;
-
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 
 public class MainActivity extends BaseActivity {
 
@@ -57,6 +43,18 @@ public class MainActivity extends BaseActivity {
     public static ArrayList<TouristCompany> TOURISTCOMPANIES;
     public static ArrayList<TouristDestination> TOURISTDESTINATIONS;
     public static boolean isAllDataLoaded = false;
+
+    public static String LAST_FRAGMENT = "SEARCH_FRAGMENT";
+
+    public static final String SEARCH_FRAGMENT = "SEARCH_FRAGMENT";
+    public static final String RESULTS_FRAGMENT = "RESULTS_FRAGMENT";
+    public static final String DETAILS_PACKAGES_FRAGMENT = "DETAILS_PACKAGES_FRAGMENT";
+
+    public static Bundle SAVED_STATE_SEARCH_PACKAGES_FRAGMENT;
+    public static Bundle SAVED_STATE_PACKAGES_RESULTS_FRAGMENT;
+    public static Bundle SAVED_STATE_PACKAGE_DETAILS_FRAGMENT;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -136,7 +134,18 @@ public class MainActivity extends BaseActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
 
+        //super.onBackPressed();
+
+        AlertDialog diaBox = askOption(
+                "Salir","¿Está seguro que desea salir de la aplicación?",
+                "Aceptar","Cancelar","exit",this);
+
+        diaBox.show();
+
+    }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -156,7 +165,19 @@ public class MainActivity extends BaseActivity {
                             selectedFragment = new ApplicationMapFragment();
                             break;
                         case R.id.search_item:
-                            selectedFragment = new SearchTravelFragment();
+                            if(LAST_FRAGMENT.equals(SEARCH_FRAGMENT)){
+
+                                selectedFragment = new SearchTravelFragment();
+
+                            }else if(LAST_FRAGMENT.equals(RESULTS_FRAGMENT)){
+
+                                selectedFragment = new TravellsResultsFragment();
+
+                            }else if(LAST_FRAGMENT.equals(DETAILS_PACKAGES_FRAGMENT)){
+
+                                selectedFragment = new PackageDetailsFragment();
+
+                            }
                             break;
                     }
 

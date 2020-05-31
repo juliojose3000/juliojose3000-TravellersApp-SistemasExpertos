@@ -32,18 +32,14 @@ public class Login extends AppCompatActivity {
 
     private Button buttonCreateNewAccount;
 
+    private Button backButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_login);
-
-        final Bundle bundle = getIntent().getExtras();
-
-        if(bundle!=null){
-            whereIGo = bundle.getString("whereIGo");
-        }
 
         editText_password = findViewById(R.id.editText_password);
 
@@ -68,10 +64,6 @@ public class Login extends AppCompatActivity {
 
                 Intent i = new Intent(Login.this, SingUp.class);
 
-                if(bundle!=null){
-                    i.putExtra("whereIGo","");
-                }
-
                 startActivity(i);
 
                 finish();
@@ -79,7 +71,14 @@ public class Login extends AppCompatActivity {
             }
         });
 
+        backButton = findViewById(R.id.button_back);
 
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
 
     }
