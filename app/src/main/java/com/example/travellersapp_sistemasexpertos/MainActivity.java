@@ -21,7 +21,7 @@ import com.example.travellersapp_sistemasexpertos.fragments.ApplicationMapFragme
 import com.example.travellersapp_sistemasexpertos.fragments.DestinyDetailsFragment;
 import com.example.travellersapp_sistemasexpertos.fragments.PackageDetailsFragment;
 import com.example.travellersapp_sistemasexpertos.fragments.ReservationDetailsFragment;
-import com.example.travellersapp_sistemasexpertos.fragments.SearchTravelFragment;
+import com.example.travellersapp_sistemasexpertos.fragments.SearchPackagesFragment;
 import com.example.travellersapp_sistemasexpertos.fragments.TravellsResultsFragment;
 import com.example.travellersapp_sistemasexpertos.fragments.WelcomeScreenFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -59,6 +59,8 @@ public class MainActivity extends BaseActivity {
     public static Bundle SAVED_STATE_PACKAGE_DETAILS_FRAGMENT;
     public static Bundle SAVED_STATE_DESTINY_DESTAILS_FRAGMENT;
     public static Bundle SAVED_STATE_PAYMENT_DETAILS_FRAGMENT;
+
+    public static BottomNavigationView bottonNav;
 
 
 
@@ -98,7 +100,7 @@ public class MainActivity extends BaseActivity {
         };
         thread.start();
 
-        BottomNavigationView bottonNav = findViewById(R.id.bottom_navigation);
+        bottonNav = findViewById(R.id.bottom_navigation);
 
         bottonNav.setOnNavigationItemSelectedListener(navListener);
 
@@ -174,7 +176,7 @@ public class MainActivity extends BaseActivity {
 
                             if(LAST_FRAGMENT.equals(SEARCH_FRAGMENT)){
 
-                                selectedFragment = new SearchTravelFragment();
+                                selectedFragment = new SearchPackagesFragment();
 
                             }else if(LAST_FRAGMENT.equals(RESULTS_FRAGMENT)){
 
@@ -203,6 +205,7 @@ public class MainActivity extends BaseActivity {
                 }
 
             };
+
 
 
 

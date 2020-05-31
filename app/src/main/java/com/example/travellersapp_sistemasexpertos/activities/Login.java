@@ -115,22 +115,9 @@ public class Login extends AppCompatActivity {
 
         if(Data.areValidCredentials(username, password)){
 
-            if(whereIGo.equals("searchTravel")){
+            finish();
 
-                Intent i = new Intent(this, SearchTravel.class);
-
-                finish();
-
-                startActivity(i);
-
-            }else {
-
-                finish();
-
-                Toast.makeText(this, "Bienvenido "+Data.loggedUser.getName(), Toast.LENGTH_SHORT).show();
-
-            }
-
+            Toast.makeText(this, "Bienvenido "+Data.loggedUser.getName(), Toast.LENGTH_SHORT).show();
 
 
         }else{

@@ -3,6 +3,7 @@ package com.example.travellersapp_sistemasexpertos.fragments;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -10,11 +11,9 @@ import android.widget.TextView;
 
 import com.example.travellersapp_sistemasexpertos.MainActivity;
 import com.example.travellersapp_sistemasexpertos.R;
-import com.example.travellersapp_sistemasexpertos.activities.AboutUs;
-import com.example.travellersapp_sistemasexpertos.activities.AppMapActivity;
 import com.example.travellersapp_sistemasexpertos.activities.Login;
-import com.example.travellersapp_sistemasexpertos.activities.SearchTravel;
 import com.example.travellersapp_sistemasexpertos.activities.SingUp;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,28 +21,35 @@ import androidx.fragment.app.Fragment;
 
 public class ApplicationMapFragment extends Fragment {
 
-    TextView textViewPantallaInicio;
+    private TextView textViewPantallaInicio;
 
-    TextView textViewLogin;
+    private TextView textViewLogin;
 
-    TextView textViewBuscarPaquetes;
+    private TextView textViewBuscarPaquetes;
 
-    TextView textViewResultadoPaquetes;
+    private TextView textViewResultadoPaquetes;
 
-    TextView textViewPaqueteSeleccionado;
+    private TextView textViewPaqueteSeleccionado;
 
-    TextView textViewViajeSeleccionado;
+    private TextView textViewViajeSeleccionado;
 
-    TextView textViewAboutUs;
+    private TextView textViewAboutUs;
 
-    TextView textViewMUbiacacionDestino;
+    private TextView textViewMUbiacacionDestino;
 
-    TextView textViewDetallesReservation;
+    private TextView textViewDetallesReservation;
 
-    TextView textViewSignUp;
+    private TextView textViewSignUp;
 
-    Button buttonBack;
+    private Button buttonBack;
 
+    private Fragment fragment;
+
+    private int HOME_FRAGMENT = 0;
+
+    private int SEARCH_FRAGMENT = 1;
+
+    private int ABOUT_US_FRAGMENT = 2;
 
     @Nullable
     @Override
@@ -54,6 +60,7 @@ public class ApplicationMapFragment extends Fragment {
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+
         super.onActivityCreated(savedInstanceState);
 
         textViewPantallaInicio = getView().findViewById(R.id.textView_pantalla_inicio);
@@ -66,13 +73,17 @@ public class ApplicationMapFragment extends Fragment {
 
         textViewSignUp = getView().findViewById(R.id.textView_sign_up);
 
-
         textViewPantallaInicio.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getActivity(), MainActivity.class);
-                startActivity(i);
+
+                fragment = new WelcomeScreenFragment();
+
+                int itemId = MainActivity.bottonNav.getMenu().getItem(HOME_FRAGMENT).getItemId();
+
+                changeFragment(itemId);
+
             }
         });
 
@@ -80,7 +91,9 @@ public class ApplicationMapFragment extends Fragment {
 
             @Override
             public void onClick(View view) {
+
                 Intent i = new Intent(getActivity(), Login.class);
+
                 startActivity(i);
             }
         });
@@ -90,8 +103,13 @@ public class ApplicationMapFragment extends Fragment {
 
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getActivity(), SearchTravel.class);
-                startActivity(i);
+
+                fragment = new SearchPackagesFragment();
+
+                int itemId = MainActivity.bottonNav.getMenu().getItem(SEARCH_FRAGMENT).getItemId();
+
+                changeFragment(itemId);
+
             }
         });
 
@@ -100,8 +118,13 @@ public class ApplicationMapFragment extends Fragment {
 
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getActivity(), AboutUs.class);
-                startActivity(i);
+
+                fragment = new AboutUsFragment();
+
+                int itemId = MainActivity.bottonNav.getMenu().getItem(ABOUT_US_FRAGMENT).getItemId();
+
+                changeFragment(itemId);
+
             }
         });
 
@@ -111,11 +134,27 @@ public class ApplicationMapFragment extends Fragment {
 
             @Override
             public void onClick(View view) {
+
                 Intent i = new Intent(getActivity(), SingUp.class);
+
                 startActivity(i);
+
             }
         });
 
 
+
     }
+
+
+    private void changeFragment(int itemId){
+
+        MainActivity.bottonNav.setSelectedItemId(itemId);
+
+    }
+
+
+
+
+
 }

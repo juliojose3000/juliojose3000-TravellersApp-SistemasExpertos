@@ -1,6 +1,5 @@
 package com.example.travellersapp_sistemasexpertos.fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +10,6 @@ import android.widget.ListView;
 
 import com.example.travellersapp_sistemasexpertos.MainActivity;
 import com.example.travellersapp_sistemasexpertos.R;
-import com.example.travellersapp_sistemasexpertos.activities.PackageChosen;
 import com.example.travellersapp_sistemasexpertos.adapters.ListViewAdapter;
 import com.example.travellersapp_sistemasexpertos.domain.TravelPackage;
 import com.example.travellersapp_sistemasexpertos.utilities.Data;
@@ -168,7 +166,7 @@ public class TravellsResultsFragment extends Fragment {
 
         getFragmentManager().beginTransaction().remove(this).commit();
 
-        getFragmentManager().beginTransaction().replace(R.id.fragment_container, new SearchTravelFragment()).commit();
+        getFragmentManager().beginTransaction().replace(R.id.fragment_container, new SearchPackagesFragment()).commit();
 
     }
 

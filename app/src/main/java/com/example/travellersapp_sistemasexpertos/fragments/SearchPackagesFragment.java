@@ -19,7 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-public class SearchTravelFragment extends Fragment {
+public class SearchPackagesFragment extends Fragment {
 
     private Spinner spinner_categories;
 

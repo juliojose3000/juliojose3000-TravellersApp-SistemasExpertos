@@ -194,7 +194,7 @@ public class ReservationDetailsFragment extends Fragment {
 
         getFragmentManager().beginTransaction().remove(this).commit();
 
-        getFragmentManager().beginTransaction().replace(R.id.fragment_container, new SearchTravelFragment()).commit();
+        getFragmentManager().beginTransaction().replace(R.id.fragment_container, new SearchPackagesFragment()).commit();
     }
 
 
