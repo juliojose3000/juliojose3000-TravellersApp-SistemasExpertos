@@ -1,5 +1,8 @@
 package com.example.travellersapp_sistemasexpertos.activities;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
@@ -173,6 +176,9 @@ public class SingUp extends AppCompatActivity {
         if(password.equals("")){changeBadColorEditText(editTextPassword);}
         else{changeGoodColorEditText(editTextPassword);}
 
+        if(password.equals("")){changeBadColorEditText(editTextPassword2);}
+        else{changeGoodColorEditText(editTextPassword2);}
+
     }
 
     public static boolean isValidEmail(CharSequence target) {
@@ -182,17 +188,14 @@ public class SingUp extends AppCompatActivity {
 
     public void cancel(View v){
 
-        editTextName.setText("");
+        AlertDialog diaBox = askOption(
+                "Salir","¿Está seguro que desea cancelar el registro?",
+                "Si","No");
 
-        editTextLastname.setText("");
+        diaBox.show();
 
-        editTextEmail.setText("");
+        finish();
 
-        editTextPhone.setText("");
-
-        editTextUsername.setText("");
-
-        editTextPassword.setText("");
     }
 
 
@@ -222,4 +225,43 @@ public class SingUp extends AppCompatActivity {
         finish();
 
     }
+
+
+
+    public AlertDialog askOption(String title, String message, String positive, String negative)
+    {
+
+        AlertDialog myQuittingDialogBox =new AlertDialog.Builder(this)
+                //set message, title, and icon
+                .setTitle(title)
+                .setMessage(message)
+
+
+                .setPositiveButton(positive, new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int whichButton) {
+
+                        finish();
+
+                    }
+
+                })
+
+                .setNegativeButton(negative, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        //do nothing
+                        dialog.dismiss();
+
+                    }
+                })
+                .create();
+        return myQuittingDialogBox;
+
+    }
+
+
+
+
+
+
 }

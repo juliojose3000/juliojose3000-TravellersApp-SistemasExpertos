@@ -67,6 +67,7 @@
                 android:id="@+id/textView_watch_destiny_ubication"
                 style="@style/MyTextViewStyle_Explanation"
                 android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
                 android:textColor="@color/myColor"
                 android:text="Ver ubicación en google maps" />
 

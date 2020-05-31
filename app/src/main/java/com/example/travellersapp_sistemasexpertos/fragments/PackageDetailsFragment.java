@@ -1,7 +1,6 @@
 package com.example.travellersapp_sistemasexpertos.fragments;
 
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -14,16 +13,12 @@ import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.travellersapp_sistemasexpertos.MainActivity;
 import com.example.travellersapp_sistemasexpertos.R;
 import com.example.travellersapp_sistemasexpertos.activities.Login;
-import com.example.travellersapp_sistemasexpertos.activities.MadePayment;
-import com.example.travellersapp_sistemasexpertos.activities.PackageChosen;
-import com.example.travellersapp_sistemasexpertos.activities.TravelChosen;
 import com.example.travellersapp_sistemasexpertos.database.DBHelper;
 import com.example.travellersapp_sistemasexpertos.domain.TouristDestination;
 import com.example.travellersapp_sistemasexpertos.domain.TravelPackage;
@@ -33,7 +28,6 @@ import com.example.travellersapp_sistemasexpertos.utilities.Dates;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 
 public class PackageDetailsFragment extends Fragment {
 
@@ -88,7 +82,7 @@ public class PackageDetailsFragment extends Fragment {
 
         idPackageTravel = bundle.getInt("travelPackage");
 
-        MainActivity.LAST_FRAGMENT = MainActivity.DETAILS_PACKAGES_FRAGMENT;
+        MainActivity.LAST_FRAGMENT = MainActivity.PACKAGES_DETAILS_FRAGMENT;
 
     }
 
@@ -188,11 +182,15 @@ public class PackageDetailsFragment extends Fragment {
 
                     int idTouristDestination = touristDestination.getIdTouristDestination();
 
-                    Intent i = new Intent(getActivity(), TravelChosen.class);
+                    Fragment fragment = new DestinyDetailsFragment();
 
-                    i.putExtra("tourist_destination", idTouristDestination);
+                    Bundle bundle = new Bundle();
 
-                    startActivity(i);
+                    bundle.putInt("tourist_destination", idTouristDestination);
+
+                    fragment.setArguments(bundle);
+
+                    getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
 
                 }
             });
@@ -244,12 +242,7 @@ public class PackageDetailsFragment extends Fragment {
 
     private void makePayment(){
 
-        Intent i = new Intent(getActivity(), MadePayment.class);
-
-        i.putExtra("idTravelPackage",idPackageTravel);
-
         final String fecha= dates.getDateOfToday();
-
 
         new AsyncTask<Void, Void, Void>() {
 
@@ -263,7 +256,16 @@ public class PackageDetailsFragment extends Fragment {
 
         }.execute();
 
-        startActivity(i);
+        Fragment fragment = new ReservationDetailsFragment();
+
+        Bundle bundle = new Bundle();
+
+        bundle.putInt("idTravelPackage", idPackageTravel);
+
+        fragment.setArguments(bundle);
+
+        getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
+
 
     }
 

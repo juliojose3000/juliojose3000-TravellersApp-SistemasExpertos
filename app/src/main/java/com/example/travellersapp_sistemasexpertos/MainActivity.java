@@ -18,7 +18,9 @@ import com.example.travellersapp_sistemasexpertos.domain.TravelPackage;
 import com.example.travellersapp_sistemasexpertos.domain.User;
 import com.example.travellersapp_sistemasexpertos.fragments.AboutUsFragment;
 import com.example.travellersapp_sistemasexpertos.fragments.ApplicationMapFragment;
+import com.example.travellersapp_sistemasexpertos.fragments.DestinyDetailsFragment;
 import com.example.travellersapp_sistemasexpertos.fragments.PackageDetailsFragment;
+import com.example.travellersapp_sistemasexpertos.fragments.ReservationDetailsFragment;
 import com.example.travellersapp_sistemasexpertos.fragments.SearchTravelFragment;
 import com.example.travellersapp_sistemasexpertos.fragments.TravellsResultsFragment;
 import com.example.travellersapp_sistemasexpertos.fragments.WelcomeScreenFragment;
@@ -48,11 +50,15 @@ public class MainActivity extends BaseActivity {
 
     public static final String SEARCH_FRAGMENT = "SEARCH_FRAGMENT";
     public static final String RESULTS_FRAGMENT = "RESULTS_FRAGMENT";
-    public static final String DETAILS_PACKAGES_FRAGMENT = "DETAILS_PACKAGES_FRAGMENT";
+    public static final String PACKAGES_DETAILS_FRAGMENT = "PACKAGES_DETAILS_FRAGMENT";
+    public static final String DESTINY_DETAILS_FRAGMENT = "DESTINY_DETAILS_FRAGMENT";
+    public static final String RESERVATION_DETAILS_FRAGMENT = "DETAILS_PAYMENT_FRAGMENT";
 
     public static Bundle SAVED_STATE_SEARCH_PACKAGES_FRAGMENT;
     public static Bundle SAVED_STATE_PACKAGES_RESULTS_FRAGMENT;
     public static Bundle SAVED_STATE_PACKAGE_DETAILS_FRAGMENT;
+    public static Bundle SAVED_STATE_DESTINY_DESTAILS_FRAGMENT;
+    public static Bundle SAVED_STATE_PAYMENT_DETAILS_FRAGMENT;
 
 
 
@@ -165,6 +171,7 @@ public class MainActivity extends BaseActivity {
                             selectedFragment = new ApplicationMapFragment();
                             break;
                         case R.id.search_item:
+
                             if(LAST_FRAGMENT.equals(SEARCH_FRAGMENT)){
 
                                 selectedFragment = new SearchTravelFragment();
@@ -173,11 +180,20 @@ public class MainActivity extends BaseActivity {
 
                                 selectedFragment = new TravellsResultsFragment();
 
-                            }else if(LAST_FRAGMENT.equals(DETAILS_PACKAGES_FRAGMENT)){
+                            }else if(LAST_FRAGMENT.equals(PACKAGES_DETAILS_FRAGMENT)){
 
                                 selectedFragment = new PackageDetailsFragment();
 
+                            }else if(LAST_FRAGMENT.equals(DESTINY_DETAILS_FRAGMENT)){
+
+                                selectedFragment = new DestinyDetailsFragment();
+
+                            }else if(LAST_FRAGMENT.equals(RESERVATION_DETAILS_FRAGMENT)){
+
+                                selectedFragment = new ReservationDetailsFragment();
+
                             }
+
                             break;
                     }
 

@@ -4,64 +4,120 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="."
     android:orientation="vertical"
     android:gravity="bottom">
 
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="120"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-
-        <TextView
-            android:id="@+id/textView8"
-            style="@style/MyTextViewStyle_activity_main"
-            android:text="Reserve los mejores paquetes de viaje para usted y su familia con World Travellers" />
-
-        <ImageView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/logo">
-
-        </ImageView>
+            android:orientation="vertical">
 
 
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="100"
-        android:gravity="center"
-        android:orientation="vertical">
+                <TextView
+                    android:id="@+id/textView8"
+                    style="@style/MyTextViewStyle_activity_main"
+                    android:text="Reserve los mejores paquetes de viaje para usted y su familia con World Travellers" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/logo">
+
+                </ImageView>
 
 
-        <pl.droidsonroids.gif.GifImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:src="@drawable/gif5" />
-
-    </LinearLayout>
+            </LinearLayout>
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="150"
-        android:gravity="bottom"
-        android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
 
 
-            android:layout_width="match_parent"
-            android:layout_height="10dp" />
+                <pl.droidsonroids.gif.GifImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="250dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/gif5" />
 
-    </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textView9"
+                    style="@style/MyTextViewStyle_activity_main"
+                    android:text="Contamos con una amplia gama de paquetes turísticos, elige el que más se acople a tus preferencias!" />
+
+
+                <TextView
+                    android:id="@+id/textView10"
+                    style="@style/MyTextViewStyle_activity_main"
+                    android:text="Montaña" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/tapanti"/>
+
+                <TextView
+                    android:id="@+id/textView11"
+                    style="@style/MyTextViewStyle_activity_main"
+                    android:text="Playa" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/manuelantonio2"/>
+
+                <TextView
+                    android:id="@+id/textView12"
+                    style="@style/MyTextViewStyle_activity_main"
+                    android:text="Sitios Históricos" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ujarraz"/>
+
+
+                <TextView
+                    android:id="@+id/textView13"
+                    style="@style/MyTextViewStyle_activity_main"
+                    android:text="Y muchos más! Disfruta de viajar por los mejores lugares de
+                    Costa Rica y el mundo junto con World Travellers!" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/viajeros"/>
+
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+
+
+
+    </ScrollView>
+
+
+
+
 
 
 </android.widget.LinearLayout>
