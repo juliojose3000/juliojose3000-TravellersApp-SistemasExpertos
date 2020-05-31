@@ -100,8 +100,8 @@
 
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/viajeros"/>
+                    android:layout_height="220dp"
+                    android:src="@drawable/viajeros" />
 
 
             </LinearLayout>
