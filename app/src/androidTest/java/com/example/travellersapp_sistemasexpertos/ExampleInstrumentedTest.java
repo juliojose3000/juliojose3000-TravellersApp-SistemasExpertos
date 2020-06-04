@@ -24,4 +24,16 @@ public class ExampleInstrumentedTest {
 
         assertEquals("com.example.travellersapp_sistemasexpertos", appContext.getPackageName());
     }
+
+    @Test
+    public void prueba(){
+
+        MainActivity mainActivity = new MainActivity();
+
+        Context appContext = mainActivity;
+
+    }
+
+
+
 }

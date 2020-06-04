@@ -91,20 +91,6 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="100"
-        android:gravity="center"
-        android:orientation="vertical">
-
-        <Button
-            android:id="@+id/button_back"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:text="Volver"></Button>
-
-    </LinearLayout>
 
 
 </android.widget.LinearLayout>

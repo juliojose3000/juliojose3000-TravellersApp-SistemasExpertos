@@ -1,4 +1,4 @@
-package com.example.travellersapp_sistemasexpertos.activities;
+package com.example.travellersapp_sistemasexpertos.fragments;
 
 import android.content.Intent;
 import android.media.MediaPlayer;
@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -17,20 +19,26 @@ import android.widget.VideoView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.travellersapp_sistemasexpertos.MainActivity;
 import com.example.travellersapp_sistemasexpertos.R;
+import com.example.travellersapp_sistemasexpertos.activities.MapsActivity;
 import com.example.travellersapp_sistemasexpertos.domain.TouristDestination;
 import com.example.travellersapp_sistemasexpertos.utilities.Data;
 import com.example.travellersapp_sistemasexpertos.utilities.Dates;
 
-public class TravelChosen extends BaseActivity {
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
-    TextView textViewTravelName;
+public class DestinyDetailsFragment extends Fragment {
 
-    TextView textViewDescription;
+    private TextView textViewTravelName;
 
-    TextView textViewDestinyUbication;
+    private TextView textViewDescription;
 
-    int idTouristDestination;
+    private TextView textViewDestinyUbication;
+
+    private int idTouristDestination;
 
     private HorizontalScrollView horizontalScrollView;
 
@@ -48,23 +56,52 @@ public class TravelChosen extends BaseActivity {
 
     private Dates dates;
 
+    private Button backButton;
+
+    private Bundle bundle;
+
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_travel_chosen);
+        bundle = getArguments();
+
+        if(bundle != null){
+
+            MainActivity.SAVED_STATE_DESTINY_DESTAILS_FRAGMENT = bundle;
+
+        }else{
+
+            bundle = MainActivity.SAVED_STATE_DESTINY_DESTAILS_FRAGMENT;
+
+        }
+
+        MainActivity.LAST_FRAGMENT = MainActivity.DESTINY_DETAILS_FRAGMENT;
+
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.activity_travel_chosen, container, false);
+    }
+
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
 
         dates=new Dates();
 
-        textViewTravelName = findViewById(R.id.textView_travel_name);
+        textViewTravelName = getView().findViewById(R.id.textView_travel_name);
 
-        textViewDescription = findViewById(R.id.textView_description_travel_chosen);
+        textViewDescription = getView().findViewById(R.id.textView_description_travel_chosen);
 
-        textViewDestinyUbication = findViewById(R.id.textView_watch_destiny_ubication);
+        textViewDestinyUbication = getView().findViewById(R.id.textView_watch_destiny_ubication);
 
         textViewDestinyUbication.setText(Html.fromHtml("<u>Ver ubicación en Google Maps</u>"));
-
-        Bundle bundle = getIntent().getExtras();
 
         idTouristDestination = bundle.getInt("tourist_destination");
 
@@ -78,7 +115,7 @@ public class TravelChosen extends BaseActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent i = new Intent(TravelChosen.this, MapsActivity.class);//me dirijo a la interfaz de inicio
+                        Intent i = new Intent(getActivity(), MapsActivity.class);//me dirijo a la interfaz de inicio
 
                         double latitud = touristDestination.getLatitud();
                         double longitud =  touristDestination.getLogintud();
@@ -101,11 +138,11 @@ public class TravelChosen extends BaseActivity {
 
         //----------------------------------------------------------------------------------------//
 
-        LinearLayout gallery = findViewById(R.id.linear_layout_gallery);
+        LinearLayout gallery = getView().findViewById(R.id.linear_layout_gallery);
 
-        horizontalScrollView = findViewById(R.id.horizontal_scroll_view);
+        horizontalScrollView = getView().findViewById(R.id.horizontal_scroll_view);
 
-        LayoutInflater inflater = LayoutInflater.from(this);
+        LayoutInflater inflater = LayoutInflater.from(getActivity());
 
         View viewImages;
 
@@ -115,7 +152,7 @@ public class TravelChosen extends BaseActivity {
 
             ImageView imageView =  viewImages.findViewById(R.id.imageView_images);
 
-            Glide.with(TravelChosen.this)
+            Glide.with(getActivity())
                     .load(touristDestination.getListImages().get(i).getUrl())
                     .apply(requestOptions)
                     .into(imageView);
@@ -132,7 +169,7 @@ public class TravelChosen extends BaseActivity {
         videoView = viewImages.findViewById(R.id.videoView);
         imageViewPlay = viewImages.findViewById(R.id.imageView_play);
 
-        mediacontroller = new MediaController(this);
+        mediacontroller = new MediaController(getActivity());
         mediacontroller.setAnchorView(videoView);
         String uriPath = touristDestination.getURLVideo(); //update package name
         uri = Uri.parse(uriPath);
@@ -184,12 +221,27 @@ public class TravelChosen extends BaseActivity {
 
 
         //----------------------------------------------------------------------------------------//
+
+
+        backButton = getView().findViewById(R.id.button_back);
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                back();
+
+            }
+        });
+
+
     }
 
+    private void back(){
 
-    public void back(View v){
+        getFragmentManager().beginTransaction().remove(this).commit();
 
-        finish();
+        getFragmentManager().beginTransaction().replace(R.id.fragment_container, new PackageDetailsFragment()).commit();
 
     }
 

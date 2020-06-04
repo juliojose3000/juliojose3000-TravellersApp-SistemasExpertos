@@ -1,5 +1,8 @@
 package com.example.travellersapp_sistemasexpertos.activities;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
@@ -43,12 +46,6 @@ public class SingUp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_sing_up);
-
-        Bundle bundle = getIntent().getExtras();
-
-        if(bundle!=null){
-            whereIGo = bundle.getString("whereIGo");
-        }
 
         editTextName = findViewById(R.id.editText_name);
 
@@ -139,21 +136,9 @@ public class SingUp extends AppCompatActivity {
 
         Data.loggedUser = user;
 
-        if(whereIGo.equals("searchTravel")){
+        finish();
 
-            Intent i = new Intent(this, SearchTravel.class);
-
-            finish();
-
-            startActivity(i);
-
-        }else {
-
-            finish();
-
-            Toast.makeText(this, "Bienvenido "+Data.loggedUser.getName(), Toast.LENGTH_SHORT).show();
-
-        }
+        Toast.makeText(this, "Bienvenido "+Data.loggedUser.getName(), Toast.LENGTH_SHORT).show();
 
 
     }
@@ -179,6 +164,9 @@ public class SingUp extends AppCompatActivity {
         if(password.equals("")){changeBadColorEditText(editTextPassword);}
         else{changeGoodColorEditText(editTextPassword);}
 
+        if(password.equals("")){changeBadColorEditText(editTextPassword2);}
+        else{changeGoodColorEditText(editTextPassword2);}
+
     }
 
     public static boolean isValidEmail(CharSequence target) {
@@ -188,17 +176,12 @@ public class SingUp extends AppCompatActivity {
 
     public void cancel(View v){
 
-        editTextName.setText("");
+        AlertDialog diaBox = askOption(
+                "Salir","¿Está seguro que desea cancelar el registro?",
+                "Si","No");
 
-        editTextLastname.setText("");
+        diaBox.show();
 
-        editTextEmail.setText("");
-
-        editTextPhone.setText("");
-
-        editTextUsername.setText("");
-
-        editTextPassword.setText("");
     }
 
 
@@ -221,6 +204,50 @@ public class SingUp extends AppCompatActivity {
         return true;
 
     }
+
+    @Override
+    public void onBackPressed() {
+
+        finish();
+
+    }
+
+
+
+    public AlertDialog askOption(String title, String message, String positive, String negative)
+    {
+
+        AlertDialog myQuittingDialogBox =new AlertDialog.Builder(this)
+                //set message, title, and icon
+                .setTitle(title)
+                .setMessage(message)
+
+
+                .setPositiveButton(positive, new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int whichButton) {
+
+                        finish();
+
+                    }
+
+                })
+
+                .setNegativeButton(negative, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        //do nothing
+                        dialog.dismiss();
+
+                    }
+                })
+                .create();
+        return myQuittingDialogBox;
+
+    }
+
+
+
+
 
 
 }

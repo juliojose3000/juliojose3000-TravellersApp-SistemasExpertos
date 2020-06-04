@@ -103,6 +103,11 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
+            <Space
+                android:layout_width="30dp"
+                android:layout_height="wrap_content">
+
+            </Space>
 
             <Button
                 android:id="@+id/button_send_email"
@@ -112,6 +117,12 @@
                 android:onClick="sendEmail"
                 android:text="Enviar correo" />
 
+            <Space
+                android:layout_width="30dp"
+                android:layout_height="wrap_content">
+
+            </Space>
+
             <Button
                 android:id="@+id/button_finish"
                 android:layout_width="match_parent"
@@ -119,6 +130,14 @@
                 android:layout_weight="1"
                 android:onClick="finish"
                 android:text="Finalizar" />
+
+
+            <Space
+                android:layout_width="30dp"
+                android:layout_height="wrap_content">
+
+            </Space>
+
         </LinearLayout>
 
 

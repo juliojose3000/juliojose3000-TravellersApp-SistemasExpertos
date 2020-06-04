@@ -35,5 +35,6 @@ dependencies {
     //also for load image from url
     implementation 'com.github.bumptech.glide:glide:4.8.0'
     annotationProcessor 'com.github.bumptech.glide:glide:4.8.0'
-
+    //to navigation fragments
+    implementation 'com.google.android.material:material:1.1.0'
 }

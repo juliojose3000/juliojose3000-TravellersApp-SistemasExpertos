@@ -11,7 +11,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="170"
+        android:layout_weight="190"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -19,22 +19,23 @@
         <TextView
             android:id="@+id/textView_package_name"
             style="@style/MyTextViewStyle_Title"
+            android:layout_width="match_parent"
             android:text="Visite las principales islas de costa rica"
             android:textAlignment="center"
-            android:textSize="25dp" />
+            android:textSize="22dp" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="110"
+        android:layout_weight="130"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
         <HorizontalScrollView
             android:id="@+id/horizontal_scroll_view"
-            android:layout_width="320dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:scrollbars="horizontal">
 
@@ -42,7 +43,8 @@
                 android:id="@+id/linear_layout_gallery"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:gravity="center_horizontal">
 
             </LinearLayout>
 
@@ -134,14 +136,23 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="180"
-        android:gravity="center"
+        android:layout_weight="190"
+        android:gravity="bottom"
+        android:background="@android:color/transparent"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
             android:orientation="horizontal">
+
+            <Space
+                android:layout_width="30dp"
+                android:layout_height="wrap_content">
+
+            </Space>
+
 
 
             <Button
@@ -152,13 +163,27 @@
                 android:onClick="back"
                 android:text="Volver" />
 
+            <Space
+                android:layout_width="30dp"
+                android:layout_height="wrap_content">
+
+            </Space>
+
             <Button
-                android:id="@+id/button_to_pay"
+                android:id="@+id/button_reserve"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="makePayment"
                 android:text="Reservar" />
+
+            <Space
+                android:layout_width="30dp"
+                android:layout_height="wrap_content">
+
+            </Space>
+
+
         </LinearLayout>
 
 

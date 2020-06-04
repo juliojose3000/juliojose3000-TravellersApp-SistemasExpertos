@@ -45,13 +45,7 @@ public class BaseActivity extends AppCompatActivity {
 
         int id = item.getItemId();
 
-        if (id == R.id.item1) {
-
-            Intent i = new Intent(this, AboutUs.class);
-
-            startActivity(i);
-
-        } else if (id == R.id.item2) {
+        if (id == R.id.item2) {
 
             AlertDialog diaBox = confirmMessage();
             diaBox.show();
@@ -67,12 +61,6 @@ public class BaseActivity extends AppCompatActivity {
             Intent i = new Intent(this, MainActivity.class);//me dirijo a la interfaz de inicio
 
             Data.loggedUser = null;//cierro la sesion
-
-            startActivity(i);
-
-        }else if (id == R.id.item5) {
-
-            Intent i = new Intent(this, AppMapActivity.class);
 
             startActivity(i);
 
@@ -104,20 +92,6 @@ public class BaseActivity extends AppCompatActivity {
     public boolean isThereInternetAccess(){
 
         return true;
-
-    }
-
-    public void changeBadColorEditText(EditText editText){
-
-        ColorStateList colorStateList = ColorStateList.valueOf(Color.RED);
-        editText.setBackgroundTintList (colorStateList);
-
-    }
-
-    public void changeGoodColorEditText(EditText editText){
-
-        ColorStateList colorStateList = ColorStateList.valueOf(Color.argb(255, 41, 121, 255));
-        editText.setBackgroundTintList (colorStateList);
 
     }
 
@@ -177,13 +151,18 @@ public class BaseActivity extends AppCompatActivity {
 
 
                         switch (function){
-                            case "makePayment":
-                                ((PackageChosen)context).makePayment();
-                                break;
                             case "inisiarSesion":
                                 Intent i = new Intent(context, Login.class);
-                                i.putExtra("whereIGo","makePayment");
                                 startActivity(i);
+                                break;
+                            case "exit":
+                                dialog.dismiss();
+                                Intent startMain = new Intent(Intent.ACTION_MAIN);
+                                startMain.addCategory(Intent.CATEGORY_HOME);
+                                startMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                startMain.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                startActivity(startMain);
+                                System.exit(0);
                                 break;
                         }
 
